@@ -1,4 +1,4 @@
-import { UserPlus, LogIn, Heart } from "lucide-react";
+import { UserPlus, LogIn, Heart, Bookmark, LogOut, Plus } from "lucide-react";
 
 export default function Header() {
 
@@ -24,6 +24,15 @@ export default function Header() {
 
             <div className="header-right">
 
+                <button className="add-btn">
+                    <Plus size={13} />
+                </button>
+
+                <button className="wish-btn">
+                    Wishlist
+                    <Bookmark size={13} />
+                </button>
+
                 <button className="favs-btn">
                     Favs
                     <Heart size={13} />
@@ -35,6 +44,10 @@ export default function Header() {
 
                 <button className="login-btn">
                     <LogIn size={13} />
+                </button>
+
+                <button className="logout-btn">
+                    <LogOut size={13} />
                 </button>
             </div>
 
