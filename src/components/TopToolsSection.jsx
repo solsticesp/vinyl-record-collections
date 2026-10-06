@@ -4,9 +4,12 @@ export default function TopToolsSection() {
         <section className="top-tools">
 
             <div className="categories">
-                <a href="#">MEN</a>
-                <a href="#">WOMEN</a>
-                <a href="#">KIDS</a>
+                <a href="#">Pop</a>
+                <a href="#">Rock & Metal</a>
+                <a href="#">Jazz & Soul</a>
+                <a href="#">R&B & Hip-Hop</a>
+                <a href="#">Classical</a>
+
             </div>
 
             <div className="search">

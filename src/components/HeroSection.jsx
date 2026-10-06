@@ -5,30 +5,44 @@ export default function HeroSection() {
 
             <div className="hero-copy">
                 <h1>
-                    NEW<br />
-                    COLLECTION
+                    FRESH<br />
+                    RECORDS
                 </h1>
 
-                <p>Summer<br />2024</p>
+                <p>
+                    Autumn<br />
+                    '26
+                </p>
 
                 <a href="#" className="shop-btn">
-                    <span>Go To Shop</span>
+                    <span>Go To Recently Added</span>
                     <span className="arrow">⟶</span>
                 </a>
             </div>
 
-            <div className="hero-image">
-                <img
-                    src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85"
-                    alt="Fashion model"
-                />
-            </div>
+            <div className="hero-images">
 
-            <div className="hero-image second">
-                <img
-                    src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
-                    alt="Black fashion shirt"
-                />
+                <div className="hero-image">
+                    <img
+                        src="https://muzikercdn.com/uploads/products/29720/2972035/thumb_large_d_gallery_base_616cd03f.jpg"
+                        alt="The Rolling Stones"
+                    />
+                </div>
+
+                <div className="hero-image">
+                    <img
+                        src="https://muzikercdn.com/uploads/products/26678/2667806/thumb_large_d_gallery_base_ab316e41.jpg"
+                        alt="Charli XCX"
+                    />
+                </div>
+
+                <div className="hero-image">
+                    <img
+                        src="https://muzikercdn.com/uploads/products/25232/2523238/thumb_large_d_gallery_base_0405d4bb.jpg"
+                        alt="Judas Priest"
+                    />
+                </div>
+
             </div>
 
             <div className="hero-controls">
