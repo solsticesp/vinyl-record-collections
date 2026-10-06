@@ -1,9 +1,8 @@
 import ApproachSection from "./components/ApproachSection";
-// import CollectionsSection from "./components/CollectionsSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import NewProductsSection from "./components/NewProductsSection";
+import FavProductsSection from "./components/FavProductsSection";
 import TopToolsSection from "./components/TopToolsSection";
 
 function App() {
@@ -19,10 +18,7 @@ function App() {
       <HeroSection />
 
       {/* <!-- NEW THIS WEEK --> */}
-      <NewProductsSection />
-
-      {/* <!-- COLLECTIONS --> */}
-      {/* <CollectionsSection /> */}
+      <FavProductsSection />
 
       {/* <!-- APPROACH --> */}
       <ApproachSection />

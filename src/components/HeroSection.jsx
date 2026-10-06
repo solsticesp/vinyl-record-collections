@@ -1,3 +1,6 @@
+import HeroSectionItem from "./HeroSectionItem";
+
+
 export default function HeroSection() {
 
     return (
@@ -22,26 +25,11 @@ export default function HeroSection() {
 
             <div className="hero-images">
 
-                <div className="hero-image">
-                    <img
-                        src="https://muzikercdn.com/uploads/products/29720/2972035/thumb_large_d_gallery_base_616cd03f.jpg"
-                        alt="The Rolling Stones"
-                    />
-                </div>
+                <HeroSectionItem imageUrl="https://muzikercdn.com/uploads/products/29720/2972035/thumb_large_d_gallery_base_616cd03f.jpg" artist="The Rolling Stones" />
 
-                <div className="hero-image">
-                    <img
-                        src="https://muzikercdn.com/uploads/products/26678/2667806/thumb_large_d_gallery_base_ab316e41.jpg"
-                        alt="Charli XCX"
-                    />
-                </div>
+                <HeroSectionItem imageUrl="https://muzikercdn.com/uploads/products/26678/2667806/thumb_large_d_gallery_base_ab316e41.jpg" artist="Charli XCX" />
 
-                <div className="hero-image">
-                    <img
-                        src="https://muzikercdn.com/uploads/products/25232/2523238/thumb_large_d_gallery_base_0405d4bb.jpg"
-                        alt="Judas Priest"
-                    />
-                </div>
+                <HeroSectionItem imageUrl="https://muzikercdn.com/uploads/products/25232/2523238/thumb_large_d_gallery_base_0405d4bb.jpg" artist="Judas Priest" />
 
             </div>
 
