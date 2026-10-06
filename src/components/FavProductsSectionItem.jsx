@@ -12,7 +12,7 @@ export default function FavProductsSectionItem({
                     src={imageUrl}
                     alt={artist}
                 />
-                <button className="add">+</button>
+                <button className="add-btn">+</button>
             </div>
 
             <div className="product-meta">

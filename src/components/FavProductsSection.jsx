@@ -52,8 +52,8 @@ export default function FavProductsSection() {
             </div>
 
             <div className="slider-controls">
-                <button>‹</button>
-                <button>›</button>
+                <button className="prev-btn">‹</button>
+                <button className="next-btn">›</button>
             </div>
 
         </section>

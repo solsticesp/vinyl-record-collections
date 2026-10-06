@@ -34,8 +34,8 @@ export default function HeroSection() {
             </div>
 
             <div className="hero-controls">
-                <button>‹</button>
-                <button>›</button>
+                <button className="prev-btn">‹</button>
+                <button className="next-btn">›</button>
             </div>
 
         </section>

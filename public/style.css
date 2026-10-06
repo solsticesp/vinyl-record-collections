@@ -37,6 +37,10 @@ body::before {
 }
 
 
+[class$="-btn"] {
+    cursor: pointer;
+}
+
 /* ================= HEADER ================= */
 
 .header {
@@ -341,7 +345,7 @@ body::before {
   object-fit: cover;
 }
 
-.add {
+.add-btn {
   position: absolute;
   bottom: 4px;
   left: 50%;
