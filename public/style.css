@@ -38,7 +38,7 @@ body::before {
 
 
 [class$="-btn"] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* ================= HEADER ================= */
@@ -199,6 +199,62 @@ body::before {
   font-size: 7px;
 }
 
+.page {
+  margin: 10px 26px 87px;
+}
+
+/* ================= CATALOG TOOLBAR ================= */
+
+.catalog-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 10px;
+}
+
+.catalog-actions {
+  display: flex;
+  align-items: center;
+}
+
+.catalog-actions select {
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: #333;
+
+  cursor: pointer;
+
+  padding: 0 18px 0 0;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #555 50%),
+    linear-gradient(135deg, #555 50%, transparent 50%);
+
+  background-position:
+    calc(100% - 7px) 4px,
+    calc(100% - 3px) 4px;
+
+  background-size:
+    4px 4px,
+    4px 4px;
+
+  background-repeat: no-repeat;
+}
+
+.catalog-actions select:hover {
+  color: #000;
+}
 
 /* ================= HERO ================= */
 
@@ -472,14 +528,8 @@ body::before {
 .load-more {
   text-align: center;
   color: #999;
-  margin-top: 18px;
+  margin-top: 3rem;
   font-size: 8px;
-}
-
-.load-more b {
-  display: block;
-  color: #222;
-  font-size: 14px;
 }
 
 
