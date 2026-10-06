@@ -24,7 +24,7 @@ export default function Header() {
 
             <div className="header-right">
 
-                <button className="add-btn">
+                <button className="add-new-btn">
                     <Plus size={13} />
                 </button>
 

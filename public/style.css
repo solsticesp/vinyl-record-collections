@@ -142,7 +142,7 @@ body::before {
 .signup-btn,
 .login-btn,
 .logout-btn,
-.add-btn {
+.add-new-btn {
     width: 26px;
     height: 26px;
 
@@ -375,7 +375,6 @@ body::before {
 
 .section-heading sup {
     margin-left: 3px;
-
     color: blue;
     font-size: 8px;
     vertical-align: top;
@@ -643,13 +642,6 @@ body::before {
 /* ============================================================
    NEW IN / CATALOG
 ============================================================ */
-
-.new-in-page {
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 
 /* ---------- HEADER ---------- */
 
