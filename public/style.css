@@ -256,6 +256,185 @@ body::before {
   color: #000;
 }
 
+/* ================= RECORD DETAIL ================= */
+
+.record-detail {
+  max-width: 1100px;
+  margin: 70px auto 120px;
+  display: grid;
+  grid-template-columns: minmax(400px, 1fr) minmax(320px, 1fr);
+  gap: 90px;
+  align-items: center;
+}
+
+/* ---------- COVER ---------- */
+
+.record-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #eee;
+  overflow: hidden;
+}
+
+.record-cover img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+
+/* ---------- INFORMATION ---------- */
+
+.record-info {
+  max-width: 420px;
+}
+
+.record-info .eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 7px;
+  color: #888;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.record-info h1 {
+  font-size: 42px;
+  line-height: .85;
+  letter-spacing: -2px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.record-artist {
+  margin-top: 9px;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: .02em;
+}
+
+.record-price {
+  margin-top: 25px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+/* ---------- DESCRIPTION ---------- */
+
+.record-description {
+  margin-top: 35px;
+  max-width: 350px;
+}
+
+.record-description p {
+  font-size: 9px;
+  line-height: 14px;
+  color: #555;
+}
+
+
+/* ---------- DETAILS ---------- */
+
+.record-details {
+  margin-top: 35px;
+  border-top: 1px solid #ddd;
+}
+
+.record-detail-row {
+  min-height: 29px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 8px;
+}
+
+.record-detail-row span:first-child {
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.record-detail-row span:last-child {
+  color: #333;
+}
+
+
+/* ---------- ACTIONS ---------- */
+
+.record-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.record-actions button {
+  height: 32px;
+  padding: 0 18px;
+  border: 1px solid #222;
+  background: transparent;
+  color: #222;
+  font-family: inherit;
+  font-size: 8px;
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+
+.record-actions .add-to-cart {
+  background: #222;
+  color: white;
+}
+
+.record-actions button:hover {
+  background: #333;
+  color: white;
+}
+
+
+/* ================= TRACKLIST ================= */
+
+.tracklist-section {
+  max-width: 1100px;
+  margin: 0 auto 120px;
+}
+
+.tracklist-section > .eyebrow {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 7px;
+  color: #888;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.tracklist {
+  border-top: 1px solid #ddd;
+}
+
+.track {
+  min-height: 42px;
+  display: grid;
+  grid-template-columns: 45px 1fr 50px;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 8px;
+}
+
+.track span:first-child {
+  color: #aaa;
+}
+
+.track span:nth-child(2) {
+  color: #222;
+}
+
+.track span:last-child {
+  color: #888;
+  text-align: right;
+}
+
 /* ================= HERO ================= */
 
 .hero {
@@ -821,4 +1000,355 @@ footer {
   .footer-bottom {
     width: calc(100% - 60px);
   }
+}
+
+/* ================= RECORD MODAL ================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background: rgba(15, 15, 15, .38);
+  backdrop-filter: blur(5px);
+}
+
+.record-modal {
+  width: min(100%, 980px);
+  max-height: 90vh;
+
+  background: #f8f8f8;
+  color: var(--black);
+
+  overflow-y: auto;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .15);
+}
+
+
+/* ---------- HEADER ---------- */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 35px 40px 28px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-header .eyebrow {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 7px;
+  color: #999;
+  letter-spacing: .14em;
+}
+
+.modal-header h2 {
+  font-size: 25px;
+  line-height: .9;
+  letter-spacing: -1.2px;
+  font-weight: 900;
+}
+
+.modal-close {
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid #ddd;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 16px;
+  color: #555;
+
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #222;
+  color: white;
+  border-color: #222;
+}
+
+
+/* ---------- FORM ---------- */
+
+.record-form {
+  padding: 0 40px;
+}
+
+.form-section {
+  padding: 35px 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.form-section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.form-section-heading > span {
+  font-size: 7px;
+  color: #aaa;
+}
+
+.form-section-heading h3 {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+
+/* ---------- FORM GRID ---------- */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 7px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  border: 0;
+  border-bottom: 1px solid #ccc;
+
+  background: transparent;
+
+  padding: 8px 0;
+
+  outline: none;
+
+  font-family: inherit;
+  font-size: 10px;
+  color: #222;
+}
+
+.form-group textarea {
+  resize: vertical;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #222;
+}
+
+.form-group textarea:focus {
+  border-color: #999;
+}
+
+
+/* ---------- COVER ---------- */
+
+.cover-upload {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.cover-preview {
+  width: 130px;
+  aspect-ratio: 1;
+
+  display: grid;
+  place-items: center;
+
+  background: #eee;
+  border: 1px solid #ddd;
+
+  font-size: 7px;
+  color: #999;
+}
+
+.cover-upload-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cover-upload-info input {
+  display: none;
+}
+
+.upload-button {
+  padding: 9px 15px;
+
+  border: 1px solid #222;
+  background: transparent;
+
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background: #222;
+  color: white;
+}
+
+.cover-upload-info small {
+  font-size: 7px;
+  color: #999;
+}
+
+
+/* ---------- TRACKLIST ---------- */
+
+.track-form {
+  border-top: 1px solid #ddd;
+}
+
+.track-form-header,
+.track-form-row {
+  display: grid;
+  grid-template-columns: 35px 1fr 90px 30px;
+  align-items: center;
+  gap: 12px;
+}
+
+.track-form-header {
+  min-height: 30px;
+
+  font-size: 7px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.track-form-row {
+  min-height: 45px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.track-number {
+  font-size: 8px;
+  color: #aaa;
+}
+
+.track-form-row input {
+  width: 100%;
+
+  border: 0;
+  outline: none;
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 9px;
+}
+
+.track-form-row input::placeholder {
+  color: #aaa;
+}
+
+.remove-track {
+  border: 0;
+  background: none;
+
+  color: #999;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.remove-track:hover {
+  color: #222;
+}
+
+.add-track {
+  margin-top: 15px;
+
+  border: 0;
+  background: none;
+
+  font-family: inherit;
+  font-size: 8px;
+  color: #555;
+
+  cursor: pointer;
+}
+
+.add-track:hover {
+  color: #000;
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  padding: 25px 40px 30px;
+}
+
+.cancel-btn,
+.save-btn {
+  height: 32px;
+  padding: 0 20px;
+
+  font-family: inherit;
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.cancel-btn {
+  border: 1px solid #ddd;
+  background: transparent;
+  color: #555;
+}
+
+.save-btn {
+  border: 1px solid #222;
+  background: #222;
+  color: white;
+}
+
+.cancel-btn:hover {
+  border-color: #222;
+  color: #222;
+}
+
+.save-btn:hover {
+  background: #000;
 }

@@ -14,6 +14,8 @@ import Records from './components/Records';
 import Collections from './components/Collections';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
+import Record from './components/Record';
+// import SaveRecordsModal from './components/SaveRecordsModal';
 
 function App() {
   return (
@@ -29,7 +31,10 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='*' element={<NotFound />} />
+        <Route path='/record' element={<Record />} />
       </Routes>
+
+      {/* <SaveRecordsModal /> */}
 
       {/* <!-- HEADER --> */}
       <Header />
