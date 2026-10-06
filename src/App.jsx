@@ -1,5 +1,5 @@
 import ApproachSection from "./components/ApproachSection";
-import CollectionsSection from "./components/CollectionsSection";
+// import CollectionsSection from "./components/CollectionsSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
@@ -22,7 +22,7 @@ function App() {
       <NewProductsSection />
 
       {/* <!-- COLLECTIONS --> */}
-      <CollectionsSection />
+      {/* <CollectionsSection /> */}
 
       {/* <!-- APPROACH --> */}
       <ApproachSection />

@@ -199,51 +199,51 @@ body::before {
 /* ================= HERO ================= */
 
 .hero {
-    margin: 0 26px;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 20px;
-    position: relative;
-    height: 360px;
+  margin: 0 26px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  position: relative;
+  height: 360px;
 }
 
 .hero-copy {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 .hero-copy h1 {
-    font-size: 27px;
-    line-height: .84;
-    letter-spacing: -1.6px;
-    font-weight: 900;
+  font-size: 27px;
+  line-height: .84;
+  letter-spacing: -1.6px;
+  font-weight: 900;
 }
 
 .hero-copy p {
-    margin-top: 10px;
-    line-height: 13px;
-    font-size: 9px;
+  margin-top: 10px;
+  line-height: 13px;
+  font-size: 9px;
 }
 
 /* Three images */
 .hero-images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    height: 292px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  height: 292px;
 }
 
 .hero-image {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #eee;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #eee;
 }
 
 .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .shop-btn {
@@ -328,7 +328,7 @@ body::before {
 }
 
 .product-image {
-  height: 160px;
+  height: 100%;
   border: 1px solid #ddd;
   background: #f1f2f5;
   position: relative;
@@ -348,7 +348,7 @@ body::before {
   transform: translateX(-50%);
   width: 17px;
   height: 17px;
-  background: rgba(255,255,255,.6);
+  background: rgba(255, 255, 255, .6);
   border: 0;
   font-size: 14px;
   color: #777;
@@ -377,7 +377,7 @@ body::before {
   display: flex;
   justify-content: center;
   gap: 5px;
-  margin-top: 18px;
+  margin-top: 50px;
 }
 
 
@@ -462,7 +462,7 @@ body::before {
   width: 18px;
   height: 18px;
   border: 0;
-  background: rgba(255,255,255,.65);
+  background: rgba(255, 255, 255, .65);
 }
 
 .load-more {
@@ -517,7 +517,7 @@ body::before {
 .editorial-image {
   border: 1px solid #ddd;
   overflow: hidden;
-  height: 200px;
+  height: fit-content;
 }
 
 .editorial-image img {
@@ -558,7 +558,7 @@ footer {
   gap: 60px;
 }
 
-.footer-left > div {
+.footer-left>div {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -604,7 +604,7 @@ footer {
   letter-spacing: -2px;
 }
 
-.footer-logo > small {
+.footer-logo>small {
   position: absolute;
   left: 80px;
   top: 70px;

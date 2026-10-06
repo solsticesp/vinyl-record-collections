@@ -4,16 +4,16 @@ export default function ApproachSection() {
         <section className="approach">
 
             <div className="approach-heading">
-                <h2>OUR APPROACH TO FASHION DESIGN</h2>
+                <h2>OUR APPROACH TO MUSIC</h2>
 
                 <p>
-                    at elegant vogue , we blend creativity with craftsmanship to create
+                    We believe every record tells a story. Create your personal collection of vinyl you love,
                     <br />
-                    fashion that transcends trends and stands the test of time each
+                    discover new favorites, and keep everything that inspires you in one place. Build your
                     <br />
-                    design is meticulously crafted, ensuring the highest quality
+                    wishlist, share it with others, and let your next record
                     <br />
-                    exquisite finish
+                    find you
                 </p>
             </div>
 
@@ -22,29 +22,29 @@ export default function ApproachSection() {
 
                 <div className="editorial-image image-one">
                     <img
-                        src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=85"
-                        alt=""
+                        src="https://muzikercdn.com/uploads/product_gallery/18085/1808530/main_f89549ee.jpg"
+                        alt="Linkin Park"
                     />
                 </div>
 
                 <div className="editorial-image image-two">
                     <img
-                        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=85"
-                        alt=""
+                        src="https://muzikercdn.com/uploads/product_gallery/19923/1992339/main_c6197c87.jpg"
+                        alt="Taylor Swift"
                     />
                 </div>
 
                 <div className="editorial-image image-three">
                     <img
-                        src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=85"
-                        alt=""
+                        src="https://muzikercdn.com/uploads/product_gallery/20039/2003942/main_605e734d.jpg"
+                        alt="Led Zeppelin"
                     />
                 </div>
 
                 <div className="editorial-image image-four">
                     <img
-                        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=85"
-                        alt=""
+                        src="https://muzikercdn.com/uploads/product_gallery/21213/2121326/main_d45477d0.jpg"
+                        alt="Olivia Dean"
                     />
                 </div>
 

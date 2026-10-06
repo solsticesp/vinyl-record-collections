@@ -5,8 +5,8 @@ export default function NewProductsSection() {
 
             <div className="section-heading">
                 <h2>
-                    NEW<br />
-                    THIS WEEK
+                    COMMUNITY<br />
+                    FAVORITES
                     <sup>(50)</sup>
                 </h2>
 
@@ -18,72 +18,72 @@ export default function NewProductsSection() {
                 <article className="product-card">
                     <div className="product-image">
                         <img
-                            src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=700&q=85"
-                            alt="Embroidered shirt"
+                            src="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
+                            alt="Nirvana"
                         />
                         <button className="add">+</button>
                     </div>
 
                     <div className="product-meta">
-                        <small>Velocet T-Shirt</small>
-                        <span>$99</span>
+                        <small>LP</small>
+                        <span>29€</span>
                     </div>
 
-                    <h3>Embroidered Crosscutter Shirt</h3>
+                    <h3>Nirvana - Nevermind</h3>
                 </article>
 
 
                 <article className="product-card">
                     <div className="product-image">
                         <img
-                            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85"
-                            alt="White t-shirt"
+                            src="https://muzikercdn.com/uploads/products/29720/2972022/thumb_large_d_gallery_base_d3b1907b.jpg"
+                            alt="Marilyn Manson"
                         />
                         <button className="add">+</button>
                     </div>
 
                     <div className="product-meta">
-                        <small>Cotton T Shirt</small>
-                        <span>$90</span>
+                        <small>Green/Blue Marble Coloured LP</small>
+                        <span>39€</span>
                     </div>
 
-                    <h3>Basic Slim Fit T-Shirt</h3>
+                    <h3>Marilyn Manson - One Assassination Under God - Chapter 2</h3>
                 </article>
 
 
                 <article className="product-card">
                     <div className="product-image">
                         <img
-                            src="https://images.unsplash.com/photo-1583743814966-8936f37f4a05?auto=format&fit=crop&w=700&q=85"
-                            alt="Printed t-shirt"
+                            src="https://muzikercdn.com/uploads/products/3662/366235/thumb_large_d_gallery_base_c5ec49c4.jpg"
+                            alt="Sade"
                         />
                         <button className="add">+</button>
                     </div>
 
                     <div className="product-meta">
-                        <small>Henley T Shirt</small>
-                        <span>$90</span>
+                        <small>2 LP</small>
+                        <span>30€</span>
                     </div>
 
-                    <h3>Blurred Print T-Shirt</h3>
+                    <h3>Sade - The Best of Sade</h3>
                 </article>
 
 
                 <article className="product-card">
                     <div className="product-image">
                         <img
-                            src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=700&q=85"
-                            alt="Cream shirt"
+                            src="https://muzikercdn.com/uploads/products/18002/1800202/main_dc513bca.jpg"
+                            alt="Lana Del Rey"
                         />
                         <button className="add">+</button>
                     </div>
 
                     <div className="product-meta">
-                        <small>Crewneck T-Shirt</small>
-                        <span>$90</span>
+                        <small>2 LP</small>
+                        <span>50€</span>
                     </div>
 
-                    <h3>Full Sleeve Zipper</h3>
+                    <h3>Lana Del Rey - Born To Die</h3>
                 </article>
 
             </div>
