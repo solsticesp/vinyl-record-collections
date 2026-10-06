@@ -1,35 +1,41 @@
+import { UserPlus, LogIn, Heart } from "lucide-react";
+
 export default function Header() {
 
     return (
         <header className="header">
 
             <div className="header-left">
-                <button className="menu-btn">
+                <div className="home-mark">
                     <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
+                </div>
 
                 <nav>
                     <a href="#">Home</a>
-                    <a href="#">Collections</a>
                     <a href="#">New</a>
+                    <a href="#">Records</a>
+                    <a href="#">My Collections</a>
                 </nav>
             </div>
 
             <div className="logo-mark">
-                <span></span>
+                <img src="./public/vintage-background-with-vinyl-record.png" alt="Logo" />
             </div>
 
             <div className="header-right">
-                <button className="circle-btn">◔</button>
 
-                <button className="cart-btn">
-                    Cart
-                    <span>▢</span>
+                <button className="favs-btn">
+                    Favs
+                    <Heart size={13} />
                 </button>
 
-                <button className="circle-btn">♙</button>
+                <button className="signup-btn">
+                    <UserPlus size={13} />
+                </button>
+
+                <button className="login-btn">
+                    <LogIn size={13} />
+                </button>
             </div>
 
         </header>
