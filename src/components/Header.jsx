@@ -13,8 +13,8 @@ export default function Header() {
                 <nav>
                     <a href="#">Home</a>
                     <a href="#">New</a>
-                    <a href="#">Records</a>
-                    <a href="#">My Collections</a>
+                    <a href="#">All Records</a>
+                    <a href="#">Collections</a>
                 </nav>
             </div>
 

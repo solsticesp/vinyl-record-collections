@@ -8,17 +8,18 @@ export default function Footer() {
                 <div>
                     <small>INFO</small>
 
-                    <a href="#">PRICING</a>
                     <a href="#">ABOUT</a>
                     <a href="#">CONTACTS</a>
                 </div>
 
                 <div>
-                    <small>LANGUAGES</small>
+                    <small>COLLECTIONS</small>
 
-                    <a href="#">ENG</a>
-                    <a href="#">ESP</a>
-                    <a href="#">SVE</a>
+                    <a href="#">Pop</a>
+                    <a href="#">Rock & Metal</a>
+                    <a href="#">Jazz & Soul</a>
+                    <a href="#">R&B & Hip-Hop</a>
+                    <a href="#">Classical</a>
                 </div>
 
             </div>
@@ -26,11 +27,14 @@ export default function Footer() {
 
             <div className="footer-logo">
 
-                <div className="tech">TECHNOLOGIES</div>
+                <div className="tech">VINYL RECORDS LOVERS</div>
 
                 <div className="big-logo">
                     <span></span>
-                    <strong>XIV<br />QR</strong>
+                    {/* <strong>XIV<br />QR</strong> */}
+                    <div className="logo-mark">
+                        <img src="./public/vintage-background-with-vinyl-record.png" alt="Logo" />
+                    </div>
                 </div>
 
                 <small>
@@ -41,7 +45,7 @@ export default function Footer() {
 
 
             <div className="footer-bottom">
-                <span>© 2024 — everything</span>
+                <span>© 2026 — everything</span>
                 <span>privacy</span>
             </div>
 
