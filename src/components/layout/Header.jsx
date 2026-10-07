@@ -1,4 +1,4 @@
-import { UserPlus, LogIn, Heart, Bookmark, LogOut, Plus } from "lucide-react";
+import { UserPlus, LogIn, Heart, Bookmark, LogOut, ShieldUser } from "lucide-react";
 import { NavLink, Link } from "react-router";
 
 export default function Header() {
@@ -35,8 +35,9 @@ export default function Header() {
 
             <div className="header-right">
 
-                <button className="add-new-btn">
-                    <Plus size={13} />
+                <button className="dashboard-btn">
+                    Dashboard
+                    <ShieldUser size={13} />
                 </button>
 
                 <button className="wish-btn">

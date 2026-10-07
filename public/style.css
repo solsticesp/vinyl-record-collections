@@ -144,8 +144,7 @@ body::before {
 
 .signup-btn,
 .login-btn,
-.logout-btn,
-.add-new-btn {
+.logout-btn {
   width: 26px;
   height: 26px;
   border: 0;
@@ -156,7 +155,8 @@ body::before {
 }
 
 .favs-btn,
-.wish-btn {
+.wish-btn,
+.dashboard-btn {
   height: 27px;
   padding: 0 8px 0 13px;
   display: flex;
@@ -2582,7 +2582,7 @@ footer {
 }
 
 .admin-toolbar {
-  margin-bottom: 18px;
+  margin-bottom: 26px;
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
@@ -2613,7 +2613,6 @@ footer {
 
 .admin-table {
   width: 100%;
-  border-top: 1px solid #222;
 }
 
 .admin-table-header,
