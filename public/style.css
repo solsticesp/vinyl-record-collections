@@ -1308,16 +1308,23 @@ body::before {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  z-index: 1000;
+  z-index: 2000;
   padding: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(15, 15, 15, .38);
-  backdrop-filter: blur(5px);
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(21, 21, 21, .35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .record-modal {
+  z-index: 1;
   width: min(100%, 980px);
   max-height: 90vh;
   overflow-y: auto;
@@ -2569,163 +2576,191 @@ footer {
 /* ADMIN DASHBOARD */
 
 .admin-page {
-    max-width: 1350px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1350px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .admin-toolbar {
-    margin-bottom: 18px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
 }
-.admin-toolbar > span {
-    color: #999;
-    font-size: 7px;
-    letter-spacing: .08em;
+
+.admin-toolbar>span {
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .08em;
 }
+
 .add-record-btn {
-    padding: 8px 12px;
-    border: 1px solid #222;
-    background: #222;
-    color: #fff;
-    font-family: inherit;
-    font-size: 7px;
-    letter-spacing: .06em;
-    cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid #222;
+  background: #222;
+  color: #fff;
+  font-family: inherit;
+  font-size: 7px;
+  letter-spacing: .06em;
+  cursor: pointer;
 }
+
 .add-record-btn:hover {
-    background: #444;
+  background: #444;
 }
+
 .admin-table {
-    width: 100%;
-    border-top: 1px solid #222;
+  width: 100%;
+  border-top: 1px solid #222;
 }
+
 .admin-table-header,
 .admin-table-row {
-    display: grid;
-    grid-template-columns: 80px 1fr 1.5fr 1fr 180px;
-    align-items: center;
-    column-gap: 25px;
+  display: grid;
+  grid-template-columns: 80px 1fr 1.5fr 1fr 180px;
+  align-items: center;
+  column-gap: 25px;
 }
+
 .admin-table-header {
-    min-height: 32px;
-    border-bottom: 1px solid #ddd;
-    color: #999;
-    font-size: 6px;
-    letter-spacing: .1em;
+  min-height: 32px;
+  border-bottom: 1px solid #ddd;
+  color: #999;
+  font-size: 6px;
+  letter-spacing: .1em;
 }
+
 .admin-table-row {
-    min-height: 72px;
-    border-bottom: 1px solid #e5e5e5;
-    font-size: 8px;
+  min-height: 72px;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 8px;
 }
-.admin-table-row > span {
-    color: #333;
+
+.admin-table-row>span {
+  color: #333;
 }
+
 .admin-record-image {
-    width: 48px;
-    height: 48px;
-    overflow: hidden;
-    background: #eee;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  background: #eee;
 }
+
 .admin-record-image img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
+
 .admin-actions {
-    display: flex;
-    align-items: center;
-    gap: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
+
 .admin-actions a,
 .admin-actions button {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: #555;
-    font-family: inherit;
-    font-size: 7px;
-    letter-spacing: .05em;
-    text-decoration: none;
-    cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #555;
+  font-family: inherit;
+  font-size: 7px;
+  letter-spacing: .05em;
+  text-decoration: none;
+  cursor: pointer;
 }
+
 .admin-actions a:hover,
 .admin-actions button:hover {
-    color: #000;
+  color: #000;
 }
+
 .admin-actions button:last-child {
-    color: #999;
+  color: #999;
 }
+
 .admin-actions button:last-child:hover {
-    color: #b00000;
+  color: #b00000;
 }
 
 .delete-modal {
-    width: 420px;
-    max-width: calc(100vw - 40px);
-    background: #f8f8f8;
+  z-index: 1;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  background: #f8f8f8;
 }
+
 .delete-modal-header {
-    padding: 25px 25px 20px;
-    border-bottom: 1px solid #ddd;
+  padding: 25px 25px 20px;
+  border-bottom: 1px solid #ddd;
 }
+
 .delete-modal-header .eyebrow {
-    display: block;
-    margin-bottom: 10px;
-    color: #999;
-    font-size: 7px;
-    letter-spacing: .14em;
+  display: block;
+  margin-bottom: 10px;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .14em;
 }
+
 .delete-modal-header h2 {
-    margin: 0;
-    font-size: 22px;
-    line-height: 1;
-    letter-spacing: -1px;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: -1px;
 }
+
 .delete-modal-content {
-    padding: 25px;
+  padding: 25px;
 }
+
 .delete-modal-content p {
-    margin: 0 0 12px;
-    color: #555;
-    font-size: 10px;
+  margin: 0 0 12px;
+  color: #555;
+  font-size: 10px;
 }
+
 .delete-modal-content strong {
-    display: block;
-    font-size: 11px;
-    font-weight: 600;
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
 }
+
 .delete-modal-content span {
-    display: block;
-    margin-top: 12px;
-    color: #999;
-    font-size: 8px;
+  display: block;
+  margin-top: 12px;
+  color: #999;
+  font-size: 8px;
 }
+
 .delete-modal-footer {
-    padding: 15px 25px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    border-top: 1px solid #ddd;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  border-top: 1px solid #ddd;
 }
+
 .delete-modal-footer button {
-    padding: 9px 14px;
-    font-family: inherit;
-    font-size: 7px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    cursor: pointer;
+  padding: 9px 14px;
+  font-family: inherit;
+  font-size: 7px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
 }
+
 .delete-confirm-btn {
-    border: 1px solid #222;
-    background: #222;
-    color: #fff;
+  border: 1px solid #222;
+  background: #222;
+  color: #fff;
 }
+
 .delete-confirm-btn:hover {
-    background: #000;
+  background: #000;
 }

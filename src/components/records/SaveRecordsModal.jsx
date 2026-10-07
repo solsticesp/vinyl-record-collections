@@ -5,8 +5,8 @@ export default function SaveRecordsModal({
     const isEdit = !!record;
 
     return (
-        <div className="modal-overlay" onClick={onClose}>
-
+        <div className="modal-overlay">
+            <div className="backdrop" onClick={onClose}></div>
             <div className="record-modal">
 
                 <div className="modal-header">
@@ -37,12 +37,12 @@ export default function SaveRecordsModal({
 
                             <div className="form-group full">
                                 <label>Title</label>
-                                <input type="text" defaultValue={record?.title || ""}/>
+                                <input type="text" defaultValue={record?.title || ""} />
                             </div>
 
                             <div className="form-group full">
                                 <label>Artist</label>
-                                <input type="text" defaultValue={record?.artist || ""}/>
+                                <input type="text" defaultValue={record?.artist || ""} />
                             </div>
 
                             <div className="form-group">
@@ -59,12 +59,12 @@ export default function SaveRecordsModal({
 
                             <div className="form-group">
                                 <label>Release Year</label>
-                                <input type="number" defaultValue={record?.year || ""}/>
+                                <input type="number" defaultValue={record?.year || ""} />
                             </div>
 
                             <div className="form-group">
                                 <label>Price</label>
-                                <input type="number" defaultValue={record?.price || ""}/>
+                                <input type="number" defaultValue={record?.price || ""} />
                             </div>
 
                             <div className="form-group">

@@ -4,7 +4,8 @@ export default function DeleteRecordModal({
     onConfirm,
 }) {
     return (
-        <div className="modal-overlay" onClick={onClose}>
+        <div className="modal-overlay">
+            <div className="backdrop" onClick={onClose}></div>
             <div
                 className="delete-modal"
                 onClick={(event) => event.stopPropagation()}
