@@ -1,4 +1,4 @@
-import RecordCard from "./RecordCard";
+import RecordCard from "../components/records/RecordCard";
 
 export default function Records() {
     return (

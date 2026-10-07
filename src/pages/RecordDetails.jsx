@@ -1,10 +1,15 @@
-export default function Record() {
+// import { useParams } from "react-router";
+
+export default function RecordDetails() {
+    // const {id} = useParams();
+
+    //TODO: useEffect GET record by id 
+
     return (
         <div className="page record-page">
 
             <section className="record-detail">
 
-                {/* LEFT — COVER */}
                 <div className="record-cover">
                     <img
                         src="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
@@ -12,8 +17,6 @@ export default function Record() {
                     />
                 </div>
 
-
-                {/* RIGHT — INFORMATION */}
                 <div className="record-info">
 
                     <span className="eyebrow">
@@ -41,8 +44,6 @@ export default function Record() {
                         </p>
                     </div>
 
-
-                    {/* RECORD DETAILS */}
                     <div className="record-details">
 
                         <div className="record-detail-row">
@@ -72,8 +73,6 @@ export default function Record() {
 
                     </div>
 
-
-                    {/* ACTIONS */}
                     <div className="record-actions">
 
                         <button className="add-to-favorites">
@@ -90,8 +89,6 @@ export default function Record() {
 
             </section>
 
-
-            {/* TRACKLIST */}
             <section className="tracklist-section">
 
                 <span className="eyebrow">

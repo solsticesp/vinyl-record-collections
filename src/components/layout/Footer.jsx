@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function Footer() {
 
     return (
@@ -8,8 +10,8 @@ export default function Footer() {
                 <div>
                     <small>INFO</small>
 
-                    <a href="#">ABOUT</a>
-                    <a href="#">CONTACTS</a>
+                    <Link to="/about">ABOUT</Link>
+                    <Link to="/contacts">CONTACTS</Link>
                 </div>
 
                 <div>

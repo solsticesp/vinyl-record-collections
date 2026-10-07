@@ -1,4 +1,4 @@
-import RecordCard from "./RecordCard";
+import RecordCard from "../records/RecordCard";
 
 export default function FavProductsSection() {
 

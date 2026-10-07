@@ -120,13 +120,6 @@ export default function About() {
                         EXPLORE RECORDS →
                     </a>
                 </section>
-
-                <section className="about-footer-note">
-                    <p>
-                        Curated records. Timeless music.
-                        A collection made to be listened to.
-                    </p>
-                </section>
             </div>
 
         </>

@@ -1,4 +1,5 @@
 import { UserPlus, LogIn, Heart, Bookmark, LogOut, Plus } from "lucide-react";
+import { NavLink, Link } from "react-router";
 
 export default function Header() {
 
@@ -6,14 +7,25 @@ export default function Header() {
         <header className="header">
 
             <div className="header-left">
-                <div className="home-mark">
-                    <span></span>
-                </div>
+                <Link to="/">
+                    <div className="home-mark">
+                    </div>
+                </Link>
+
 
                 <nav>
-                    <a href="#">Home</a>
+                    <NavLink to="/" style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                        Home
+                    </NavLink>
+                    <NavLink to="/about" style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                        About
+                    </NavLink>
+                    <NavLink to="/records" style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                        Records
+                    </NavLink>
+                    {/* <a href="#">Home</a>
                     <a href="#">About</a>
-                    <a href="#">Records</a>
+                    <a href="#">Records</a> */}
                 </nav>
             </div>
 
