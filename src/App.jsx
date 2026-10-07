@@ -11,10 +11,10 @@ import NotFound from './components/NotFound';
 import Contacts from './components/Contacts';
 import NewIn from './components/NewIn';
 import Records from './components/Records';
-import Collections from './components/Collections';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
 import Record from './components/Record';
+import SaveList from './components/SaveList';
 // import SaveRecordsModal from './components/SaveRecordsModal';
 
 function App() {
@@ -25,9 +25,9 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/newin' element={<NewIn />} />
         <Route path='/records' element={<Records />} />
-        <Route path='/collections' element={<Collections />} />
         <Route path='/about' element={<About />} />
         <Route path='/contacts' element={<Contacts />} />
+        <Route path='/saved' element={<SaveList />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='*' element={<NotFound />} />
