@@ -1,16 +1,21 @@
-export default function SaveRecordsModal() {
+export default function SaveRecordsModal({
+    onClose,
+    record,
+}) {
+    const isEdit = !!record;
+
     return (
-        <div className="modal-overlay">
+        <div className="modal-overlay" onClick={onClose}>
 
             <div className="record-modal">
 
                 <div className="modal-header">
                     <div>
                         <span className="eyebrow">ADMIN</span>
-                        <h2>ADD NEW RECORD</h2>
+                        <h2>{isEdit ? "EDIT RECORD" : "ADD NEW RECORD"}</h2>
                     </div>
 
-                    <button className="modal-close">
+                    <button className="modal-close" onClick={onClose}>
                         ×
                     </button>
                 </div>
@@ -32,17 +37,17 @@ export default function SaveRecordsModal() {
 
                             <div className="form-group full">
                                 <label>Title</label>
-                                <input type="text" />
+                                <input type="text" defaultValue={record?.title || ""}/>
                             </div>
 
                             <div className="form-group full">
                                 <label>Artist</label>
-                                <input type="text" />
+                                <input type="text" defaultValue={record?.artist || ""}/>
                             </div>
 
                             <div className="form-group">
                                 <label>Genre</label>
-                                <select>
+                                <select defaultValue={record?.category || ""}>
                                     <option>Select genre</option>
                                     <option>Rock & Metal</option>
                                     <option>Pop</option>
@@ -54,12 +59,12 @@ export default function SaveRecordsModal() {
 
                             <div className="form-group">
                                 <label>Release Year</label>
-                                <input type="number" />
+                                <input type="number" defaultValue={record?.year || ""}/>
                             </div>
 
                             <div className="form-group">
                                 <label>Price</label>
-                                <input type="number" />
+                                <input type="number" defaultValue={record?.price || ""}/>
                             </div>
 
                             <div className="form-group">
@@ -229,6 +234,7 @@ export default function SaveRecordsModal() {
                         <button
                             type="button"
                             className="cancel-btn"
+                            onClick={onClose}
                         >
                             Cancel
                         </button>
@@ -237,7 +243,7 @@ export default function SaveRecordsModal() {
                             type="submit"
                             className="save-btn"
                         >
-                            Add Record
+                            {isEdit ? "Save Changes" : "Add Record"}
                         </button>
 
                     </div>
