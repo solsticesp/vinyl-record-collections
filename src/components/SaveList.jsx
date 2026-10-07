@@ -1,3 +1,5 @@
+import ListItem from "./ListItem";
+
 export default function SaveList() {
     return (
         <div className="page saved-page">
@@ -30,65 +32,10 @@ export default function SaveList() {
                     <span>ACTION</span>
                 </div>
 
-
-                <article className="saved-record">
-
-                    <div className="saved-record-info">
-
-                        <div className="saved-record-image">
-                            <img
-                                src="IMAGE_URL"
-                                alt="Nirvana - Nevermind"
-                            />
-                        </div>
-
-                        <div className="saved-record-details">
-                            <span className="saved-record-artist">
-                                Nirvana
-                            </span>
-
-                            <h3>
-                                Nevermind
-                            </h3>
-                        </div>
-
-                    </div>
-
-                    <button className="delete-btn">
-                        ×
-                    </button>
-
-                </article>
-
-
-                <article className="saved-record">
-
-                    <div className="saved-record-info">
-
-                        <div className="saved-record-image">
-                            <img
-                                src="IMAGE_URL"
-                                alt="Artist - Album"
-                            />
-                        </div>
-
-                        <div className="saved-record-details">
-                            <span className="saved-record-artist">
-                                Artist
-                            </span>
-
-                            <h3>
-                                Album
-                            </h3>
-                        </div>
-
-                    </div>
-
-                    <button className="delete-btn">
-                        ×
-                    </button>
-
-                </article>
+                <ListItem imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG" artist='Nirvana' title='Nevermind'/>
+                <ListItem imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG" artist='Nirvana' title='Nevermind'/>
+                <ListItem imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG" artist='Nirvana' title='Nevermind'/>
+                <ListItem imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG" artist='Nirvana' title='Nevermind'/>
 
             </section>
 

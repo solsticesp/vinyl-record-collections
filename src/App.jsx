@@ -9,7 +9,6 @@ import About from './components/About';
 import Home from './components/Home';
 import NotFound from './components/NotFound';
 import Contacts from './components/Contacts';
-import NewIn from './components/NewIn';
 import Records from './components/Records';
 import SignUp from './components/SignUp';
 import LogIn from './components/LogIn';
@@ -23,7 +22,6 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/newin' element={<NewIn />} />
         <Route path='/records' element={<Records />} />
         <Route path='/about' element={<About />} />
         <Route path='/contacts' element={<Contacts />} />

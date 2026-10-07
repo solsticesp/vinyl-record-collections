@@ -1,3 +1,5 @@
+import RecordCard from "./RecordCard";
+
 export default function Records() {
     return (
         <div className="page records-page">
@@ -29,6 +31,14 @@ export default function Records() {
                 </div>
 
                 <div className="catalog-actions">
+                    <select>
+                        <option>ALL GENRES</option>
+                        <option>ROCK</option>
+                        <option>JAZZ</option>
+                        <option>POP</option>
+                        <option>SOUL</option>
+                        <option>ELECTRONIC</option>
+                    </select>
 
                     <select>
                         <option>FEATURED</option>
@@ -42,135 +52,43 @@ export default function Records() {
 
             </div>
 
-
             <section className="record-grid">
 
-                <article className="record-card">
+                <RecordCard
+                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
+                    artist='Nirvana'
+                    title='Nevermind'
+                    price='39'
+                    category='Rock & Metal'
+                    year='1991'
+                />
 
-                    <div className="record-card-image">
-                        <img
-                            src="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
-                            alt="Nirvana - Nevermind"
-                        />
+                <RecordCard
+                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
+                    artist='Nirvana'
+                    title='Nevermind'
+                    price='39'
+                    category='Rock & Metal'
+                    year='1991'
+                />
 
-                        <button className="add-btn">
-                            +
-                        </button>
-                    </div>
+                <RecordCard
+                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
+                    artist='Nirvana'
+                    title='Nevermind'
+                    price='39'
+                    category='Rock & Metal'
+                    year='1991'
+                />
 
-                    <div className="record-card-info">
-
-                        <div>
-                            <h2>Nevermind</h2>
-                            <p>Nirvana</p>
-                        </div>
-
-                        <span>29€</span>
-
-                    </div>
-
-                    <div className="record-card-meta">
-                        <span>ROCK &amp; METAL</span>
-                        <span>1991</span>
-                    </div>
-
-                </article>
-
-
-                <article className="record-card">
-
-                    <div className="record-card-image">
-                        <img
-                            src="IMAGE_URL"
-                            alt="Artist - Album"
-                        />
-
-                        <button className="add-btn">
-                            +
-                        </button>
-                    </div>
-
-                    <div className="record-card-info">
-
-                        <div>
-                            <h2>Album</h2>
-                            <p>Artist</p>
-                        </div>
-
-                        <span>39€</span>
-
-                    </div>
-
-                    <div className="record-card-meta">
-                        <span>POP</span>
-                        <span>2024</span>
-                    </div>
-
-                </article>
-
-
-                <article className="record-card">
-
-                    <div className="record-card-image">
-                        <img
-                            src="IMAGE_URL"
-                            alt="Artist - Album"
-                        />
-
-                        <button className="add-btn">
-                            +
-                        </button>
-                    </div>
-
-                    <div className="record-card-info">
-
-                        <div>
-                            <h2>Album</h2>
-                            <p>Artist</p>
-                        </div>
-
-                        <span>35€</span>
-
-                    </div>
-
-                    <div className="record-card-meta">
-                        <span>JAZZ &amp; SOUL</span>
-                        <span>2023</span>
-                    </div>
-
-                </article>
-
-
-                <article className="record-card">
-
-                    <div className="record-card-image">
-                        <img
-                            src="IMAGE_URL"
-                            alt="Artist - Album"
-                        />
-
-                        <button className="add-btn">
-                            +
-                        </button>
-                    </div>
-
-                    <div className="record-card-info">
-
-                        <div>
-                            <h2>Album</h2>
-                            <p>Artist</p>
-                        </div>
-
-                        <span>42€</span>
-
-                    </div>
-
-                    <div className="record-card-meta">
-                        <span>CLASSICAL</span>
-                        <span>2022</span>
-                    </div>
-
-                </article>
+                <RecordCard
+                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
+                    artist='Nirvana'
+                    title='Nevermind'
+                    price='39'
+                    category='Rock & Metal'
+                    year='1991'
+                />
 
             </section>
 
