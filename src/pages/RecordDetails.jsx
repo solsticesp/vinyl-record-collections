@@ -1,10 +1,18 @@
-// import { useParams } from "react-router";
+import { useParams } from "react-router";
+import records from "../data/records";
 
 export default function RecordDetails() {
-    // const {id} = useParams();
+    const { id } = useParams();
+    let currentRecord = {};
 
-    //TODO: useEffect GET record by id 
+    for (const record of records) {
+        if (record.id === Number(id)) {
+            currentRecord = record;
+        }
+    }
 
+    console.log(currentRecord);
+    
     return (
         <div className="page record-page">
 
@@ -12,27 +20,27 @@ export default function RecordDetails() {
 
                 <div className="record-cover">
                     <img
-                        src="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
-                        alt="Nirvana - Nevermind"
+                        src={currentRecord.imageUrl}
+                        alt={currentRecord.artist}
                     />
                 </div>
 
                 <div className="record-info">
 
                     <span className="eyebrow">
-                        ROCK &amp; METAL
+                        {currentRecord.category}
                     </span>
 
                     <h1>
-                        Nevermind
+                        {currentRecord.title}
                     </h1>
 
                     <p className="record-artist">
-                        Nirvana
+                        {currentRecord.artist}
                     </p>
 
                     <div className="record-price">
-                        29€
+                        {currentRecord.price}€
                     </div>
 
 

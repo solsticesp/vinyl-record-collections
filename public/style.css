@@ -86,10 +86,13 @@ body::before {
 .header {
   height: 70px;
   padding: 0 26px;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--page-bg);
 }
 
 .header-left {
@@ -884,7 +887,7 @@ body::before {
 
 .record-detail {
   max-width: 1100px;
-  margin: 70px auto 120px;
+  margin: 120px auto 120px;
 
   display: grid;
   grid-template-columns:

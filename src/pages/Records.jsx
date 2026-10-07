@@ -1,4 +1,5 @@
 import RecordCard from "../components/records/RecordCard";
+import records from "../data/records";
 
 export default function Records() {
     return (
@@ -53,43 +54,12 @@ export default function Records() {
             </div>
 
             <section className="record-grid">
-
-                <RecordCard
-                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
-                    artist='Nirvana'
-                    title='Nevermind'
-                    price='39'
-                    category='Rock & Metal'
-                    year='1991'
-                />
-
-                <RecordCard
-                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
-                    artist='Nirvana'
-                    title='Nevermind'
-                    price='39'
-                    category='Rock & Metal'
-                    year='1991'
-                />
-
-                <RecordCard
-                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
-                    artist='Nirvana'
-                    title='Nevermind'
-                    price='39'
-                    category='Rock & Metal'
-                    year='1991'
-                />
-
-                <RecordCard
-                    imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
-                    artist='Nirvana'
-                    title='Nevermind'
-                    price='39'
-                    category='Rock & Metal'
-                    year='1991'
-                />
-
+                {records.map(record => (
+                    <RecordCard
+                        key={record.id}
+                        {...record}
+                    />
+                ))}
             </section>
 
 

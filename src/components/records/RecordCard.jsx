@@ -1,4 +1,7 @@
+import { Link } from "react-router";
+
 export default function RecordCard({
+    id,
     imageUrl,
     artist,
     title,
@@ -7,7 +10,7 @@ export default function RecordCard({
     year,
 }) {
     return (
-        <article className="record-card">
+        <Link to={`/records/${id}`} className="record-card">
 
             <div className="record-card-image">
                 <img
@@ -39,6 +42,6 @@ export default function RecordCard({
                 <span>{year}</span>
             </div>
 
-        </article>
+        </Link>
     );
 }
