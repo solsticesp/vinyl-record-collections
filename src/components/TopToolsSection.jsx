@@ -2,7 +2,6 @@ export default function TopToolsSection() {
 
     return (
         <section className="top-tools">
-
             <div className="categories">
                 <a href="#">Pop</a>
                 <a href="#">Rock & Metal</a>
@@ -17,7 +16,6 @@ export default function TopToolsSection() {
                 <input type="text" placeholder="" />
                 <button>Search</button>
             </div>
-
         </section>
     );
 }

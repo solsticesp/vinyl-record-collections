@@ -1,11 +1,8 @@
 export default function SignUp() {
     return (
         <div className="page auth-page">
-
             <div className="auth-layout">
-
                 <div className="auth-intro">
-
                     <span className="eyebrow">
                         JOIN THE COMMUNITY
                     </span>
@@ -19,16 +16,12 @@ export default function SignUp() {
                         Create an account to save your
                         favorite records and build your collection.
                     </p>
-
                 </div>
 
 
                 <div className="auth-form-wrapper">
-
                     <form className="auth-form">
-
                         <div className="auth-name-row">
-
                             <div className="form-group">
                                 <label htmlFor="firstName">
                                     First Name
@@ -40,7 +33,6 @@ export default function SignUp() {
                                 />
                             </div>
 
-
                             <div className="form-group">
                                 <label htmlFor="lastName">
                                     Last Name
@@ -51,9 +43,7 @@ export default function SignUp() {
                                     type="text"
                                 />
                             </div>
-
                         </div>
-
 
                         <div className="form-group">
                             <label htmlFor="email">
@@ -78,7 +68,6 @@ export default function SignUp() {
                             />
                         </div>
 
-
                         <div className="form-group">
                             <label htmlFor="confirmPassword">
                                 Confirm Password
@@ -90,18 +79,14 @@ export default function SignUp() {
                             />
                         </div>
 
-
                         <label className="terms-check">
-
                             <input type="checkbox" />
 
                             <span>
                                 I agree to the
                                 <a href="#"> Terms &amp; Conditions</a>
                             </span>
-
                         </label>
-
 
                         <button
                             type="submit"
@@ -109,12 +94,9 @@ export default function SignUp() {
                         >
                             Create Account
                         </button>
-
                     </form>
 
-
                     <div className="auth-switch">
-
                         <span>
                             Already have an account?
                         </span>
@@ -122,13 +104,9 @@ export default function SignUp() {
                         <a href="#">
                             Log In
                         </a>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     );
 }

@@ -3,12 +3,9 @@ export default function About() {
         <>
             <div className="page about-page">
 
-                {/* INTRO */}
-
                 <section className="about-hero">
-
                     <div className="about-hero-heading">
-                        <span className="eyebrow">ABOUT THE COLLECTION</span>
+                        <span className="eyebrow">ABOUT US</span>
 
                         <h1>
                             MUSIC<br />
@@ -25,21 +22,15 @@ export default function About() {
                             in an increasingly digital world.
                         </p>
                     </div>
-
                 </section>
 
-
-                {/* STORY */}
-
                 <section className="about-story">
-
                     <div className="about-section-label">
                         <span>01</span>
                         <span>OUR STORY</span>
                     </div>
 
                     <div className="about-story-content">
-
                         <h2>
                             A COLLECTION<br />
                             BUILT AROUND<br />
@@ -47,7 +38,6 @@ export default function About() {
                         </h2>
 
                         <div className="about-story-text">
-
                             <p>
                                 Our collection brings together records
                                 from different decades, genres and places.
@@ -61,35 +51,24 @@ export default function About() {
                                 discovering and finding records that deserve
                                 a place on the shelf.
                             </p>
-
                         </div>
-
                     </div>
-
                 </section>
-
-
-                {/* IMAGE */}
 
                 <section className="about-image">
                     <img
-                        src="IMAGE_URL"
+                        src="https://images.pexels.com/photos/33003435/pexels-photo-33003435.jpeg"
                         alt="Vinyl records collection"
                     />
                 </section>
 
-
-                {/* VALUES */}
-
                 <section className="about-values">
-
                     <div className="about-section-label">
                         <span>02</span>
                         <span>WHAT WE VALUE</span>
                     </div>
 
                     <div className="values-grid">
-
                         <article className="value-item">
                             <span className="value-number">01</span>
 
@@ -103,7 +82,6 @@ export default function About() {
                             </p>
                         </article>
 
-
                         <article className="value-item">
                             <span className="value-number">02</span>
 
@@ -116,7 +94,6 @@ export default function About() {
                             </p>
                         </article>
 
-
                         <article className="value-item">
                             <span className="value-number">03</span>
 
@@ -128,16 +105,10 @@ export default function About() {
                                 They become part of personal stories.
                             </p>
                         </article>
-
                     </div>
-
                 </section>
 
-
-                {/* COLLECTION STATEMENT */}
-
                 <section className="about-statement">
-
                     <span className="eyebrow">THE COLLECTION</span>
 
                     <h2>
@@ -148,21 +119,14 @@ export default function About() {
                     <a href="#" className="about-link">
                         EXPLORE RECORDS →
                     </a>
-
                 </section>
 
-
-                {/* FOOTER NOTE */}
-
                 <section className="about-footer-note">
-
                     <p>
                         Curated records. Timeless music.
                         A collection made to be listened to.
                     </p>
-
                 </section>
-
             </div>
 
         </>

@@ -145,13 +145,10 @@ body::before {
 .add-new-btn {
   width: 26px;
   height: 26px;
-
   border: 0;
   border-radius: 50%;
-
   color: white;
   background: #222;
-
   font-size: 11px;
 }
 
@@ -159,17 +156,13 @@ body::before {
 .wish-btn {
   height: 27px;
   padding: 0 8px 0 13px;
-
   display: flex;
   align-items: center;
   gap: 10px;
-
   border: 0;
   border-radius: 15px;
-
   background: #222;
   color: white;
-
   font-size: 9px;
 }
 
@@ -2016,362 +2009,571 @@ footer {
 /* /* About Page * */
 
 .about-page {
-    max-width: 1400px;
-    margin: 0 auto;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .about-hero {
-    min-height: 620px;
-    padding: 90px 0 100px;
-    display: grid;
-    grid-template-columns: 1.4fr .6fr;
-    align-items: end;
-    border-bottom: 1px solid #ddd;
+  min-height: 620px;
+  padding: 90px 0 100px;
+  display: grid;
+  grid-template-columns: 1.4fr .6fr;
+  align-items: end;
+  border-bottom: 1px solid #ddd;
 }
 
 .about-hero-heading .eyebrow {
-    display: block;
-    margin-bottom: 30px;
-    color: #999;
-    font-size: 7px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
+  display: block;
+  margin-bottom: 30px;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
 
 .about-hero-heading h1 {
-    margin: 0;
-    font-size: clamp(70px, 9vw, 130px);
-    line-height: .78;
-    letter-spacing: -7px;
-    font-weight: 900;
+  margin: 0;
+  font-size: clamp(70px, 9vw, 130px);
+  line-height: .78;
+  letter-spacing: -7px;
+  font-weight: 900;
 }
 
 .about-hero-heading h1 span {
-    color: #999;
+  color: #999;
 }
 
 .about-hero-text {
-    max-width: 260px;
-    padding-bottom: 5px;
+  max-width: 260px;
+  padding-bottom: 5px;
 }
 
 .about-hero-text p {
-    margin: 0;
-    color: #666;
-    font-size: 10px;
-    line-height: 16px;
+  margin: 0;
+  color: #666;
+  font-size: 10px;
+  line-height: 16px;
 }
 
 .about-section-label {
-    display: flex;
-    justify-content: space-between;
-    color: #999;
-    font-size: 7px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
 .about-story {
-    padding: 110px 0;
-    display: grid;
-    grid-template-columns: 160px 1fr;
-    gap: 80px;
+  padding: 110px 0;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 80px;
 }
 
 .about-story-content {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 100px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 100px;
 }
 
 .about-story-content h2 {
-    margin: 0;
-    font-size: 52px;
-    line-height: .88;
-    letter-spacing: -3px;
-    font-weight: 900;
+  margin: 0;
+  font-size: 52px;
+  line-height: .88;
+  letter-spacing: -3px;
+  font-weight: 900;
 }
 
 .about-story-text {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 .about-story-text p {
-    margin: 0 0 25px;
-    color: #666;
-    font-size: 9px;
-    line-height: 15px;
+  margin: 0 0 25px;
+  color: #666;
+  font-size: 9px;
+  line-height: 15px;
 }
 
 .about-image {
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-    background: #eee;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background: #eee;
 }
 
 .about-image img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .about-values {
-    padding: 110px 0;
+  padding: 110px 0;
 }
 
 .values-grid {
-    margin-top: 70px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
 }
 
 .value-item {
-    padding-top: 15px;
-    border-top: 1px solid #ccc;
+  padding-top: 15px;
+  border-top: 1px solid #ccc;
 }
 
 .value-number {
-    display: block;
-    margin-bottom: 45px;
-    color: #999;
-    font-size: 7px;
+  display: block;
+  margin-bottom: 45px;
+  color: #999;
+  font-size: 7px;
 }
 
 .value-item h3 {
-    margin: 0 0 20px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .05em;
+  margin: 0 0 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
 }
 
 .value-item p {
-    max-width: 240px;
-    margin: 0;
-    color: #777;
-    font-size: 9px;
-    line-height: 15px;
+  max-width: 240px;
+  margin: 0;
+  color: #777;
+  font-size: 9px;
+  line-height: 15px;
 }
 
 .about-statement {
-    min-height: 500px;
-    padding: 100px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+  min-height: 500px;
+  padding: 100px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 .about-statement .eyebrow {
-    margin-bottom: 25px;
-    color: #999;
-    font-size: 7px;
-    letter-spacing: .14em;
+  margin-bottom: 25px;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .14em;
 }
 
 .about-statement h2 {
-    margin: 0;
-    font-size: 65px;
-    line-height: .82;
-    letter-spacing: -4px;
-    font-weight: 900;
+  margin: 0;
+  font-size: 65px;
+  line-height: .82;
+  letter-spacing: -4px;
+  font-weight: 900;
 }
 
 .about-link {
-    margin-top: 45px;
-    color: #222;
-    font-size: 8px;
-    letter-spacing: .08em;
-    text-decoration: none;
-    border-bottom: 1px solid #222;
-    padding-bottom: 5px;
+  margin-top: 45px;
+  color: #222;
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
+  padding-bottom: 5px;
 }
 
 .about-link:hover {
-    opacity: .55;
+  opacity: .55;
 }
 
 .about-footer-note {
-    padding: 70px 0;
-    text-align: center;
+  padding: 70px 0;
+  text-align: center;
 }
 
 .about-footer-note p {
-    max-width: 300px;
-    margin: 0 auto;
-    color: #999;
-    font-size: 8px;
-    line-height: 14px;
+  max-width: 300px;
+  margin: 0 auto;
+  color: #999;
+  font-size: 8px;
+  line-height: 14px;
 }
 
 @media (max-width: 800px) {
-    .about-hero {
-        min-height: auto;
-        padding: 70px 0;
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
+  .about-hero {
+    min-height: auto;
+    padding: 70px 0;
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
 
-    .about-hero-heading h1 {
-        font-size: 70px;
-        letter-spacing: -4px;
-    }
+  .about-hero-heading h1 {
+    font-size: 70px;
+    letter-spacing: -4px;
+  }
 
-    .about-story {
-        grid-template-columns: 1fr;
-        gap: 45px;
-    }
+  .about-story {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
 
-    .about-story-content {
-        grid-template-columns: 1fr;
-        gap: 45px;
-    }
+  .about-story-content {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
 
-    .about-story-content h2 {
-        font-size: 42px;
-    }
+  .about-story-content h2 {
+    font-size: 42px;
+  }
 
-    .about-image {
-        height: 400px;
-    }
+  .about-image {
+    height: 400px;
+  }
 
-    .values-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
 
-    .about-statement h2 {
-        font-size: 45px;
-        letter-spacing: -3px;
-    }
+  .about-statement h2 {
+    font-size: 45px;
+    letter-spacing: -3px;
+  }
 }
 
 .saved-list {
-    width: 70%;
-    margin: 0 auto;
-    border-top: 1px solid #ddd;
+  width: 70%;
+  margin: 0 auto;
+  border-top: 1px solid #ddd;
 }
 
 .saved-list-header {
-    min-height: 35px;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    color: #999;
-    font-size: 7px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+  min-height: 35px;
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
 .saved-list-header span:last-child {
-    text-align: right;
+  text-align: right;
 }
 
 .saved-record {
-    min-height: 105px;
-    display: grid;
-    grid-template-columns: 1fr 60px;
-    align-items: center;
-    border-bottom: 1px solid #e5e5e5;
+  min-height: 105px;
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .saved-record-info {
-    display: flex;
-    align-items: center;
-    gap: 22px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
 }
 
 .saved-record-image {
-    width: 75px;
-    height: 75px;
-    flex-shrink: 0;
-    overflow: hidden;
-    background: #eee;
+  width: 75px;
+  height: 75px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #eee;
 }
 
 .saved-record-image img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .saved-record-details {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .saved-record-artist {
-    color: #999;
-    font-size: 7px;
-    letter-spacing: .06em;
-    text-transform: uppercase;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
 .saved-record-details h3 {
-    margin: 0;
-    color: #222;
-    font-size: 11px;
-    line-height: 14px;
-    font-weight: 500;
+  margin: 0;
+  color: #222;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
 }
 
 .delete-btn {
-    width: 28px;
-    height: 28px;
-    margin-left: auto;
-    display: grid;
-    place-items: center;
-    border: 0;
-    background: transparent;
-    color: #999;
-    font-family: inherit;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1;
-    cursor: pointer;
-    transition: color .2s ease;
+  width: 28px;
+  height: 28px;
+  margin-left: auto;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #999;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  transition: color .2s ease;
 }
 
 .delete-btn:hover {
-    color: #222;
+  color: #222;
 }
 
 .delete-btn svg {
-    display: block;
+  display: block;
 }
 
 @media (max-width: 600px) {
-    .saved-intro {
-        padding-bottom: 50px;
-    }
+  .saved-intro {
+    padding-bottom: 50px;
+  }
 
-    .saved-list-header {
-        grid-template-columns: 1fr 40px;
-    }
+  .saved-list-header {
+    grid-template-columns: 1fr 40px;
+  }
 
-    .saved-record {
-        min-height: 85px;
-        grid-template-columns: 1fr 40px;
-    }
+  .saved-record {
+    min-height: 85px;
+    grid-template-columns: 1fr 40px;
+  }
 
-    .saved-record-info {
-        gap: 15px;
-    }
+  .saved-record-info {
+    gap: 15px;
+  }
 
-    .saved-record-image {
-        width: 60px;
-        height: 60px;
-    }
+  .saved-record-image {
+    width: 60px;
+    height: 60px;
+  }
 
-    .saved-record-details h3 {
-        font-size: 10px;
-    }
+  .saved-record-details h3 {
+    font-size: 10px;
+  }
+}
+
+
+.contact-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  padding: 70px 0 90px;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 100px;
+  align-items: end;
+  border-bottom: 1px solid #ddd;
+}
+
+.contact-heading .eyebrow {
+  display: block;
+  margin-bottom: 20px;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.contact-heading h1 {
+  margin: 0;
+  font-size: 72px;
+  line-height: .8;
+  letter-spacing: -5px;
+  font-weight: 900;
+}
+
+.contact-intro {
+  padding-bottom: 3px;
+}
+
+.contact-intro>p {
+  max-width: 260px;
+  margin: 0 0 35px;
+  color: #777;
+  font-size: 9px;
+  line-height: 15px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.contact-details span,
+.contact-section-label span,
+.contact-bottom .eyebrow {
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.contact-details a {
+  color: #222;
+  font-size: 9px;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: #777;
+}
+
+.contact-main {
+  padding: 90px 0 110px;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 80px;
+}
+
+.contact-section-label {
+  display: flex;
+  justify-content: space-between;
+  align-self: start;
+}
+
+.contact-form {
+  max-width: 650px;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 30px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 9px;
+  color: #999;
+  font-size: 7px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  background: transparent;
+  color: #222;
+  font-family: inherit;
+  font-size: 9px;
+  resize: vertical;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #aaa;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #222;
+}
+
+.contact-submit {
+  height: 34px;
+  padding: 0 22px;
+  border: 1px solid #222;
+  background: #222;
+  color: #fff;
+  font-family: inherit;
+  font-size: 8px;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.contact-submit:hover {
+  background: transparent;
+  color: #222;
+}
+
+.contact-bottom {
+  padding: 70px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  border-top: 1px solid #ddd;
+}
+
+.contact-bottom .eyebrow {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.contact-bottom p,
+.contact-bottom a {
+  color: #555;
+  font-size: 9px;
+  line-height: 15px;
+  text-decoration: none;
+}
+
+.contact-bottom a:hover {
+  color: #222;
+}
+
+@media (max-width: 800px) {
+  .contact-header {
+    padding: 60px 0 70px;
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .contact-heading h1 {
+    font-size: 60px;
+  }
+
+  .contact-main {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact-bottom {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }

@@ -21,12 +21,10 @@ export default function ApproachSection() {
 
 
             <div className="editorial-grid">
-
                 <ApproachSectionItem imageUrl="https://muzikercdn.com/uploads/product_gallery/18085/1808530/main_f89549ee.jpg" artist="Linkin Park" position='one'/>
                 <ApproachSectionItem imageUrl="https://muzikercdn.com/uploads/product_gallery/19923/1992339/main_c6197c87.jpg" artist="Taylor Swift" position='two'/>
                 <ApproachSectionItem imageUrl="https://muzikercdn.com/uploads/product_gallery/20039/2003942/main_605e734d.jpg" artist="Led Zeppelin" position='three'/>
                 <ApproachSectionItem imageUrl="https://muzikercdn.com/uploads/product_gallery/21213/2121326/main_d45477d0.jpg" artist="Olivia Dean" position='four'/>
-
             </div>
 
         </section>

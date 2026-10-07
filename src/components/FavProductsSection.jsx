@@ -16,7 +16,6 @@ export default function FavProductsSection() {
             </div>
 
             <div className="product-grid">
-
                 <RecordCard
                     imageUrl="https://muzikercdn.com/uploads/products/14600/1460015/thumb_large_d_gallery_base_4b78cbb7.JPG"
                     artist='Nirvana'
@@ -52,7 +51,6 @@ export default function FavProductsSection() {
                     category='Pop'
                     year='2012'
                 />
-
             </div>
 
             <div className="slider-controls">
