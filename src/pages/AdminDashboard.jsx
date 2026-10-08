@@ -1,11 +1,29 @@
 import { Link } from "react-router";
-import { useState } from "react";
-import records from "../data/records";
+import { useEffect, useState } from "react";
+import { supabaseUrl, supabaseKey } from "../supabase";
 import SaveRecordsModal from "../components/records/SaveRecordsModal";
 import DeleteRecordModal from "../components/records/DeleteRecordModal";
 
 
 export default function AdminDashboard() {
+    const [records, setRecords] = useState([]);
+
+    useEffect(() => {
+        fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
+            headers: {
+                apikey: supabaseKey,
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setRecords(data)
+        })
+        .catch(error => console.error(error)    
+    )}, []);
+
+
+
     const [showSaveRecordsModal, setShowSaveRecordsModal] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
 
@@ -64,14 +82,14 @@ export default function AdminDashboard() {
                     <div className="admin-table-row" key={record.id}>
                         <div className="admin-record-image">
                             <img
-                                src={record.imageUrl}
+                                src={record.cover_url}
                                 alt={record.artist}
                             />
                         </div>
 
                         <span>{record.artist}</span>
                         <span>{record.title}</span>
-                        <span>{record.category}</span>
+                        <span>{record.categories?.name}</span>
 
                         <div className="admin-actions">
                             <Link to={`/records/${record.id}`}>

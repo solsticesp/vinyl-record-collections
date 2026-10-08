@@ -17,7 +17,7 @@ export default function RecordDetails() {
                 console.log(data);
                 setCurrentRecord(data[0])
             })
-            .catch(error => console.log(error))
+            .catch(error => console.error(error))
     }, [id])
 
     console.log(currentRecord);
