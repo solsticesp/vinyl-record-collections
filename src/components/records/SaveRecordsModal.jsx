@@ -1,8 +1,19 @@
+import { useState } from "react";
+// import { supabaseUrl, supabaseKey } from "../../supabase";
+
 export default function SaveRecordsModal({
     onClose,
     record,
+    onSave,
 }) {
     const isEdit = !!record;
+
+    const [tracks, setTracks] = useState(
+        record?.tracklist || [
+            { title: "", duration: "" },
+            { title: "", duration: "" }
+        ]
+    );
 
     return (
         <div className="modal-overlay">
@@ -21,130 +32,124 @@ export default function SaveRecordsModal({
                 </div>
 
 
-                <form className="record-form">
+                <form
+                    className="record-form"
+                    onSubmit={(event) => {
+                        event.preventDefault();
 
-                    {/* BASIC INFORMATION */}
+                        const formData = new FormData(event.target);
 
+                        const newRecord = {
+                            title: formData.get("title"),
+                            artist: formData.get("artist"),
+                            category_id: Number(formData.get("category_id")),
+                            release_year: Number(formData.get("release_year")),
+                            price: Number(formData.get("price")),
+                            format: formData.get("format"),
+                            cover_url: formData.get("cover_url"),
+                            description: formData.get("description"),
+                            tracklist: tracks
+                        };
+
+                        onSave(newRecord);
+                    }}
+                >
                     <section className="form-section">
-
                         <div className="form-section-heading">
                             <span>01</span>
                             <h3>Basic Information</h3>
                         </div>
 
-
                         <div className="form-grid">
-
                             <div className="form-group full">
                                 <label>Title</label>
-                                <input type="text" defaultValue={record?.title || ""} />
+                                <input type="text" name="title" defaultValue={record?.title || ""} />
                             </div>
 
                             <div className="form-group full">
                                 <label>Artist</label>
-                                <input type="text" defaultValue={record?.artist || ""} />
+                                <input type="text" name="artist" defaultValue={record?.artist || ""} />
                             </div>
 
                             <div className="form-group">
                                 <label>Genre</label>
-                                <select defaultValue={record?.category || ""}>
-                                    <option>Select genre</option>
-                                    <option>Rock & Metal</option>
-                                    <option>Pop</option>
-                                    <option>Jazz & Soul</option>
-                                    <option>Classical</option>
-                                    <option>R&B & Hip-Hop</option>
+                                <select name="category_id" defaultValue={record?.category || ""}>
+                                    <option value="">Select genre</option>
+                                    <option value="1">Rock & Metal</option>
+                                    <option value="2">Pop</option>
+                                    <option value="3">Jazz & Soul</option>
+                                    <option value="4">Classical</option>
+                                    <option value="5">R&B & Hip-Hop</option>
+                                    <option value="6">Electronic</option>
                                 </select>
                             </div>
 
                             <div className="form-group">
                                 <label>Release Year</label>
-                                <input type="number" defaultValue={record?.year || ""} />
+                                <input type="number" name="release_year" defaultValue={record?.year || ""} />
                             </div>
 
                             <div className="form-group">
                                 <label>Price</label>
-                                <input type="number" defaultValue={record?.price || ""} />
+                                <input type="number" name="price" defaultValue={record?.price || ""} />
                             </div>
 
                             <div className="form-group">
                                 <label>Format</label>
-                                <select>
-                                    <option>Vinyl</option>
-                                    <option>LP</option>
-                                    <option>12"</option>
-                                    <option>7"</option>
+                                <select
+                                    name="format"
+                                    defaultValue={record?.format || ""}
+                                >
+                                    <option value="">Select format</option>
+                                    <option value="LP">LP</option>
+                                    <option value="EP">EP</option>
+                                    <option value="Single">Single</option>
                                 </select>
                             </div>
-
-                            <div className="form-group full">
-                                <label>Label</label>
-                                <input type="text" />
-                            </div>
-
                         </div>
-
                     </section>
 
-
-                    {/* COVER */}
-
                     <section className="form-section">
-
                         <div className="form-section-heading">
                             <span>02</span>
                             <h3>Cover</h3>
                         </div>
 
                         <div className="cover-upload">
-
-                            <div className="cover-preview">
-                                <span>NO COVER</span>
-                            </div>
-
                             <div className="cover-upload-info">
-
-                                <label
-                                    htmlFor="cover"
-                                    className="upload-button"
-                                >
-                                    Upload Cover
+                                <label htmlFor="cover">
+                                    Cover URL
                                 </label>
 
                                 <input
                                     id="cover"
-                                    type="file"
-                                    accept="image/*"
+                                    name="cover_url"
+                                    type="url"
+                                    placeholder="https://example.com/cover.jpg"
+                                    defaultValue={record?.cover_url || ""}
                                 />
 
                                 <small>
-                                    JPG, PNG or WEBP
+                                    Enter a direct link to the album cover
                                 </small>
-
                             </div>
-
                         </div>
-
                     </section>
 
-
-                    {/* DESCRIPTION */}
-
                     <section className="form-section">
-
                         <div className="form-section-heading">
                             <span>03</span>
                             <h3>Description</h3>
                         </div>
 
                         <div className="form-group">
-                            <textarea rows="5"></textarea>
+                            <textarea
+                                name="description"
+                                rows="5"
+                                defaultValue={record?.description || ""}
+                            ></textarea>
                         </div>
-
                     </section>
-
-
-                    {/* TRACKLIST */}
 
                     <section className="form-section">
 
@@ -154,7 +159,6 @@ export default function SaveRecordsModal({
                         </div>
 
                         <div className="track-form">
-
                             <div className="track-form-header">
                                 <span>#</span>
                                 <span>Track</span>
@@ -162,68 +166,69 @@ export default function SaveRecordsModal({
                                 <span></span>
                             </div>
 
+                            {tracks.map((track, index) => (
+                                <div className="track-form-row" key={index}>
 
-                            <div className="track-form-row">
+                                    <span className="track-number">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </span>
 
-                                <span className="track-number">
-                                    01
-                                </span>
+                                    <input
+                                        type="text"
+                                        placeholder="Track title"
+                                        value={track.title}
+                                        onChange={(event) => {
+                                            const updatedTracks = [...tracks];
 
-                                <input
-                                    type="text"
-                                    placeholder="Track title"
-                                />
+                                            updatedTracks[index].title = event.target.value;
 
-                                <input
-                                    type="text"
-                                    placeholder="0:00"
-                                />
+                                            setTracks(updatedTracks);
+                                        }}
+                                    />
 
-                                <button
-                                    type="button"
-                                    className="remove-track"
-                                >
-                                    ×
-                                </button>
+                                    <input
+                                        type="text"
+                                        placeholder="0:00"
+                                        value={track.duration}
+                                        onChange={(event) => {
+                                            const updatedTracks = [...tracks];
 
-                            </div>
+                                            updatedTracks[index].duration = event.target.value;
 
+                                            setTracks(updatedTracks);
+                                        }}
+                                    />
 
-                            <div className="track-form-row">
-
-                                <span className="track-number">
-                                    02
-                                </span>
-
-                                <input
-                                    type="text"
-                                    placeholder="Track title"
-                                />
-
-                                <input
-                                    type="text"
-                                    placeholder="0:00"
-                                />
-
-                                <button
-                                    type="button"
-                                    className="remove-track"
-                                >
-                                    ×
-                                </button>
-
-                            </div>
-
+                                    <button
+                                        type="button"
+                                        className="remove-track"
+                                        onClick={() => {
+                                            setTracks(
+                                                tracks.filter((_, trackIndex) => trackIndex !== index)
+                                            );
+                                        }}
+                                    >
+                                        ×
+                                    </button>
+                                </div>
+                            ))}
 
                             <button
                                 type="button"
                                 className="add-track"
+                                onClick={() => {
+                                    setTracks([
+                                        ...tracks,
+                                        {
+                                            title: "",
+                                            duration: ""
+                                        }
+                                    ]);
+                                }}
                             >
                                 + Add Track
                             </button>
-
                         </div>
-
                     </section>
 
 

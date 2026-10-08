@@ -751,6 +751,7 @@ body::before {
 }
 
 .record-card {
+  text-decoration: none;
   min-width: 0;
   cursor: pointer;
 }
@@ -1464,44 +1465,38 @@ body::before {
 
 /* ---------- COVER ---------- */
 
-.cover-upload {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.cover-preview {
-  width: 130px;
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border: 1px solid #ddd;
-  background: #eee;
-  color: #999;
-  font-size: 7px;
-}
-
 .cover-upload-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 8px;
 }
 
-.cover-upload-info input {
-  display: none;
-}
-
-.upload-button {
-  padding: 9px 15px;
-  border: 1px solid #222;
-  background: transparent;
+.cover-upload-info label {
   font-size: 8px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #777;
 }
 
-.upload-button:hover {
-  background: #222;
-  color: white;
+.cover-upload-info input {
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-bottom: 1px solid #d6d6d6;
+  background: transparent;
+  color: #151515;
+  font-family: inherit;
+  font-size: 11px;
+  outline: none;
+  transition: border-color .2s ease;
+}
+
+.cover-upload-info input:focus {
+  border-bottom-color: #151515;
+}
+
+.cover-upload-info input::placeholder {
+  color: #aaa;
 }
 
 .cover-upload-info small {

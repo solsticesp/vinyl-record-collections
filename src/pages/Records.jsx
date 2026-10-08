@@ -1,7 +1,28 @@
 import RecordCard from "../components/records/RecordCard";
-import records from "../data/records";
+// import records from "../data/records";
+import { useEffect, useState } from "react";
+import { supabaseUrl, supabaseKey } from "../supabase";
 
 export default function Records() {
+
+    const [records, setRecords] = useState([]);
+
+    useEffect(() => {
+        fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
+            headers: {
+                apikey: supabaseKey,
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setRecords(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
     return (
         <div className="page records-page">
 
@@ -28,7 +49,7 @@ export default function Records() {
             <div className="catalog-toolbar">
 
                 <div className="catalog-count">
-                    120 RECORDS
+                    {records.length} RECORDS
                 </div>
 
                 <div className="catalog-actions">
@@ -57,7 +78,13 @@ export default function Records() {
                 {records.map(record => (
                     <RecordCard
                         key={record.id}
-                        {...record}
+                        id={record.id}
+                        title={record.title}
+                        artist={record.artist}
+                        price={record.price}
+                        category={record.categories?.name}
+                        year={record.release_year}
+                        imageUrl={record.cover_url}
                     />
                 ))}
             </section>

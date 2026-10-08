@@ -8,7 +8,7 @@ export default function TopToolsSection() {
                 <a href="#">Jazz & Soul</a>
                 <a href="#">R&B & Hip-Hop</a>
                 <a href="#">Classical</a>
-
+                <a href="#">Electronic</a>
             </div>
 
             <div className="search">

@@ -1,11 +1,24 @@
 import { Link } from "react-router";
-import { useState } from "react";
-import records from "../data/records";
+import { useEffect, useState } from "react";
+import { supabaseUrl, supabaseKey } from "../supabase";
 import SaveRecordsModal from "../components/records/SaveRecordsModal";
 import DeleteRecordModal from "../components/records/DeleteRecordModal";
 
 
+
 export default function AdminDashboard() {
+    const [records, setRecords] = useState([]);
+
+    useEffect(() => {
+        fetchRecords()
+            .then(data => {
+                console.log(data);
+                setRecords(data)
+            })
+            .catch(error => console.error(error)
+            )
+    }, []);
+
     const [showSaveRecordsModal, setShowSaveRecordsModal] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
 
@@ -25,6 +38,26 @@ export default function AdminDashboard() {
     const deleteRecordHandler = (record) => {
         setRecordToDelete(record);
         setShowDeleteModal(true);
+    }
+
+    const saveRecordHandler = async (record) => {
+        try {
+            await fetch(`${supabaseUrl}/records`, {
+                method: 'POST',
+                headers: {
+                    apikey: supabaseKey,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(record)
+            });
+
+            const updatedRecords = await fetchRecords();
+            setRecords(updatedRecords);
+        } catch (error) {
+            alert('Error adding user: ' + error)
+        } finally {
+            setShowSaveRecordsModal(false);
+        }
     }
 
     return (
@@ -64,14 +97,14 @@ export default function AdminDashboard() {
                     <div className="admin-table-row" key={record.id}>
                         <div className="admin-record-image">
                             <img
-                                src={record.imageUrl}
+                                src={record.cover_url}
                                 alt={record.artist}
                             />
                         </div>
 
                         <span>{record.artist}</span>
                         <span>{record.title}</span>
-                        <span>{record.category}</span>
+                        <span>{record.categories?.name}</span>
 
                         <div className="admin-actions">
                             <Link to={`/records/${record.id}`}>
@@ -88,8 +121,9 @@ export default function AdminDashboard() {
                 <SaveRecordsModal
                     onClose={() => setShowSaveRecordsModal(false)}
                     record={selectedRecord}
+                    onSave={saveRecordHandler}
                 />
-            )};
+            )}
 
             {showDeleteModal && (
                 <DeleteRecordModal
@@ -104,4 +138,15 @@ export default function AdminDashboard() {
             )}
         </div>
     );
+}
+
+async function fetchRecords() {
+    const response = await fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
+        headers: {
+            apikey: supabaseKey,
+        }
+    })
+
+    const data = await response.json();
+    return data;
 }
