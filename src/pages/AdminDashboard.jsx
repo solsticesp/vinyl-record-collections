@@ -5,24 +5,19 @@ import SaveRecordsModal from "../components/records/SaveRecordsModal";
 import DeleteRecordModal from "../components/records/DeleteRecordModal";
 
 
+
 export default function AdminDashboard() {
     const [records, setRecords] = useState([]);
 
     useEffect(() => {
-        fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
-            headers: {
-                apikey: supabaseKey,
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setRecords(data)
-        })
-        .catch(error => console.error(error)    
-    )}, []);
-
-
+        fetchRecords()
+            .then(data => {
+                console.log(data);
+                setRecords(data)
+            })
+            .catch(error => console.error(error)
+            )
+    }, []);
 
     const [showSaveRecordsModal, setShowSaveRecordsModal] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
@@ -43,6 +38,26 @@ export default function AdminDashboard() {
     const deleteRecordHandler = (record) => {
         setRecordToDelete(record);
         setShowDeleteModal(true);
+    }
+
+    const saveRecordHandler = async (record) => {
+        try {
+            await fetch(`${supabaseUrl}/records`, {
+                method: 'POST',
+                headers: {
+                    apikey: supabaseKey,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(record)
+            });
+
+            const updatedRecords = await fetchRecords();
+            setRecords(updatedRecords);
+        } catch (error) {
+            alert('Error adding user: ' + error)
+        } finally {
+            setShowSaveRecordsModal(false);
+        }
     }
 
     return (
@@ -106,8 +121,9 @@ export default function AdminDashboard() {
                 <SaveRecordsModal
                     onClose={() => setShowSaveRecordsModal(false)}
                     record={selectedRecord}
+                    onSave={saveRecordHandler}
                 />
-            )};
+            )}
 
             {showDeleteModal && (
                 <DeleteRecordModal
@@ -122,4 +138,15 @@ export default function AdminDashboard() {
             )}
         </div>
     );
+}
+
+async function fetchRecords() {
+    const response = await fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
+        headers: {
+            apikey: supabaseKey,
+        }
+    })
+
+    const data = await response.json();
+    return data;
 }

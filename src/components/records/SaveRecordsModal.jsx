@@ -15,7 +15,6 @@ export default function SaveRecordsModal({
         ]
     );
 
-
     return (
         <div className="modal-overlay">
             <div className="backdrop" onClick={onClose}></div>
