@@ -33,7 +33,7 @@ export default function Records() {
                     <div className="section-heading">
                         <h1>
                             ALL<br />
-                            RECORDS<sup>(120) </sup>
+                            RECORDS<sup>(120)</sup>
                         </h1>
                     </div>
 

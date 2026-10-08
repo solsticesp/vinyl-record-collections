@@ -751,6 +751,7 @@ body::before {
 }
 
 .record-card {
+  text-decoration: none;
   min-width: 0;
   cursor: pointer;
 }
