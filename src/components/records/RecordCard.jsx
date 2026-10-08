@@ -2,9 +2,9 @@ import { Link } from "react-router";
 
 export default function RecordCard({
     id,
-    imageUrl,
     artist,
     title,
+    imageUrl,
     price,
     category,
     year,
