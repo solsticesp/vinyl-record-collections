@@ -2839,3 +2839,132 @@ footer {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+
+
+.collections {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 60px 48px;
+    color: #1c1c1c;
+}
+.collections > h1 {
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 600;
+    letter-spacing: -2px;
+    margin: 0 0 40px;
+}
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+.collection-card {
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    overflow: hidden;
+    background: #eae8e2;
+    color: #1c1c1c;
+    text-decoration: none;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.collection-card h2 {
+    margin: 0 0 12px;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 500;
+    letter-spacing: -1.5px;
+}
+.collection-card span {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.collection-card:hover {
+    background: #1c1c1c;
+    color: #fff;
+}
+@media (max-width: 700px) {
+    .collections {
+        padding: 36px 20px;
+    }
+    .collections-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .collection-card {
+        min-height: 220px;
+        padding: 24px;
+    }
+}
+
+
+.category-records {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px;
+    color: #1c1c1c;
+}
+.category-records > a {
+    display: inline-block;
+    margin-bottom: 32px;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+}
+.category-records > a:hover {
+    color: #1c1c1c;
+}
+.category-records > h1 {
+    margin: 0 0 36px;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 600;
+    letter-spacing: -2px;
+}
+.records-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px 20px;
+}
+.record-card {
+    min-width: 0;
+}
+.record-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    background: #efefef;
+    margin-bottom: 16px;
+}
+.record-card h2 {
+    margin: 0 0 6px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.record-card p {
+    margin: 0 0 8px;
+    color: #777;
+    font-size: 14px;
+}
+.record-card p:last-child {
+    color: #1c1c1c;
+    font-weight: 500;
+}
+@media (max-width: 1000px) {
+    .records-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 700px) {
+    .category-records {
+        padding: 32px 20px;
+    }
+    .records-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 14px;
+    }
+}
