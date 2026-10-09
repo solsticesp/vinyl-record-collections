@@ -84,26 +84,6 @@ export default function AdminDashboard() {
         }
     };
 
-    // const saveRecordHandler = async (record) => {
-    //     try {
-    //         await fetch(`${supabaseUrl}/records`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 apikey: supabaseKey,
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(record)
-    //         });
-
-    //         const updatedRecords = await fetchRecords();
-    //         setRecords(updatedRecords);
-    //     } catch (error) {
-    //         alert('Error adding user: ' + error)
-    //     } finally {
-    //         setShowSaveRecordsModal(false);
-    //     }
-    // }
-
     const confirmDeleteHandler = async () => {
         try {
             const response = await fetch(

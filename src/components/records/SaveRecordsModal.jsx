@@ -184,15 +184,8 @@ export default function SaveRecordsModal({
                                                     : track
                                             ));
                                         }}
-                                    // onChange={(event) => {
-                                    //     const updatedTracks = [...tracks];
-
-                                    //     updatedTracks[index].title = event.target.value;
-
-                                    //     setTracks(updatedTracks);
-                                    // }}
                                     />
-
+                                    
                                     <input
                                         type="text"
                                         placeholder="0:00"
@@ -204,13 +197,6 @@ export default function SaveRecordsModal({
                                                     : track
                                             ));
                                         }}
-                                    // onChange={(event) => {
-                                    //     const updatedTracks = [...tracks];
-
-                                    //     updatedTracks[index].duration = event.target.value;
-
-                                    //     setTracks(updatedTracks);
-                                    // }}
                                     />
 
                                     <button
