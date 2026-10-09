@@ -178,24 +178,24 @@ export default function SaveRecordsModal({
                                         placeholder="Track title"
                                         value={track.title}
                                         onChange={(event) => {
-                                            const updatedTracks = [...tracks];
-
-                                            updatedTracks[index].title = event.target.value;
-
-                                            setTracks(updatedTracks);
+                                            setTracks(tracks.map((track, trackIndex) =>
+                                                trackIndex === index
+                                                    ? { ...track, title: event.target.value }
+                                                    : track
+                                            ));
                                         }}
                                     />
-
+                                    
                                     <input
                                         type="text"
                                         placeholder="0:00"
                                         value={track.duration}
                                         onChange={(event) => {
-                                            const updatedTracks = [...tracks];
-
-                                            updatedTracks[index].duration = event.target.value;
-
-                                            setTracks(updatedTracks);
+                                            setTracks(tracks.map((track, trackIndex) =>
+                                                trackIndex === index
+                                                    ? { ...track, duration: event.target.value }
+                                                    : track
+                                            ));
                                         }}
                                     />
 
