@@ -45,26 +45,27 @@ function App() {
       <ScrollToTop />
 
       <Header />
-
-      <Routes>
-        <Route>
-          <Route path='/' element={<Home />} />
-          <Route path='about' element={<About />} />
-          <Route path='records' element={<Records />} />
-          <Route path='records/:id' element={<RecordDetails />} />
-          <Route path='collections' element={<Collections />} />
-          <Route
-            path="/collections/:categoryId"
-            element={<CollectionRecords />}
-          />
-          <Route path='list' element={<SaveList />} />
-          <Route path='contacts' element={<Contacts />} />
-          <Route path='signup' element={<SignUp />} />
-          <Route path='login' element={<LogIn />} />
-          <Route path='dashboard' element={<AdminDashboard />} />
-          <Route path='*' element={<NotFound />} />
-        </Route>
-      </Routes>
+      <section id="main">
+        <Routes>
+          <Route>
+            <Route path='/' element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='records' element={<Records />} />
+            <Route path='records/:id' element={<RecordDetails />} />
+            <Route path='collections' element={<Collections />} />
+            <Route
+              path="/collections/:categoryId"
+              element={<CollectionRecords />}
+            />
+            <Route path='list' element={<SaveList />} />
+            <Route path='contacts' element={<Contacts />} />
+            <Route path='signup' element={<SignUp />} />
+            <Route path='login' element={<LogIn />} />
+            <Route path='dashboard' element={<AdminDashboard />} />
+            <Route path='*' element={<NotFound />} />
+          </Route>
+        </Routes>
+      </section >
 
       <Footer />
     </>

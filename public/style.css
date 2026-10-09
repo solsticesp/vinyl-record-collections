@@ -78,6 +78,9 @@ body::before {
   margin: 10px 26px 87px;
 }
 
+#main {
+    min-height: calc(100vh - 70px);
+}
 
 /* ============================================================
    HEADER
@@ -2761,186 +2764,291 @@ footer {
 
 
 .record-info-modal {
-    position: relative;
-    z-index: 1;
-    width: min(100%, 760px);
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 36px;
-    background: #f8f8f8;
-    color: #151515;
+  position: relative;
+  z-index: 1;
+  width: min(100%, 760px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 36px;
+  background: #f8f8f8;
+  color: #151515;
 }
+
 .modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    border: 0;
-    background: none;
-    font-size: 20px;
-    cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: 0;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
 }
+
 .record-info-modal h2 {
-    margin: 18px 0 4px;
-    font-size: 30px;
-    text-transform: uppercase;
+  margin: 18px 0 4px;
+  font-size: 30px;
+  text-transform: uppercase;
 }
+
 .record-info-artist {
-    margin: 0 0 24px;
-    color: #777;
+  margin: 0 0 24px;
+  color: #777;
 }
+
 .record-info-image {
-    width: 180px;
-    aspect-ratio: 1;
-    margin-bottom: 28px;
+  width: 180px;
+  aspect-ratio: 1;
+  margin-bottom: 28px;
 }
+
 .record-info-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+
 .record-info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 1px solid #d6d6d6;
-    border-left: 1px solid #d6d6d6;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid #d6d6d6;
+  border-left: 1px solid #d6d6d6;
 }
-.record-info-grid > div {
-    padding: 16px;
-    border-right: 1px solid #d6d6d6;
-    border-bottom: 1px solid #d6d6d6;
+
+.record-info-grid>div {
+  padding: 16px;
+  border-right: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
 }
+
 .record-info-grid span,
-.record-info-description > span,
-.record-info-tracklist > span {
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: #777;
+.record-info-description>span,
+.record-info-tracklist>span {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #777;
 }
+
 .record-info-grid p {
-    margin: 8px 0 0;
-    font-size: 14px;
+  margin: 8px 0 0;
+  font-size: 14px;
 }
+
 .record-info-description,
 .record-info-tracklist {
-    margin-top: 28px;
+  margin-top: 28px;
 }
+
 .record-info-description p {
-    line-height: 1.6;
+  line-height: 1.6;
 }
+
 .record-info-tracklist ol {
-    padding-left: 24px;
-    line-height: 1.9;
+  padding-left: 24px;
+  line-height: 1.9;
 }
+
 @media (max-width: 600px) {
-    .record-info-modal {
-        padding: 24px;
-    }
-    .record-info-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  .record-info-modal {
+    padding: 24px;
+  }
+
+  .record-info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 
 
 .collections {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 60px 48px;
-    color: #1c1c1c;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 60px 48px;
+  color: #1c1c1c;
 }
-.collections > h1 {
-    font-size: clamp(36px, 4vw, 60px);
-    font-weight: 600;
-    letter-spacing: -2px;
-    margin: 0 0 40px;
+
+.collections>h1 {
+  font-size: clamp(36px, 4vw, 60px);
+  font-weight: 600;
+  letter-spacing: -2px;
+  margin: 0 0 40px;
 }
+
 .collections-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
+
 .collection-card {
-    position: relative;
-    min-height: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 32px;
-    overflow: hidden;
-    background: #eae8e2;
-    color: #1c1c1c;
-    text-decoration: none;
-    transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  overflow: hidden;
+  background: #eae8e2;
+  color: #1c1c1c;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
 .collection-card h2 {
-    margin: 0 0 12px;
-    font-size: clamp(28px, 3vw, 44px);
-    font-weight: 500;
-    letter-spacing: -1.5px;
+  margin: 0 0 12px;
+  font-size: clamp(28px, 3vw, 44px);
+  font-weight: 500;
+  letter-spacing: -1.5px;
 }
+
 .collection-card span {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
+
 .collection-card:hover {
-    background: #1c1c1c;
-    color: #fff;
+  background: #1c1c1c;
+  color: #fff;
 }
+
 @media (max-width: 700px) {
-    .collections {
-        padding: 36px 20px;
-    }
-    .collections-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    .collection-card {
-        min-height: 220px;
-        padding: 24px;
-    }
+  .collections {
+    padding: 36px 20px;
+  }
+
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .collection-card {
+    min-height: 220px;
+    padding: 24px;
+  }
 }
 
 
 .category-records {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 48px;
-    color: #1c1c1c;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 48px;
+  color: #1c1c1c;
 }
-.category-records > a {
-    display: inline-block;
-    margin-bottom: 32px;
-    color: #555;
-    text-decoration: none;
-    font-size: 14px;
+
+.category-records>a {
+  display: inline-block;
+  margin-bottom: 32px;
+  color: #555;
+  text-decoration: none;
+  font-size: 14px;
 }
-.category-records > a:hover {
-    color: #1c1c1c;
+
+.category-records>a:hover {
+  color: #1c1c1c;
 }
-.category-records > h1 {
-    margin: 0 0 36px;
-    font-size: clamp(36px, 4vw, 56px);
-    font-weight: 600;
-    letter-spacing: -2px;
+
+.category-records>h1 {
+  margin: 0 0 36px;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 600;
+  letter-spacing: -2px;
 }
+
 .records-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 28px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 28px 20px;
 }
 
 @media (max-width: 1000px) {
-    .records-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  .records-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
+
 @media (max-width: 700px) {
-    .category-records {
-        padding: 32px 20px;
-    }
-    .records-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px 14px;
+  .category-records {
+    padding: 32px 20px;
+  }
+
+  .records-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 14px;
+  }
+}
+
+
+
+.spinner-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle,
+            #f5f5f5 0 3px,
+            #e63946 3px 9px,
+            #151515 9px 10px,
+            transparent 10px
+        ),
+        repeating-radial-gradient(
+            circle,
+            #303030 0px,
+            #303030 1px,
+            #101010 2px,
+            #101010 4px
+        );
+    box-shadow:
+        0 0 0 2px #222,
+        0 0 12px rgb(0 0 0 / 18%);
+    animation: vinyl-spin 0.8s linear infinite;
+}
+
+/* Moving light streak */
+.spinner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 210deg,
+        rgb(255 255 255 / 0.02) 235deg,
+        rgb(255 255 255 / 0.2) 265deg,
+        rgb(255 255 255 / 0.75) 285deg,
+        rgb(255 255 255 / 0.08) 305deg,
+        transparent 325deg,
+        transparent 360deg
+    );
+}
+
+/* Center spindle hole */
+.spinner::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 5px rgb(255 255 255 / 70%);
+}
+
+@keyframes vinyl-spin {
+    to {
+        transform: rotate(360deg);
     }
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { fetchRecords } from "../utils/fetchRecords";
 import RecordCard from "../components/records/RecordCard";
+import Spinner from "../components/layout/Spinner";
 
 export default function CollectionRecords() {
     const { categoryId } = useParams();
@@ -23,33 +24,33 @@ export default function CollectionRecords() {
             .finally(() => setLoading(false));
     }, [categoryId]);
 
-    if (loading) {
-        return <p>Loading records...</p>;
-    }
-
     return (
         <section className="category-records">
             <Link to="/collections">← All collections</Link>
 
             <h1>{records[0]?.categories?.name || "Collection"}</h1>
 
-            {records.length === 0 ? (
-                <p>No records found in this collection.</p>
+            {loading ? (
+                <Spinner />
             ) : (
-                <div className="records-grid">
-                    {records.map((record) => (
-                        <RecordCard
-                            key={record.id}
-                            id={record.id}
-                            artist={record.artist}
-                            title={record.title}
-                            imageUrl={record.cover_url}
-                            price={record.price}
-                            category={record.categories?.name}
-                            year={record.release_year}
-                        />
-                    ))}
-                </div>
+                records.length === 0 ? (
+                    <p>No records found in this collection.</p>
+                ) : (
+                    <div className="records-grid">
+                        {records.map((record) => (
+                            <RecordCard
+                                key={record.id}
+                                id={record.id}
+                                artist={record.artist}
+                                title={record.title}
+                                imageUrl={record.cover_url}
+                                price={record.price}
+                                category={record.categories?.name}
+                                year={record.release_year}
+                            />
+                        ))}
+                    </div>
+                )
             )}
         </section>
     );
