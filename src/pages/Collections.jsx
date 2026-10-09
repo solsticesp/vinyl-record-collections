@@ -21,7 +21,9 @@ export default function Collections() {
 
     return (
         <section className="collections">
-            <h1>Collections</h1>
+            <div className="catalog-header">
+                <h1>Collections</h1>
+            </div>
 
             {loading ? (
                 <Spinner />
@@ -31,6 +33,7 @@ export default function Collections() {
                         <Link
                             key={category.id}
                             to={`/collections/${category.id}`}
+                            state={{ categoryName: category.name }}
                             className="collection-card"
                         >
                             <h2>{category.name}</h2>

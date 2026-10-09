@@ -463,112 +463,6 @@ body::before {
 
 
 /* ============================================================
-   COLLECTIONS
-============================================================ */
-
-.collections {
-  margin: 0 26px 110px;
-}
-
-.collection-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.collection-heading h2 {
-  font-size: 28px;
-  line-height: .77;
-  letter-spacing: -1.6px;
-  font-weight: 900;
-}
-
-.collection-heading h2 span {
-  font-size: 27px;
-}
-
-.collection-tools {
-  display: flex;
-  gap: 70px;
-}
-
-.collection-tools button {
-  border: 0;
-  background: none;
-
-  color: #333;
-  font-size: 8px;
-}
-
-.tabs {
-  margin: 28px 0 25px;
-  padding-bottom: 9px;
-
-  display: flex;
-  gap: 22px;
-
-  border-bottom: 1px solid #eee;
-}
-
-.tabs a {
-  color: #888;
-  text-decoration: none;
-  font-size: 8px;
-}
-
-.tabs .active {
-  color: #222;
-}
-
-.collection-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.collection-image {
-  position: relative;
-
-  height: 195px;
-
-  overflow: hidden;
-
-  border: 1px solid #ddd;
-  background: #f0f1f4;
-}
-
-.collection-image img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-.collection-image button {
-  position: absolute;
-  left: 50%;
-  bottom: 5px;
-
-  width: 18px;
-  height: 18px;
-
-  transform: translateX(-50%);
-
-  border: 0;
-  background: rgba(255, 255, 255, .65);
-}
-
-.load-more {
-  margin-top: 3rem;
-
-  text-align: center;
-
-  color: #999;
-  font-size: 8px;
-}
-
-
-/* ============================================================
    APPROACH / EDITORIAL
 ============================================================ */
 
@@ -1767,20 +1661,11 @@ footer {
     bottom: auto;
   }
 
-
   /* PRODUCTS */
 
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
-
-  /* COLLECTIONS */
-
-  .collection-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
 
   /* EDITORIAL */
 
@@ -1796,7 +1681,6 @@ footer {
   .image-four {
     margin-top: 0;
   }
-
 
   /* AUTH */
 
@@ -1895,28 +1779,6 @@ footer {
     display: none;
   }
 
-
-  /* PRODUCTS / COLLECTIONS */
-
-  .product-grid,
-  .collection-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .product-image {
-    height: 145px;
-  }
-
-  .collection-image {
-    height: 190px;
-  }
-
-  .collection-tools {
-    display: none;
-  }
-
-
   /* APPROACH */
 
   .approach-heading {
@@ -1932,7 +1794,6 @@ footer {
 
     grid-template-columns: 1fr 1fr;
   }
-
 
   /* AUTH */
 
@@ -2866,17 +2727,11 @@ footer {
   color: #1c1c1c;
 }
 
-.collections>h1 {
-  font-size: clamp(36px, 4vw, 60px);
-  font-weight: 600;
-  letter-spacing: -2px;
-  margin: 0 0 40px;
-}
-
 .collections-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
+  padding-bottom: 50px;
 }
 
 .collection-card {
@@ -2945,13 +2800,6 @@ footer {
 
 .category-records>a:hover {
   color: #1c1c1c;
-}
-
-.category-records>h1 {
-  margin: 0 0 36px;
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 600;
-  letter-spacing: -2px;
 }
 
 .records-grid {

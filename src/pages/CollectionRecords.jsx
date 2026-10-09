@@ -1,12 +1,15 @@
 
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useParams, useLocation } from "react-router";
 import { fetchRecords } from "../utils/fetchRecords";
 import RecordCard from "../components/records/RecordCard";
 import Spinner from "../components/layout/Spinner";
 
 export default function CollectionRecords() {
     const { categoryId } = useParams();
+    const { state } = useLocation();
+    const categoryName = state?.categoryName;
+
     const [records, setRecords] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -28,7 +31,9 @@ export default function CollectionRecords() {
         <section className="category-records">
             <Link to="/collections">← All collections</Link>
 
-            <h1>{records[0]?.categories?.name || "Collection"}</h1>
+            <div className="catalog-header">
+                <h1>{categoryName || records[0]?.categories?.name}</h1>
+            </div>
 
             {loading ? (
                 <Spinner />

@@ -23,9 +23,9 @@ export default function Header() {
                     <NavLink to="/records" style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
                         Records
                     </NavLink>
-                    {/* <a href="#">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Records</a> */}
+                    <NavLink to="/collections" style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                        Collections
+                    </NavLink>
                 </nav>
             </div>
 
