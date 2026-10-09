@@ -1,14 +1,27 @@
+import { useEffect, useState } from "react";
+import { fetchCategories } from "../../utils/fetchCategories";
+import { Link } from "react-router";
+
 export default function TopToolsSection() {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        fetchCategories()
+        .then(data => setCategories(data))
+        .catch(error => alert('Error fetching categories: ' + error))
+    })
 
     return (
         <section className="top-tools">
             <div className="categories">
-                <a href="#">Pop</a>
-                <a href="#">Rock & Metal</a>
-                <a href="#">Jazz & Soul</a>
-                <a href="#">R&B & Hip-Hop</a>
-                <a href="#">Classical</a>
-                <a href="#">Electronic</a>
+                {categories.map((category) => (
+                    <Link 
+                    key={category.id}
+                    to={`/collections/${category.id}`}
+                    >
+                        {category.name}
+                    </Link>    
+                ))}
             </div>
 
             <div className="search">
