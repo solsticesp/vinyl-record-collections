@@ -1,11 +1,12 @@
 import RecordCard from "../components/records/RecordCard";
-// import records from "../data/records";
+import Spinner from "../components/layout/Spinner";
 import { useEffect, useState } from "react";
 import { supabaseUrl, supabaseKey } from "../supabase";
 
 export default function Records() {
 
     const [records, setRecords] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
@@ -20,8 +21,13 @@ export default function Records() {
             })
             .catch(error => {
                 console.error(error);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }, []);
+
+
 
     return (
         <div className="page records-page">
@@ -74,26 +80,32 @@ export default function Records() {
 
             </div>
 
-            <section className="record-grid">
-                {records.map(record => (
-                    <RecordCard
-                        key={record.id}
-                        id={record.id}
-                        title={record.title}
-                        artist={record.artist}
-                        price={record.price}
-                        category={record.categories?.name}
-                        year={record.release_year}
-                        imageUrl={record.cover_url}
-                    />
-                ))}
-            </section>
+            {loading ? (
+                <Spinner />
+            ) : (
+                < section className="record-grid">
+
+                    {records.map(record => (
+                        <RecordCard
+                            key={record.id}
+                            id={record.id}
+                            title={record.title}
+                            artist={record.artist}
+                            price={record.price}
+                            category={record.categories?.name}
+                            year={record.release_year}
+                            imageUrl={record.cover_url}
+                        />
+                    ))
+                    }
+                </section>
+            )}
 
 
             <div className="load-more">
                 LOAD MORE
             </div>
 
-        </div>
+        </div >
     );
 }
