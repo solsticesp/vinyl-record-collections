@@ -15,7 +15,7 @@ import LogIn from './pages/LogIn';
 import RecordDetails from './pages/RecordDetails';
 import ScrollToTop from './components/layout/ScrollToTop';
 import AdminDashboard from './pages/AdminDashboard';
-// import SaveList from './pages/SaveList';
+import SaveList from './pages/SaveList';
 // import SaveRecordsModal from './components/SaveRecordsModal';
 
 function App() {
@@ -50,6 +50,7 @@ function App() {
           <Route path='about' element={<About />} />
           <Route path='records' element={<Records />} />
           <Route path='records/:id' element={<RecordDetails />} />
+          <Route path='list' element={<SaveList />} />
           <Route path='contacts' element={<Contacts />} />
           <Route path='signup' element={<SignUp />} />
           <Route path='login' element={<LogIn />} />

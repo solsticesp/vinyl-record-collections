@@ -2758,3 +2758,84 @@ footer {
 .delete-confirm-btn:hover {
   background: #000;
 }
+
+
+.record-info-modal {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 760px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px;
+    background: #f8f8f8;
+    color: #151515;
+}
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 0;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+.record-info-modal h2 {
+    margin: 18px 0 4px;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.record-info-artist {
+    margin: 0 0 24px;
+    color: #777;
+}
+.record-info-image {
+    width: 180px;
+    aspect-ratio: 1;
+    margin-bottom: 28px;
+}
+.record-info-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.record-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid #d6d6d6;
+    border-left: 1px solid #d6d6d6;
+}
+.record-info-grid > div {
+    padding: 16px;
+    border-right: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+}
+.record-info-grid span,
+.record-info-description > span,
+.record-info-tracklist > span {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #777;
+}
+.record-info-grid p {
+    margin: 8px 0 0;
+    font-size: 14px;
+}
+.record-info-description,
+.record-info-tracklist {
+    margin-top: 28px;
+}
+.record-info-description p {
+    line-height: 1.6;
+}
+.record-info-tracklist ol {
+    padding-left: 24px;
+    line-height: 1.9;
+}
+@media (max-width: 600px) {
+    .record-info-modal {
+        padding: 24px;
+    }
+    .record-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

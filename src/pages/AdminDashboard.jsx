@@ -4,7 +4,10 @@ import { supabaseUrl, supabaseKey } from "../supabase";
 import SaveRecordsModal from "../components/records/SaveRecordsModal";
 import DeleteRecordModal from "../components/records/DeleteRecordModal";
 import AdminRecordListItem from "../components/records/AdminRecordListItem";
+import RecordInfoModal from "../components/records/RecordInfoModal";
 
+
+import { fetchRecords } from "../utils/fetchRecords";
 
 export default function AdminDashboard() {
     const [records, setRecords] = useState([]);
@@ -24,6 +27,14 @@ export default function AdminDashboard() {
 
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [recordToDelete, setRecordToDelete] = useState(null);
+
+    const [showRecordInfoModal, setShowRecordInfoModal] = useState(false);
+    const [recordToView, setRecordToView] = useState(null);
+
+    const infoRecordHandler = (record) => {
+        setRecordToView(record);
+        setShowRecordInfoModal(true)
+    };
 
     const addRecordBtnHandler = () => {
         setSelectedRecord(null);
@@ -122,11 +133,19 @@ export default function AdminDashboard() {
                     <AdminRecordListItem
                         key={record.id}
                         record={record}
+                        onInfo={infoRecordHandler}
                         onEdit={editRecordHandler}
                         onDelete={deleteRecordHandler}
                     />
                 ))}
             </section>
+
+            {showRecordInfoModal && (
+                <RecordInfoModal
+                    record={recordToView}
+                    onClose={() => setShowRecordInfoModal(false)}
+                />
+            )}
 
             {showSaveRecordsModal && (
                 <SaveRecordsModal
@@ -150,13 +169,3 @@ export default function AdminDashboard() {
     );
 }
 
-async function fetchRecords() {
-    const response = await fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
-        headers: {
-            apikey: supabaseKey,
-        }
-    })
-
-    const data = await response.json();
-    return data;
-}
