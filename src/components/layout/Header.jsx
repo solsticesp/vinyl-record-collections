@@ -35,28 +35,28 @@ export default function Header() {
 
             <div className="header-right">
 
-                <button className="dashboard-btn">
+                <Link to="/dashboard" className="dashboard-btn">
                     Dashboard
                     <ShieldUser size={13} />
-                </button>
+                </Link>
 
-                <button className="wish-btn">
+                <Link to="/list" className="wish-btn">
                     Wishlist
                     <Bookmark size={13} />
-                </button>
+                </Link>
 
-                <button className="favs-btn">
+                <Link to="/list" className="favs-btn">
                     Favs
                     <Heart size={13} />
-                </button>
+                </Link>
 
-                <button className="signup-btn">
+                <Link to="signup" className="signup-btn">
                     <UserPlus size={13} />
-                </button>
+                </Link>
 
-                <button className="login-btn">
+                <Link to="login" className="login-btn">
                     <LogIn size={13} />
-                </button>
+                </Link>
 
                 <button className="logout-btn">
                     <LogOut size={13} />

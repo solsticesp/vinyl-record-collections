@@ -8,8 +8,10 @@ import RecordInfoModal from "../components/records/RecordInfoModal";
 
 
 import { fetchRecords } from "../utils/fetchRecords";
+import Spinner from "../components/layout/Spinner";
 
 export default function AdminDashboard() {
+    const [loading, setLoading] = useState(true)
     const [records, setRecords] = useState([]);
 
     useEffect(() => {
@@ -20,6 +22,9 @@ export default function AdminDashboard() {
             })
             .catch(error => console.error(error)
             )
+            .finally(() => {
+                setLoading(false);
+            });
     }, []);
 
     const [showSaveRecordsModal, setShowSaveRecordsModal] = useState(false);
@@ -142,15 +147,19 @@ export default function AdminDashboard() {
                     <span>ACTIONS</span>
                 </div>
 
-                {records.map(record => (
-                    <AdminRecordListItem
-                        key={record.id}
-                        record={record}
-                        onInfo={infoRecordHandler}
-                        onEdit={editRecordHandler}
-                        onDelete={deleteRecordHandler}
-                    />
-                ))}
+                {loading ? (
+                    <Spinner />
+                ) : (
+                    records.map(record => (
+                        <AdminRecordListItem
+                            key={record.id}
+                            record={record}
+                            onInfo={infoRecordHandler}
+                            onEdit={editRecordHandler}
+                            onDelete={deleteRecordHandler}
+                        />
+                    ))
+                )}
             </section>
 
             {showRecordInfoModal && (
