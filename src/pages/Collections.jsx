@@ -1,35 +1,19 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { supabaseUrl, supabaseKey } from "../supabase";
+import { fetchCategories } from "../utils/fetchCategories";
 
 export default function Collections() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        async function fetchCategories() {
-            try {
-                const response = await fetch(
-                    `${supabaseUrl}/categories?select=*`,
-                    {
-                        headers: {
-                            apikey: supabaseKey,
-                        },
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch categories");
-                }
-
-                const data = await response.json();
+        fetchCategories()
+            .then((data) => {
                 setCategories(data);
-            } catch (error) {
+            })
+            .catch((error) => {
                 console.error(error);
-            }
-        }
-
-        fetchCategories();
+            });
     }, []);
 
     return (
