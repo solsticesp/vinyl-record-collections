@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { fetchRecords } from "../utils/fetchRecords";
+import RecordCard from "../components/records/RecordCard";
 
 export default function CollectionRecords() {
     const { categoryId } = useParams();
@@ -37,15 +38,16 @@ export default function CollectionRecords() {
             ) : (
                 <div className="records-grid">
                     {records.map((record) => (
-                        <article key={record.id} className="record-card">
-                            <img
-                                src={record.cover_url}
-                                alt={`${record.artist} - ${record.title}`}
-                            />
-                            <h2>{record.title}</h2>
-                            <p>{record.artist}</p>
-                            <p>{record.price} €</p>
-                        </article>
+                        <RecordCard
+                            key={record.id}
+                            id={record.id}
+                            artist={record.artist}
+                            title={record.title}
+                            imageUrl={record.cover_url}
+                            price={record.price}
+                            category={record.categories?.name}
+                            year={record.release_year}
+                        />
                     ))}
                 </div>
             )}

@@ -2929,31 +2929,7 @@ footer {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 28px 20px;
 }
-.record-card {
-    min-width: 0;
-}
-.record-card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    background: #efefef;
-    margin-bottom: 16px;
-}
-.record-card h2 {
-    margin: 0 0 6px;
-    font-size: 18px;
-    font-weight: 500;
-}
-.record-card p {
-    margin: 0 0 8px;
-    color: #777;
-    font-size: 14px;
-}
-.record-card p:last-child {
-    color: #1c1c1c;
-    font-weight: 500;
-}
+
 @media (max-width: 1000px) {
     .records-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
