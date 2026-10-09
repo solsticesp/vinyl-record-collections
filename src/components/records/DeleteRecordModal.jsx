@@ -41,7 +41,7 @@ export default function DeleteRecordModal({
                     <button
                         type="button"
                         className="delete-confirm-btn"
-                        onClick={onConfirm}
+                        onClick={() => onConfirm(record.id)}
                     >
                         Delete Record
                     </button>

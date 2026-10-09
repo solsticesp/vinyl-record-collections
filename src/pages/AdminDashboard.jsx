@@ -1,9 +1,9 @@
-import { Link } from "react-router";
+// import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { supabaseUrl, supabaseKey } from "../supabase";
 import SaveRecordsModal from "../components/records/SaveRecordsModal";
 import DeleteRecordModal from "../components/records/DeleteRecordModal";
-
+import AdminRecordListItem from "../components/records/AdminRecordListItem";
 
 
 export default function AdminDashboard() {
@@ -35,8 +35,8 @@ export default function AdminDashboard() {
         setShowSaveRecordsModal(true);
     };
 
-    const deleteRecordHandler = (record) => {
-        setRecordToDelete(record);
+    const deleteRecordHandler = (id) => {
+        setRecordToDelete(id);
         setShowDeleteModal(true);
     }
 
@@ -59,6 +59,31 @@ export default function AdminDashboard() {
             setShowSaveRecordsModal(false);
         }
     }
+
+    const confirmDeleteHandler = async () => {
+        try {
+            const response = await fetch(
+                `${supabaseUrl}/records?id=eq.${recordToDelete}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        apikey: supabaseKey,
+                    },
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(await response.text());
+            }
+
+            const updatedRecords = await fetchRecords();
+            setRecords(updatedRecords);
+            setShowDeleteModal(false);
+            setRecordToDelete(null);
+        } catch (error) {
+            alert("Error deleting record: " + error.message);
+        }
+    };
 
     return (
         <div className="page admin-page">
@@ -94,26 +119,12 @@ export default function AdminDashboard() {
                 </div>
 
                 {records.map(record => (
-                    <div className="admin-table-row" key={record.id}>
-                        <div className="admin-record-image">
-                            <img
-                                src={record.cover_url}
-                                alt={record.artist}
-                            />
-                        </div>
-
-                        <span>{record.artist}</span>
-                        <span>{record.title}</span>
-                        <span>{record.categories?.name}</span>
-
-                        <div className="admin-actions">
-                            <Link to={`/records/${record.id}`}>
-                                INFO
-                            </Link>
-                            <button onClick={() => editRecordHandler(record)}>EDIT</button>
-                            <button onClick={() => deleteRecordHandler(record)}>DELETE</button>
-                        </div>
-                    </div>
+                    <AdminRecordListItem
+                        key={record.id}
+                        record={record}
+                        onEdit={editRecordHandler}
+                        onDelete={deleteRecordHandler}
+                    />
                 ))}
             </section>
 
@@ -127,13 +138,12 @@ export default function AdminDashboard() {
 
             {showDeleteModal && (
                 <DeleteRecordModal
-                    record={recordToDelete}
-                    onClose={() => setShowDeleteModal(false)}
-                    onConfirm={() => {
-                        console.log("Delete:", recordToDelete);
+                    record={records.find(record => record.id === recordToDelete)}
+                    onClose={() => {
                         setShowDeleteModal(false);
-                    }
-                    }
+                        setRecordToDelete(null);
+                    }}
+                    onConfirm={confirmDeleteHandler}
                 />
             )}
         </div>
