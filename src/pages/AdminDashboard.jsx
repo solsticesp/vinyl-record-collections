@@ -51,25 +51,58 @@ export default function AdminDashboard() {
         setShowDeleteModal(true);
     }
 
+
     const saveRecordHandler = async (record) => {
+        const isEdit = selectedRecord !== null;
+
         try {
-            await fetch(`${supabaseUrl}/records`, {
-                method: 'POST',
-                headers: {
-                    apikey: supabaseKey,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(record)
-            });
+            const response = await fetch(
+                isEdit
+                    ? `${supabaseUrl}/records?id=eq.${selectedRecord.id}`
+                    : `${supabaseUrl}/records`,
+                {
+                    method: isEdit ? "PATCH" : "POST",
+                    headers: {
+                        apikey: supabaseKey,
+                        "Content-Type": "application/json",
+                        Prefer: "return=minimal",
+                    },
+                    body: JSON.stringify(record),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(await response.text());
+            }
 
             const updatedRecords = await fetchRecords();
             setRecords(updatedRecords);
-        } catch (error) {
-            alert('Error adding user: ' + error)
-        } finally {
             setShowSaveRecordsModal(false);
+            setSelectedRecord(null);
+        } catch (error) {
+            alert(`Error ${isEdit ? "updating" : "adding"} record: ${error.message}`);
         }
-    }
+    };
+
+    // const saveRecordHandler = async (record) => {
+    //     try {
+    //         await fetch(`${supabaseUrl}/records`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 apikey: supabaseKey,
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(record)
+    //         });
+
+    //         const updatedRecords = await fetchRecords();
+    //         setRecords(updatedRecords);
+    //     } catch (error) {
+    //         alert('Error adding user: ' + error)
+    //     } finally {
+    //         setShowSaveRecordsModal(false);
+    //     }
+    // }
 
     const confirmDeleteHandler = async () => {
         try {

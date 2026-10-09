@@ -178,12 +178,19 @@ export default function SaveRecordsModal({
                                         placeholder="Track title"
                                         value={track.title}
                                         onChange={(event) => {
-                                            const updatedTracks = [...tracks];
-
-                                            updatedTracks[index].title = event.target.value;
-
-                                            setTracks(updatedTracks);
+                                            setTracks(tracks.map((track, trackIndex) =>
+                                                trackIndex === index
+                                                    ? { ...track, title: event.target.value }
+                                                    : track
+                                            ));
                                         }}
+                                    // onChange={(event) => {
+                                    //     const updatedTracks = [...tracks];
+
+                                    //     updatedTracks[index].title = event.target.value;
+
+                                    //     setTracks(updatedTracks);
+                                    // }}
                                     />
 
                                     <input
@@ -191,12 +198,19 @@ export default function SaveRecordsModal({
                                         placeholder="0:00"
                                         value={track.duration}
                                         onChange={(event) => {
-                                            const updatedTracks = [...tracks];
-
-                                            updatedTracks[index].duration = event.target.value;
-
-                                            setTracks(updatedTracks);
+                                            setTracks(tracks.map((track, trackIndex) =>
+                                                trackIndex === index
+                                                    ? { ...track, duration: event.target.value }
+                                                    : track
+                                            ));
                                         }}
+                                    // onChange={(event) => {
+                                    //     const updatedTracks = [...tracks];
+
+                                    //     updatedTracks[index].duration = event.target.value;
+
+                                    //     setTracks(updatedTracks);
+                                    // }}
                                     />
 
                                     <button
