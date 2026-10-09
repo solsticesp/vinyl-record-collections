@@ -73,7 +73,7 @@ export default function SaveRecordsModal({
 
                             <div className="form-group">
                                 <label>Genre</label>
-                                <select name="category_id" defaultValue={record?.category || ""}>
+                                <select name="category_id" defaultValue={record?.category_id || ""}>
                                     <option value="">Select genre</option>
                                     <option value="1">Rock & Metal</option>
                                     <option value="2">Pop</option>
@@ -86,7 +86,7 @@ export default function SaveRecordsModal({
 
                             <div className="form-group">
                                 <label>Release Year</label>
-                                <input type="number" name="release_year" defaultValue={record?.year || ""} />
+                                <input type="number" name="release_year" defaultValue={record?.release_year || ""} />
                             </div>
 
                             <div className="form-group">
