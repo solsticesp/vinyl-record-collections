@@ -1,4 +1,4 @@
-import { UserPlus, LogIn, Heart, Bookmark, LogOut, ShieldUser } from "lucide-react";
+import { UserPlus, LogIn, Heart, LogOut, ShieldUser } from "lucide-react";
 import { NavLink, Link } from "react-router";
 
 export default function Header() {
@@ -35,21 +35,25 @@ export default function Header() {
 
             <div className="header-right">
 
+                {/* Admin only */}
                 <Link to="/dashboard" className="dashboard-btn">
                     Dashboard
                     <ShieldUser size={13} />
                 </Link>
 
-                <Link to="/list" className="wish-btn">
-                    Wishlist
-                    <Bookmark size={13} />
-                </Link>
 
+                {/* User and Admin */}
                 <Link to="/list" className="favs-btn">
                     Favs
                     <Heart size={13} />
                 </Link>
 
+                <button className="logout-btn">
+                    <LogOut size={13} />
+                </button>
+
+
+                {/* Guest only */}
                 <Link to="signup" className="signup-btn">
                     <UserPlus size={13} />
                 </Link>
@@ -57,10 +61,6 @@ export default function Header() {
                 <Link to="login" className="login-btn">
                     <LogIn size={13} />
                 </Link>
-
-                <button className="logout-btn">
-                    <LogOut size={13} />
-                </button>
             </div>
 
         </header>

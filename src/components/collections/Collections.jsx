@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { fetchCategories } from "../utils/fetchCategories";
-import Spinner from "../components/layout/Spinner";
+import { fetchCategories } from "../../utils/fetchCategories";
+import Spinner from "../shared/Spinner";
 
 export default function Collections() {
     const [categories, setCategories] = useState([]);

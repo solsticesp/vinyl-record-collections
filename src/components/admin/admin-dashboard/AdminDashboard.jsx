@@ -1,14 +1,13 @@
 // import { Link } from "react-router";
 import { useEffect, useState } from "react";
-import { supabaseUrl, supabaseKey } from "../supabase";
-import SaveRecordsModal from "../components/records/SaveRecordsModal";
-import DeleteRecordModal from "../components/records/DeleteRecordModal";
-import AdminRecordListItem from "../components/records/AdminRecordListItem";
-import RecordInfoModal from "../components/records/RecordInfoModal";
+import { supabaseUrl, supabaseKey } from "../../../supabase";
+import SaveRecordsModal from "../admin-modals/SaveRecordsModal";
+import DeleteRecordModal from "../admin-modals/DeleteRecordModal";
+import AdminRecordListItem from "../admin-record-list-item/AdminRecordListItem";
+import RecordInfoModal from "../admin-modals/RecordInfoModal";
 
-
-import { fetchRecords } from "../utils/fetchRecords";
-import Spinner from "../components/layout/Spinner";
+import { fetchRecords } from "../../../utils/fetchRecords";
+import Spinner from "../../shared/Spinner";
 
 export default function AdminDashboard() {
     const [loading, setLoading] = useState(true)

@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
-import ApproachSection from "../components/home/ApproachSection";
-import FavProductsSection from "../components/home/FavProductsSection";
-import HeroSection from "../components/home/HeroSection";
-import TopToolsSection from "../components/home/TopToolsSection";
-import Spinner from "../components/layout/Spinner";
+import ApproachSection from "./approach-section/ApproachSection";
+import FavProductsSection from "./fav-products-section/FavProductsSection";
+import HeroSection from "./hero-section/HeroSection";
+import TopToolsSection from "./top-tools-section/TopToolsSection";
+import Spinner from "../shared/Spinner";
 
 export default function Home() {
     const [loading, setLoading] = useState(true);

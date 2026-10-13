@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import HeroSectionItem from "./HeroSectionItem";
 
 
@@ -17,10 +18,10 @@ export default function HeroSection() {
                     '26
                 </p>
 
-                <a href="#" className="shop-btn">
-                    <span>Go To Recently Added</span>
+                <Link to="/records" className="browse-btn">
+                    <span>Browse All Records</span>
                     <span className="arrow">⟶</span>
-                </a>
+                </Link>
             </div>
 
             <div className="hero-images">

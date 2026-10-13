@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { supabaseUrl, supabaseKey } from "../supabase";
+import { supabaseUrl, supabaseKey } from "../../supabase";
 
 export default function RecordDetails() {
     const { id } = useParams();
@@ -89,9 +89,9 @@ export default function RecordDetails() {
                             Add to Favorites
                         </button>
 
-                        <button className="add-to-cart">
+                        {/* <button className="add-to-cart">
                             Add to Collection
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </section>

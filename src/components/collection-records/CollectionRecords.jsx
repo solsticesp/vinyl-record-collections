@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router";
-import { fetchRecords } from "../utils/fetchRecords";
-import RecordCard from "../components/records/RecordCard";
-import Spinner from "../components/layout/Spinner";
+import { fetchRecords } from "../../utils/fetchRecords";
+import RecordCard from "../record-card/RecordCard";
+import Spinner from "../shared/Spinner";
 
 export default function CollectionRecords() {
     const { categoryId } = useParams();

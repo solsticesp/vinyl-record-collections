@@ -1,5 +1,5 @@
-import records from "../../data/records";
-import RecordCard from "../records/RecordCard";
+import records from "../../../data/records";
+import RecordCard from "../../record-card/RecordCard";
 
 export default function FavProductsSection() {
 
