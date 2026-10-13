@@ -39,8 +39,16 @@ function App() {
             />
             <Route path='list' element={<SaveList />} />
             <Route path='contacts' element={<Contacts />} />
+          </Route>
+
+          {/* Guest only */}
+          <Route>
             <Route path='signup' element={<SignUp />} />
             <Route path='login' element={<LogIn />} />
+          </Route>
+
+          {/* Admin only */}
+          <Route>
             <Route path='dashboard' element={<AdminDashboard />} />
           </Route>
         </Routes>
