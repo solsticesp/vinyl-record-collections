@@ -1,4 +1,4 @@
-import { UserPlus, LogIn, Heart, Bookmark, LogOut, ShieldUser } from "lucide-react";
+import { UserPlus, LogIn, Heart, LogOut, ShieldUser } from "lucide-react";
 import { NavLink, Link } from "react-router";
 
 export default function Header() {
@@ -38,11 +38,6 @@ export default function Header() {
                 <Link to="/dashboard" className="dashboard-btn">
                     Dashboard
                     <ShieldUser size={13} />
-                </Link>
-
-                <Link to="/list" className="wish-btn">
-                    Wishlist
-                    <Bookmark size={13} />
                 </Link>
 
                 <Link to="/list" className="favs-btn">

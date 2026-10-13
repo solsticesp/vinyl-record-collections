@@ -1,7 +1,7 @@
-import RecordCard from "../components/records/RecordCard";
-import Spinner from "../components/layout/Spinner";
+import RecordCard from "../record-card/RecordCard";
+import Spinner from "../shared/Spinner";
 import { useEffect, useState } from "react";
-import { supabaseUrl, supabaseKey } from "../supabase";
+import { supabaseUrl, supabaseKey } from "../../supabase";
 
 export default function Records() {
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function About() {
     return (
         <>
@@ -116,9 +118,9 @@ export default function About() {
                         WORTH KEEPING.
                     </h2>
 
-                    <a href="#" className="about-link">
+                    <Link to="/records" className="about-link">
                         EXPLORE RECORDS →
-                    </a>
+                    </Link>
                 </section>
             </div>
 

@@ -1,4 +1,4 @@
-import ListItem from "../components/records/ListItem";
+import ListItem from "./ListItem";
 
 export default function SaveList() {
     return (

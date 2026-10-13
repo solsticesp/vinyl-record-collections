@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchCategories } from "../../utils/fetchCategories";
+import { fetchCategories } from "../../../utils/fetchCategories";
 import { Link } from "react-router";
 
 export default function TopToolsSection({

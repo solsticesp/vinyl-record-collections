@@ -160,7 +160,6 @@ a.login-btn,
 }
 
 a.favs-btn,
-a.wish-btn,
 a.dashboard-btn {
   height: 27px;
   padding: 0 8px 0 13px;
@@ -267,7 +266,7 @@ a.dashboard-btn {
 }
 
 .hero-copy h1 {
-  font-size: 27px;
+  font-size: 40px;
   line-height: .84;
   letter-spacing: -1.6px;
   font-weight: 900;
@@ -306,7 +305,7 @@ a.dashboard-btn {
   object-fit: cover;
 }
 
-.shop-btn {
+.browse-btn {
   position: absolute;
   left: 0;
   bottom: 68px;
@@ -361,14 +360,13 @@ a.dashboard-btn {
 
 .section-heading {
   margin-bottom: 14px;
-
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
 .section-heading h2 {
-  font-size: 27px;
+  font-size: 40px;
   line-height: .78;
   letter-spacing: -1.3px;
   font-weight: 900;
