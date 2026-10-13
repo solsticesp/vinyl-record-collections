@@ -1,6 +1,29 @@
+import { useState } from "react";
 import { Link } from "react-router";
 
+const initialValues = {
+    email: '',
+    password: '',
+}
+
 export default function LogIn() {
+    const [data, setData] = useState(initialValues);
+
+    const changeHandler = (e) => {
+        setData((state) => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    const submitAction = () => {
+        console.log(data);
+
+        //Reset form
+        setData(initialValues);
+    }
+
+
     return (
         <div className="page auth-page">
             <div className="auth-layout">
@@ -21,7 +44,7 @@ export default function LogIn() {
                 </div>
 
                 <div className="auth-form-wrapper">
-                    <form className="auth-form">
+                    <form className="auth-form" action={submitAction}>
                         <div className="form-group">
                             <label htmlFor="email">
                                 Email
@@ -31,6 +54,7 @@ export default function LogIn() {
                                 id="email"
                                 type="email"
                                 name="email"
+                                onChange={changeHandler}
                                 placeholder="your@email.com"
                             />
                         </div>
@@ -44,11 +68,12 @@ export default function LogIn() {
                                 id="password"
                                 type="password"
                                 name="password"
+                                onChange={changeHandler}
                                 placeholder="••••••••"
                             />
                         </div>
 
-                        <div className="auth-options">
+                        {/* <div className="auth-options">
                             <label className="remember-me">
                                 <input
                                     name="remember_me"
@@ -59,7 +84,7 @@ export default function LogIn() {
                             <Link to="#">
                                 Forgot password?
                             </Link>
-                        </div>
+                        </div> */}
 
                         <button
                             type="submit"
