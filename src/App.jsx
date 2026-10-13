@@ -1,10 +1,6 @@
 import { Routes, Route } from 'react-router'
-// import ApproachSection from "./components/home/ApproachSection";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-// import HeroSection from "./components/home/HeroSection";
-// import FavProductsSection from "./components/home/FavProductsSection";
-// import TopToolsSection from "./components/home/TopToolsSection";
 import About from './components/about/About';
 import Home from './components/home/Home';
 import Contacts from './components/contacts/Contacts';
@@ -17,7 +13,7 @@ import AdminDashboard from './components/admin/admin-dashboard/AdminDashboard';
 import SaveList from './components/save-list/SaveList';
 import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
-// import SaveRecordsModal from './components/SaveRecordsModal';
+
 
 function App() {
   return (

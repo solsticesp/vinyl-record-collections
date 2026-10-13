@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function LogIn() {
     return (
         <div className="page auth-page">
@@ -28,6 +30,7 @@ export default function LogIn() {
                             <input
                                 id="email"
                                 type="email"
+                                name="email"
                                 placeholder="your@email.com"
                             />
                         </div>
@@ -40,19 +43,22 @@ export default function LogIn() {
                             <input
                                 id="password"
                                 type="password"
+                                name="password"
                                 placeholder="••••••••"
                             />
                         </div>
 
                         <div className="auth-options">
                             <label className="remember-me">
-                                <input type="checkbox" />
+                                <input
+                                    name="remember_me"
+                                    type="checkbox" />
                                 <span>Remember me</span>
                             </label>
 
-                            <a href="#">
+                            <Link to="#">
                                 Forgot password?
-                            </a>
+                            </Link>
                         </div>
 
                         <button
@@ -66,9 +72,9 @@ export default function LogIn() {
                     <div className="auth-switch">
                         <span>Don't have an account?</span>
 
-                        <a href="#">
+                        <Link to="/signup">
                             Sign Up
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

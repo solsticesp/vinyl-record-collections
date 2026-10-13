@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export default function SignUp() {
     return (
         <div className="page auth-page">
@@ -28,6 +30,7 @@ export default function SignUp() {
                                 </label>
 
                                 <input
+                                    name="first_name"
                                     id="firstName"
                                     type="text"
                                 />
@@ -39,6 +42,7 @@ export default function SignUp() {
                                 </label>
 
                                 <input
+                                    name="last_name"
                                     id="lastName"
                                     type="text"
                                 />
@@ -51,6 +55,7 @@ export default function SignUp() {
                             </label>
 
                             <input
+                                name="email"
                                 id="email"
                                 type="email"
                             />
@@ -63,6 +68,7 @@ export default function SignUp() {
                             </label>
 
                             <input
+                                name="password"
                                 id="password"
                                 type="password"
                             />
@@ -74,13 +80,16 @@ export default function SignUp() {
                             </label>
 
                             <input
+                                name="confirm-password"
                                 id="confirmPassword"
                                 type="password"
                             />
                         </div>
 
                         <label className="terms-check">
-                            <input type="checkbox" />
+                            <input
+                                name="terms_check"
+                                type="checkbox" />
 
                             <span>
                                 I agree to the
@@ -101,9 +110,9 @@ export default function SignUp() {
                             Already have an account?
                         </span>
 
-                        <a href="#">
+                        <Link to="/login">
                             Log In
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

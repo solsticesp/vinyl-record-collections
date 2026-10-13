@@ -17,11 +17,12 @@ export default function Footer() {
                 <div>
                     <small>COLLECTIONS</small>
 
-                    <a href="#">Pop</a>
-                    <a href="#">Rock & Metal</a>
-                    <a href="#">Jazz & Soul</a>
-                    <a href="#">R&B & Hip-Hop</a>
-                    <a href="#">Classical</a>
+                    <Link to="/collections/2">Pop</Link>
+                    <Link to="/collections/1">Rock & Metal</Link>
+                    <Link to="/collections/3">Jazz & Soul</Link>
+                    <Link to="/collections/5">R&B & Hip-Hop</Link>
+                    <Link to="/collections/4">Classical</Link>
+                    <Link to="/collections/6">Electronic</Link>
                 </div>
 
             </div>
