@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { validate } from "../../utils/validate";
 
 const initialValues = {
     first_name: '',
@@ -11,7 +12,9 @@ const initialValues = {
 };
 
 export default function SignUp() {
-    const [data, setData] = useState(initialValues)
+    const [data, setData] = useState(initialValues);
+    const [errors, setErrors] = useState({});
+    const [touched, setTouched] = useState({});
 
     const changeHandler = (e) => {
         setData((state) => ({
@@ -20,12 +23,32 @@ export default function SignUp() {
         }));
     };
 
+    const validationHandler = (e) => {
+        setTouched(state => ({
+            ...state,
+            [e.target.name]: true,
+        }));
+        const errors = validate(data);
+        setErrors(errors);
+    }
+
     const submitAction = () => {
-        console.log('Submit');
+        const errors = validate(data);
+        setErrors(errors);
+        setTouched(errors);
+
+        if (Object.keys(errors) > 0) {
+            return;
+        }
 
         //Reset form
         setData(initialValues);
     }
+
+    const inputClass = (field) => `${errors[field] && touched[field] ? 'error-field' : ''}`;
+    const errorText = (field) => errors[field] && touched[field] && (
+        <p className="error-msg">{errors[field]}</p>
+    )
 
     return (
         <div className="page auth-page">
@@ -59,9 +82,12 @@ export default function SignUp() {
                                     name="first_name"
                                     value={data.first_name}
                                     onChange={changeHandler}
+                                    onBlur={validationHandler}
                                     id="firstName"
                                     type="text"
+                                    className={inputClass('first_name')}
                                 />
+                                {errorText('first_name')}
                             </div>
 
                             <div className="form-group">
@@ -73,9 +99,12 @@ export default function SignUp() {
                                     name="last_name"
                                     value={data.last_name}
                                     onChange={changeHandler}
+                                    onBlur={validationHandler}
                                     id="lastName"
                                     type="text"
+                                    className={inputClass('last_name')}
                                 />
+                                {errorText('last_name')}
                             </div>
                         </div>
 
@@ -88,9 +117,12 @@ export default function SignUp() {
                                 name="email"
                                 value={data.email}
                                 onChange={changeHandler}
+                                onBlur={validationHandler}
                                 id="email"
                                 type="email"
+                                className={inputClass('email')}
                             />
+                            {errorText('email')}
                         </div>
 
                         <div className="form-group">
@@ -102,9 +134,12 @@ export default function SignUp() {
                                 name="country"
                                 value={data.country}
                                 onChange={changeHandler}
+                                onBlur={validationHandler}
                                 id="country"
                                 type="text"
+                                className={inputClass('country')}
                             />
+                            {errorText('country')}
                         </div>
 
                         <div className="form-group">
@@ -116,9 +151,12 @@ export default function SignUp() {
                                 name="password"
                                 value={data.password}
                                 onChange={changeHandler}
+                                onBlur={validationHandler}
                                 id="password"
                                 type="password"
+                                className={inputClass('password')}
                             />
+                            {errorText('password')}
                         </div>
 
                         {/* <div className="form-group">
@@ -140,13 +178,17 @@ export default function SignUp() {
                                 name="terms_check"
                                 checked={data.terms_check}
                                 onChange={changeHandler}
-                                type="checkbox" />
+                                type="checkbox"
+                                className={inputClass('terms_check')}
+                            />
 
                             <span>
                                 I agree to the
                                 <a href="#"> Terms &amp; Conditions</a>
                             </span>
                         </label>
+                        {errorText('terms_check')}
+
 
                         <button
                             type="submit"
