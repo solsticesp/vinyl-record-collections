@@ -53,9 +53,9 @@ export default function Header({
                                 <Heart size={13} />
                             </Link>
 
-                            <button className="logout-btn">
+                            <Link to="/logout" className="logout-btn">
                                 <LogOut size={13} />
-                            </button>
+                            </Link>
                         </>
                     )
                     : (

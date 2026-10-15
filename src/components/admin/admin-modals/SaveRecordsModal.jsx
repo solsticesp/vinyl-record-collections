@@ -1,5 +1,16 @@
 import { useState } from "react";
 // import { supabaseUrl, supabaseKey } from "../../supabase";
+const initialValues = {
+    title: '',
+    artist: '',
+    category_id: '',
+    release_year: '',
+    price: '',
+    format: '',
+    cover_url: '',
+    description: '',
+    tracklist: [],
+}
 
 export default function SaveRecordsModal({
     onClose,
@@ -7,13 +18,28 @@ export default function SaveRecordsModal({
     onSave,
 }) {
     const isEdit = !!record;
+    const [values, setValues] = useState(
+        record ? {
+            ...initialValues,
+            ...record,
+        } : initialValues
+    );
 
     const [tracks, setTracks] = useState(
-        record?.tracklist || [
-            { title: "", duration: "" },
-            { title: "", duration: "" }
-        ]
+        record?.tracklist?.length
+            ? record.tracklist
+            : [
+                { title: "", duration: "" },
+                { title: "", duration: "" }
+            ]
     );
+
+    const changeHandler = (e) => {
+        setValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value
+        }));
+    }
 
     return (
         <div className="modal-overlay">
@@ -37,18 +63,12 @@ export default function SaveRecordsModal({
                     onSubmit={(event) => {
                         event.preventDefault();
 
-                        const formData = new FormData(event.target);
-
                         const newRecord = {
-                            title: formData.get("title"),
-                            artist: formData.get("artist"),
-                            category_id: Number(formData.get("category_id")),
-                            release_year: Number(formData.get("release_year")),
-                            price: Number(formData.get("price")),
-                            format: formData.get("format"),
-                            cover_url: formData.get("cover_url"),
-                            description: formData.get("description"),
-                            tracklist: tracks
+                            ...values,
+                            category_id: Number(values.category_id),
+                            release_year: Number(values.release_year),
+                            price: Number(values.price),
+                            tracklist: tracks,
                         };
 
                         onSave(newRecord);
@@ -63,17 +83,31 @@ export default function SaveRecordsModal({
                         <div className="form-grid">
                             <div className="form-group full">
                                 <label>Title</label>
-                                <input type="text" name="title" defaultValue={record?.title || ""} />
+                                <input
+                                    type="text"
+                                    name="title"
+                                    value={values.title}
+                                    onChange={changeHandler}
+                                />
                             </div>
 
                             <div className="form-group full">
                                 <label>Artist</label>
-                                <input type="text" name="artist" defaultValue={record?.artist || ""} />
+                                <input
+                                    type="text"
+                                    name="artist"
+                                    value={values.artist}
+                                    onChange={changeHandler}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label>Genre</label>
-                                <select name="category_id" defaultValue={record?.category_id || ""}>
+                                <select
+                                    name="category_id"
+                                    value={values.category_id}
+                                    onChange={changeHandler}
+                                >
                                     <option value="">Select genre</option>
                                     <option value="1">Rock & Metal</option>
                                     <option value="2">Pop</option>
@@ -86,19 +120,30 @@ export default function SaveRecordsModal({
 
                             <div className="form-group">
                                 <label>Release Year</label>
-                                <input type="number" name="release_year" defaultValue={record?.release_year || ""} />
+                                <input
+                                    type="number"
+                                    name="release_year"
+                                    value={values.release_year || ""}
+                                    onChange={changeHandler}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label>Price</label>
-                                <input type="number" name="price" defaultValue={record?.price || ""} />
+                                <input
+                                    type="number"
+                                    name="price"
+                                    value={values.price || ""}
+                                    onChange={changeHandler}
+                                />
                             </div>
 
                             <div className="form-group">
                                 <label>Format</label>
                                 <select
                                     name="format"
-                                    defaultValue={record?.format || ""}
+                                    value={values.format}
+                                    onChange={changeHandler}
                                 >
                                     <option value="">Select format</option>
                                     <option value="LP">LP</option>
@@ -126,7 +171,8 @@ export default function SaveRecordsModal({
                                     name="cover_url"
                                     type="url"
                                     placeholder="https://example.com/cover.jpg"
-                                    defaultValue={record?.cover_url || ""}
+                                    value={values.cover_url}
+                                    onChange={changeHandler}
                                 />
 
                                 <small>
@@ -146,7 +192,8 @@ export default function SaveRecordsModal({
                             <textarea
                                 name="description"
                                 rows="5"
-                                defaultValue={record?.description || ""}
+                                value={values.description}
+                                onChange={changeHandler}
                             ></textarea>
                         </div>
                     </section>
@@ -185,7 +232,7 @@ export default function SaveRecordsModal({
                                             ));
                                         }}
                                     />
-                                    
+
                                     <input
                                         type="text"
                                         placeholder="0:00"

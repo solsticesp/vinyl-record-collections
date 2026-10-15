@@ -6,16 +6,21 @@ export default function LogIn({
     onLogin,
 }) {
     const [data, setData] = useState({
-        email: '',
-        password: '',
+        login: {
+            email: '',
+            password: '',
+        }
     });
     const [errors, setErrors] = useState({})
     const navigate = useNavigate();
 
     const changeHandler = (e) => {
+
         setData((state) => ({
-            ...state,
-            [e.target.name]: e.target.value,
+            login: {
+                ...state.login,
+                [e.target.name]: e.target.value
+            }
         }));
     };
 
@@ -23,9 +28,13 @@ export default function LogIn({
 
     const submitAction = () => {
         const errors = validate(data);
+        console.log(data);
+
         setErrors(errors);
 
         if (Object.keys(errors).length > 0) {
+            console.log(errors);
+
             return;
         }
 
@@ -72,9 +81,8 @@ export default function LogIn({
                                 name="email"
                                 onChange={changeHandler}
                                 placeholder="your@email.com"
-                                className={inputClass('email')}
+                                className={inputClass('login')}
                             />
-                            {errorText('email')}
                         </div>
 
                         <div className="form-group">
@@ -88,9 +96,8 @@ export default function LogIn({
                                 name="password"
                                 onChange={changeHandler}
                                 placeholder="••••••••"
-                                className={inputClass('password')}
+                                className={inputClass('login')}
                             />
-                            {errorText('password')}
                         </div>
 
                         {/* <div className="auth-options">
@@ -105,6 +112,8 @@ export default function LogIn({
                                 Forgot password?
                             </Link>
                         </div> */}
+
+                        {errorText('login')}
 
                         <button
                             type="submit"

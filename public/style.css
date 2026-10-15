@@ -147,7 +147,7 @@ body::before {
 
 a.signup-btn,
 a.login-btn,
-.logout-btn {
+a.logout-btn {
   width: 26px;
   height: 26px;
   border: 0;

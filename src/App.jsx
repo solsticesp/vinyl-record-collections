@@ -14,20 +14,30 @@ import SaveList from './components/save-list/SaveList';
 import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
 import { useState } from 'react';
+import Logout from './components/logout/Logout';
 
 
 function App() {
+    // const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
     const userAuthHandler = (data) => {
         setUser(data)
-    }
+    };
+
+    const userLoginHandler = (data) => {
+        setUser(data.login)
+    };
+
+    const logoutAction = () => {
+        setUser(null);
+    };
 
     return (
         <>
             <ScrollToTop />
 
-            <Header user={user}/>
+            <Header user={user} />
 
             <section id="main">
                 <Routes>
@@ -48,7 +58,8 @@ function App() {
                     {/* Guest only */}
                     <Route>
                         <Route path='signup' element={<SignUp onSignup={userAuthHandler} user={user} />} />
-                        <Route path='login' element={<LogIn onLogin={userAuthHandler} user={user}/>} />
+                        <Route path='login' element={<LogIn onLogin={userLoginHandler} user={user} />} />
+                        <Route path='logout' element={<Logout onLogout={logoutAction}/>} />
                     </Route>
 
                     {/* Admin only */}
