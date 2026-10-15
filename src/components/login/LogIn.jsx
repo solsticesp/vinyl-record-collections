@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { validate } from "../../utils/validate";
 
 const initialValues = {
     email: '',
@@ -8,6 +9,7 @@ const initialValues = {
 
 export default function LogIn() {
     const [data, setData] = useState(initialValues);
+    const [errors, setErrors] = useState({})
 
     const changeHandler = (e) => {
         setData((state) => ({
@@ -16,12 +18,21 @@ export default function LogIn() {
         }));
     };
 
+
+    //TODO: Validation function for login !
+
     const submitAction = () => {
-        console.log(data);
+        const errors = validate(data);
+        setErrors(errors);
 
         //Reset form
         setData(initialValues);
     }
+
+    const inputClass = (field) => `${errors[field] ? 'error-field' : ''}`;
+    const errorText = (field) => errors[field] && (
+        <p className="error-msg">{errors[field]}</p>
+    )
 
 
     return (
@@ -56,7 +67,9 @@ export default function LogIn() {
                                 name="email"
                                 onChange={changeHandler}
                                 placeholder="your@email.com"
+                                className={inputClass('email')}
                             />
+                            {errorText('email')}
                         </div>
 
                         <div className="form-group">
@@ -70,7 +83,9 @@ export default function LogIn() {
                                 name="password"
                                 onChange={changeHandler}
                                 placeholder="••••••••"
+                                className={inputClass('password')}
                             />
+                            {errorText('password')}
                         </div>
 
                         {/* <div className="auth-options">

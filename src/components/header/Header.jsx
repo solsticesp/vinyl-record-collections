@@ -42,6 +42,16 @@ export default function Header() {
                 </Link>
 
 
+                {/* Guest only */}
+                <Link to="/signup" className="signup-btn">
+                    <UserPlus size={13} />
+                </Link>
+
+                <Link to="/login" className="login-btn">
+                    <LogIn size={13} />
+                </Link>
+
+                
                 {/* User and Admin */}
                 <Link to="/list" className="favs-btn">
                     Favs
@@ -51,16 +61,6 @@ export default function Header() {
                 <button className="logout-btn">
                     <LogOut size={13} />
                 </button>
-
-
-                {/* Guest only */}
-                <Link to="signup" className="signup-btn">
-                    <UserPlus size={13} />
-                </Link>
-
-                <Link to="login" className="login-btn">
-                    <LogIn size={13} />
-                </Link>
             </div>
 
         </header>

@@ -1,4 +1,4 @@
-     export function validate(values) {
+export function validate(values) {
         let errors = {};
 
         //Validate first name field
@@ -30,10 +30,15 @@
             errors['password'] = 'Password must be at least 4 characters long!';
         }
 
+        if (values.confirm_password !== values.password) {
+            errors['confirm_password'] = 'Passwords do not match!';
+        }
+
         //Validate checkbox
-        if (!values.terms_check.checked) {
+        if (!values.terms_check) {
             errors['terms_check'] = 'You must accept the terms and conditions to proceed.';
         }
 
         return errors;
-    }
+}
+
