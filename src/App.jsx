@@ -13,46 +13,55 @@ import AdminDashboard from './components/admin/admin-dashboard/AdminDashboard';
 import SaveList from './components/save-list/SaveList';
 import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
+import { useState } from 'react';
 
 
 function App() {
-  return (
-    <>
-      <ScrollToTop />
+    const [user, setUser] = useState(null);
 
-      <Header />
-      <section id="main">
-        <Routes>
-          <Route>
-            <Route path='/' element={<Home />} />
-            <Route path='about' element={<About />} />
-            <Route path='records' element={<Records />} />
-            <Route path='records/:id' element={<RecordDetails />} />
-            <Route path='collections' element={<Collections />} />
-            <Route
-              path="/collections/:categoryId"
-              element={<CollectionRecords />}
-            />
-            <Route path='list' element={<SaveList />} />
-            <Route path='contacts' element={<Contacts />} />
-          </Route>
+    const userAuthHandler = (data) => {
+        setUser(data)
+    }
 
-          {/* Guest only */}
-          <Route>
-            <Route path='signup' element={<SignUp />} />
-            <Route path='login' element={<LogIn />} />
-          </Route>
+    return (
+        <>
+            <ScrollToTop />
 
-          {/* Admin only */}
-          <Route>
-            <Route path='dashboard' element={<AdminDashboard />} />
-          </Route>
-        </Routes>
-      </section >
+            <Header />
+            {user && <h3>Welcome, {user.first_name}!</h3>}
 
-      <Footer />
-    </>
-  )
+            <section id="main">
+                <Routes>
+                    <Route>
+                        <Route path='/' element={<Home />} />
+                        <Route path='about' element={<About />} />
+                        <Route path='records' element={<Records />} />
+                        <Route path='records/:id' element={<RecordDetails />} />
+                        <Route path='collections' element={<Collections />} />
+                        <Route
+                            path="/collections/:categoryId"
+                            element={<CollectionRecords />}
+                        />
+                        <Route path='list' element={<SaveList />} />
+                        <Route path='contacts' element={<Contacts />} />
+                    </Route>
+
+                    {/* Guest only */}
+                    <Route>
+                        <Route path='signup' element={<SignUp onSignup={userAuthHandler} user={user} />} />
+                        <Route path='login' element={<LogIn />} />
+                    </Route>
+
+                    {/* Admin only */}
+                    <Route>
+                        <Route path='dashboard' element={<AdminDashboard />} />
+                    </Route>
+                </Routes>
+            </section >
+
+            <Footer />
+        </>
+    )
 }
 
 export default App

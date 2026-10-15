@@ -12,11 +12,12 @@ const initialValues = {
     terms_check: false,
 };
 
-export default function SignUp() {
+export default function SignUp({
+    onSignup,
+}) {
     const [data, setData] = useState(initialValues);
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
-    const [user, setUser] = useState(null);
     const navigate = useNavigate();
 
     const changeHandler = (e) => {
@@ -47,7 +48,7 @@ export default function SignUp() {
         console.log(data);
 
         //Proceed with registration logic (Api call)
-        setUser(data);
+        onSignup(data);
         
         //redirect to homepage
         navigate('/');
@@ -61,7 +62,6 @@ export default function SignUp() {
 
     return (
         <>
-            {user && <h3>Welcome, {user.first_name}!</h3>}
             <div className="page auth-page">
                 <div className="auth-layout">
                     <div className="auth-intro">
