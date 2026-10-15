@@ -41,6 +41,18 @@ export default function SaveRecordsModal({
         }));
     }
 
+    const submitAction = () => {
+        const newRecord = {
+            ...values,
+            category_id: Number(values.category_id),
+            release_year: Number(values.release_year),
+            price: Number(values.price),
+            tracklist: tracks,
+        };
+
+        onSave(newRecord);
+    };
+
     return (
         <div className="modal-overlay">
             <div className="backdrop" onClick={onClose}></div>
@@ -59,20 +71,7 @@ export default function SaveRecordsModal({
 
 
                 <form
-                    className="record-form"
-                    onSubmit={(event) => {
-                        event.preventDefault();
-
-                        const newRecord = {
-                            ...values,
-                            category_id: Number(values.category_id),
-                            release_year: Number(values.release_year),
-                            price: Number(values.price),
-                            tracklist: tracks,
-                        };
-
-                        onSave(newRecord);
-                    }}
+                    className="record-form" action={submitAction}
                 >
                     <section className="form-section">
                         <div className="form-section-heading">
