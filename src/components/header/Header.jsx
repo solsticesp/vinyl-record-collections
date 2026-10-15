@@ -46,7 +46,7 @@ export default function Header({
                 {user
                     ? (
                         <>
-                            <p>Welcome, {user.first_name}</p>
+                            <p>Welcome, {user.email}</p>
                             {/* User and Admin */}
                             <Link to="/list" className="favs-btn">
                                 Favs

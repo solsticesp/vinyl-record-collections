@@ -1,15 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { validate } from "../../utils/validate";
 
-const initialValues = {
-    email: '',
-    password: '',
-}
-
-export default function LogIn() {
-    const [data, setData] = useState(initialValues);
+export default function LogIn({
+    onLogin,
+}) {
+    const [data, setData] = useState({
+        email: '',
+        password: '',
+    });
     const [errors, setErrors] = useState({})
+    const navigate = useNavigate();
 
     const changeHandler = (e) => {
         setData((state) => ({
@@ -18,15 +19,19 @@ export default function LogIn() {
         }));
     };
 
-
     //TODO: Validation function for login !
 
     const submitAction = () => {
         const errors = validate(data);
         setErrors(errors);
 
-        //Reset form
-        setData(initialValues);
+        if (Object.keys(errors).length > 0) {
+            return;
+        }
+
+        onLogin(data)
+
+        navigate('/')
     }
 
     const inputClass = (field) => `${errors[field] ? 'error-field' : ''}`;

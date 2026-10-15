@@ -48,7 +48,7 @@ function App() {
                     {/* Guest only */}
                     <Route>
                         <Route path='signup' element={<SignUp onSignup={userAuthHandler} user={user} />} />
-                        <Route path='login' element={<LogIn />} />
+                        <Route path='login' element={<LogIn onLogin={userAuthHandler} user={user}/>} />
                     </Route>
 
                     {/* Admin only */}
