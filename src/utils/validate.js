@@ -16,11 +16,6 @@ export function validate(values) {
             errors['email'] = 'Email is required!';
         }
 
-        //Validate country field
-        if (!values.country) {
-            errors['country'] = 'Country is required!';
-        }
-
         //Validate password field
         if (!values.password) {
             errors['password'] = 'Password is required!';

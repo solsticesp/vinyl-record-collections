@@ -2,20 +2,18 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { validate } from "../../utils/validate";
 
-const initialValues = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    country: '',
-    password: '',
-    confirm_password: '',
-    terms_check: false,
-};
 
 export default function SignUp({
     onSignup,
 }) {
-    const [data, setData] = useState(initialValues);
+    const [data, setData] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        password: '',
+        confirm_password: '',
+        terms_check: false,
+    });
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
     const navigate = useNavigate();
@@ -38,18 +36,16 @@ export default function SignUp({
 
     const submitAction = () => {
         const errors = validate(data);
-        setErrors(errors);
         setTouched(errors);
+        setErrors(errors);
 
-        if (Object.keys(errors) > 0) {
+        if (Object.keys(errors).length > 0) {
             return;
         }
 
-        console.log(data);
-
         //Proceed with registration logic (Api call)
         onSignup(data);
-        
+
         //redirect to homepage
         navigate('/');
     }
@@ -134,23 +130,6 @@ export default function SignUp({
                                     className={inputClass('email')}
                                 />
                                 {errorText('email')}
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="country">
-                                    Country
-                                </label>
-
-                                <input
-                                    name="country"
-                                    value={data.country}
-                                    onChange={changeHandler}
-                                    onBlur={validationHandler}
-                                    id="country"
-                                    type="text"
-                                    className={inputClass('country')}
-                                />
-                                {errorText('country')}
                             </div>
 
                             <div className="form-group">

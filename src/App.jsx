@@ -27,8 +27,7 @@ function App() {
         <>
             <ScrollToTop />
 
-            <Header />
-            {user && <h3>Welcome, {user.first_name}!</h3>}
+            <Header user={user}/>
 
             <section id="main">
                 <Routes>
