@@ -1,11 +1,11 @@
-// const supabaseUrl = "https://eheypdtrchjkjjutvmwf.supabase.co/rest/v1/";
-import { supabaseUrl, supabaseKey } from "../supabase";
+// import { data } from "react-router";
+import { restUrl, authUrl, supabaseKey } from "../supabase";
 
-
-export default async function request(path = "/", method = "GET", data = null, opts = {}) {
+async function baseRequest(url, path = "/", method = "GET", data = null, opts = {}) {
     const options = {
         headers: {
             apikey: supabaseKey,
+            Prefer: "return=representation"
         },
         ...opts
     };
@@ -19,13 +19,20 @@ export default async function request(path = "/", method = "GET", data = null, o
         options.body = JSON.stringify(data);
     }
 
-    const response = await fetch(`${supabaseUrl}${path}`, options);
+    const response = await fetch(`${url}${path}`, options);
 
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
-    const text = await response.text();
-    return text ? JSON.parse(text) : null;
+
+    return response.json();
+}
+
+export default async function request(path = "/", method = "GET", data = null, opts = {}) {
+    return baseRequest(restUrl, path, method, data, opts);
+}
+
+export const authRequest = async (path = "/", method = "GET", data = null, opts = {}) => {
+    return baseRequest(authUrl, path, method, data, opts)
 }
 

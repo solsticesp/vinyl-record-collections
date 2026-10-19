@@ -1,13 +1,13 @@
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { supabaseUrl, supabaseKey } from "../../supabase";
+import { restUrl, supabaseKey } from "../../supabase";
 
 export default function RecordDetails() {
     const { id } = useParams();
     const [currentRecord, setCurrentRecord] = useState({});
 
     useEffect(() => {
-        fetch(`${supabaseUrl}/records?id=eq.${id}&select=*,categories(id,name)`, {
+        fetch(`${restUrl}/records?id=eq.${id}&select=*,categories(id,name)`, {
             headers: {
                 apikey: supabaseKey,
             }

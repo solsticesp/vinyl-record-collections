@@ -15,14 +15,21 @@ import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
 import { useState } from 'react';
 import Logout from './components/logout/Logout';
+import { register } from './api/auth-api';
 
 
 function App() {
     // const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
-    const userAuthHandler = () => {
+    const userAuthHandler = async (userData) => {
         //Authentication with supabase auth
+        try {
+            const result = await register(userData);
+            console.log(result);
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     const userLoginHandler = (data) => {
@@ -59,7 +66,7 @@ function App() {
                     <Route>
                         <Route path='signup' element={<SignUp onSignup={userAuthHandler} user={user} />} />
                         <Route path='login' element={<LogIn onLogin={userLoginHandler} user={user} />} />
-                        <Route path='logout' element={<Logout onLogout={logoutAction}/>} />
+                        <Route path='logout' element={<Logout onLogout={logoutAction} />} />
                     </Route>
 
                     {/* Admin only */}
