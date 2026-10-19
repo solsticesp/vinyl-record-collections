@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { validate } from "../../utils/validate";
 
 
@@ -16,7 +16,6 @@ export default function SignUp({
     });
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
-    const navigate = useNavigate();
 
     const changeHandler = (e) => {
         setData((state) => ({
@@ -44,10 +43,7 @@ export default function SignUp({
         }
 
         //Proceed with registration logic (Api call)
-        onSignup(data);
-
-        //redirect to homepage
-        navigate('/');
+       onSignup(data);
     }
 
     const inputClass = (field) => `${errors[field] && touched[field] ? 'error-field' : ''}`;

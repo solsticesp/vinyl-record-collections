@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useNavigate } from 'react-router'
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import About from './components/about/About';
@@ -15,29 +15,55 @@ import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
 import { useState } from 'react';
 import Logout from './components/logout/Logout';
+import { authApi } from './api';
+import AuthContext from './contexts/auth-context';
 
 
 function App() {
-    // const navigate = useNavigate();
-    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+    const [auth, setAuth] = useState(null);
 
-    const userAuthHandler = (data) => {
-        setUser(data)
+    const register = async (userData) => {
+        try {
+            const result = await authApi.register(userData);
+
+            setAuth(result);
+
+            navigate('/');
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
-    const userLoginHandler = (data) => {
-        setUser(data.login)
+    const login = async (userData) => {
+        try {
+            const result = await authApi.login(userData);
+
+            setAuth(result);
+
+            navigate('/');
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     const logoutAction = () => {
-        setUser(null);
+        setAuth(null);
     };
 
+    const contextValue = {
+        accessToken: auth?.access_token,
+        user: auth?.user,
+        isAuthenticated: !!auth,
+        register,
+        login,
+    }
+
     return (
-        <>
+        <AuthContext.Provider value={contextValue}>
             <ScrollToTop />
 
-            <Header user={user} />
+            <Header isAuthenticated={!!auth} />
 
             <section id="main">
                 <Routes>
@@ -57,9 +83,9 @@ function App() {
 
                     {/* Guest only */}
                     <Route>
-                        <Route path='signup' element={<SignUp onSignup={userAuthHandler} user={user} />} />
-                        <Route path='login' element={<LogIn onLogin={userLoginHandler} user={user} />} />
-                        <Route path='logout' element={<Logout onLogout={logoutAction}/>} />
+                        <Route path='signup' element={<SignUp onSignup={register} />} />
+                        <Route path='login' element={<LogIn onLogin={login} />} />
+                        <Route path='logout' element={<Logout onLogout={logoutAction} />} />
                     </Route>
 
                     {/* Admin only */}
@@ -70,7 +96,7 @@ function App() {
             </section >
 
             <Footer />
-        </>
+        </AuthContext.Provider>
     )
 }
 

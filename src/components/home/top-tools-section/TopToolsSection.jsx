@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchCategories } from "../../../utils/fetchCategories";
 import { Link } from "react-router";
+import request from "../../../utils/request";
 
 export default function TopToolsSection({
     onLoaded
@@ -8,8 +8,8 @@ export default function TopToolsSection({
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetchCategories()
-            .then(data => setCategories(data))
+        request("/categories")
+            .then(setCategories)
             .catch(error => alert('Error fetching categories: ' + error))
             .finally(() => {
                 onLoaded();

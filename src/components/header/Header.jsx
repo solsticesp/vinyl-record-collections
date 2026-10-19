@@ -2,7 +2,7 @@ import { UserPlus, LogIn, Heart, LogOut, ShieldUser } from "lucide-react";
 import { NavLink, Link } from "react-router";
 
 export default function Header({
-    user,
+    isAuthenticated,
 }) {
 
     return (
@@ -43,10 +43,9 @@ export default function Header({
                     <ShieldUser size={13} />
                 </Link>
 
-                {user
+                {isAuthenticated
                     ? (
                         <>
-                            <p>Welcome, {user.email}</p>
                             {/* User and Admin */}
                             <Link to="/list" className="favs-btn">
                                 Favs

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { validate } from "../../utils/validate";
 
 export default function LogIn({
@@ -12,7 +12,6 @@ export default function LogIn({
         }
     });
     const [errors, setErrors] = useState({})
-    const navigate = useNavigate();
 
     const changeHandler = (e) => {
 
@@ -28,7 +27,6 @@ export default function LogIn({
 
     const submitAction = () => {
         const errors = validate(data);
-        console.log(data);
 
         setErrors(errors);
 
@@ -38,9 +36,8 @@ export default function LogIn({
             return;
         }
 
-        onLogin(data)
+        onLogin(data.login)
 
-        navigate('/')
     }
 
     const inputClass = (field) => `${errors[field] ? 'error-field' : ''}`;

@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from "react";
 import { Link, useParams, useLocation } from "react-router";
-import { fetchRecords } from "../../utils/fetchRecords";
 import RecordCard from "../record-card/RecordCard";
 import Spinner from "../shared/Spinner";
+import request from "../../utils/request";
 
 export default function CollectionRecords() {
     const { categoryId } = useParams();
@@ -14,7 +14,7 @@ export default function CollectionRecords() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchRecords()
+        request("/records")
             .then((data) => {
                 const filteredRecords = data.filter(
                     (record) =>
