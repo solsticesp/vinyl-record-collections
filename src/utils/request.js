@@ -3,11 +3,13 @@ import { restUrl, authUrl, supabaseKey } from "../supabase";
 
 async function baseRequest(url, path = "/", method = "GET", data = null, opts = {}) {
     const options = {
+        ...opts,
         headers: {
+            ...opts,
             apikey: supabaseKey,
-            Prefer: "return=representation"
+            Prefer: "return=representation",
         },
-        ...opts
+        
     };
 
     if (method !== "GET") {

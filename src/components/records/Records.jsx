@@ -1,15 +1,23 @@
 import RecordCard from "../record-card/RecordCard";
 import Spinner from "../shared/Spinner";
 import { useEffect, useState } from "react";
-import request from "../../utils/request";
+// import request from "../../utils/request";
+import { recordApi } from "../../api";
 
 export default function Records() {
 
     const [records, setRecords] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // useEffect(() => {
+    //     request("/records")
+    //         .then(setRecords)
+    //         .catch(err => console.error(err))
+    //         .finally(() => setLoading(false))
+    // }, []);
+
     useEffect(() => {
-        request("/records")
+        recordApi.getAll()
             .then(setRecords)
             .catch(err => console.error(err))
             .finally(() => setLoading(false))
