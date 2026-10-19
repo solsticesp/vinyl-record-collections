@@ -13,19 +13,6 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(true)
     const [records, setRecords] = useState([]);
 
-    useEffect(() => {
-        fetchRecords()
-            .then(data => {
-                console.log(data);
-                setRecords(data)
-            })
-            .catch(error => console.error(error)
-            )
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
-
     const [showSaveRecordsModal, setShowSaveRecordsModal] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
 
@@ -54,7 +41,19 @@ export default function AdminDashboard() {
         setRecordToDelete(id);
         setShowDeleteModal(true);
     }
-
+    
+    useEffect(() => {
+        fetchRecords()
+            .then(data => {
+                console.log(data);
+                setRecords(data)
+            })
+            .catch(error => console.error(error)
+            )
+            .finally(() => {
+                setLoading(false);
+            });
+    }, []);
 
     const saveRecordHandler = async (record) => {
         const isEdit = selectedRecord !== null;

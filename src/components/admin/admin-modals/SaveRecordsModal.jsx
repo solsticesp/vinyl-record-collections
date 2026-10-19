@@ -13,8 +13,8 @@ const initialValues = {
 }
 
 export default function SaveRecordsModal({
-    onClose,
     record,
+    onClose,
     onSave,
 }) {
     const isEdit = !!record;
