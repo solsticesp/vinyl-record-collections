@@ -1,13 +1,16 @@
-// import { Link } from "react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import SaveRecordsModal from "../admin-modals/SaveRecordsModal";
 import DeleteRecordModal from "../admin-modals/DeleteRecordModal";
 import AdminRecordListItem from "../admin-record-list-item/AdminRecordListItem";
 import RecordInfoModal from "../admin-modals/RecordInfoModal";
 import Spinner from "../../shared/Spinner";
 import request from "../../../utils/request";
+import { recordApi } from "../../../api";
+import AuthContext from "../../../contexts/auth-context";
 
 export default function AdminDashboard() {
+    const { accessToken } = useContext(AuthContext)
+
     const [loading, setLoading] = useState(true)
     const [records, setRecords] = useState([]);
 
@@ -41,33 +44,35 @@ export default function AdminDashboard() {
     }
 
     useEffect(() => {
-        request("/records")
+        recordApi.getAll(accessToken)
             .then(setRecords)
-            .catch(error => console.error(error))
-            .finally(() => {
-                setLoading(false);
-            });
-    }, []);
+            .catch(error => console.error("Error loading records:", error))
+            .finally(() => setLoading(false));
+    }, [accessToken]);
 
     const saveRecordHandler = async (record) => {
         const isEdit = selectedRecord !== null;
 
         try {
-            await request(
-                isEdit
-                    ? `/records?id=eq.${selectedRecord.id}`
-                    : "/records",
-                isEdit ? "PATCH" : "POST",
-                record
-            );
+            if (isEdit) {
+                await recordApi.update(
+                    selectedRecord.id,
+                    record,
+                    accessToken
+                );
+            } else {
+                await recordApi.create(record, accessToken);
+            }
 
-            const updatedRecords = await request("/records");
+            const updatedRecords = await recordApi.getAll(accessToken);
 
             setRecords(updatedRecords);
             setShowSaveRecordsModal(false);
             setSelectedRecord(null);
         } catch (error) {
-            alert(`Error ${isEdit ? "updating" : "adding"} record: ${error.message}`);
+            alert(
+                `Error ${isEdit ? "updating" : "adding"} record: ${error.message}`
+            );
         }
     };
 
@@ -75,7 +80,7 @@ export default function AdminDashboard() {
         try {
             await request(
                 `/records?id=eq.${recordToDelete}`,
-                "DELETE"
+                "DELETE",
             );
 
             const updatedRecords = await request("/records");
