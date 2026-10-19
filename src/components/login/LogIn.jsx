@@ -1,4 +1,54 @@
-export default function LogIn() {
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { validate } from "../../utils/validate";
+
+export default function LogIn({
+    onLogin,
+}) {
+    const [data, setData] = useState({
+        login: {
+            email: '',
+            password: '',
+        }
+    });
+    const [errors, setErrors] = useState({})
+    const navigate = useNavigate();
+
+    const changeHandler = (e) => {
+
+        setData((state) => ({
+            login: {
+                ...state.login,
+                [e.target.name]: e.target.value
+            }
+        }));
+    };
+
+    //TODO: Validation function for login !
+
+    const submitAction = () => {
+        const errors = validate(data);
+        console.log(data);
+
+        setErrors(errors);
+
+        if (Object.keys(errors).length > 0) {
+            console.log(errors);
+
+            return;
+        }
+
+        onLogin(data)
+
+        navigate('/')
+    }
+
+    const inputClass = (field) => `${errors[field] ? 'error-field' : ''}`;
+    const errorText = (field) => errors[field] && (
+        <p className="error-msg">{errors[field]}</p>
+    )
+
+
     return (
         <div className="page auth-page">
             <div className="auth-layout">
@@ -19,7 +69,7 @@ export default function LogIn() {
                 </div>
 
                 <div className="auth-form-wrapper">
-                    <form className="auth-form">
+                    <form className="auth-form" action={submitAction}>
                         <div className="form-group">
                             <label htmlFor="email">
                                 Email
@@ -28,7 +78,10 @@ export default function LogIn() {
                             <input
                                 id="email"
                                 type="email"
+                                name="email"
+                                onChange={changeHandler}
                                 placeholder="your@email.com"
+                                className={inputClass('login')}
                             />
                         </div>
 
@@ -40,20 +93,27 @@ export default function LogIn() {
                             <input
                                 id="password"
                                 type="password"
+                                name="password"
+                                onChange={changeHandler}
                                 placeholder="••••••••"
+                                className={inputClass('login')}
                             />
                         </div>
 
-                        <div className="auth-options">
+                        {/* <div className="auth-options">
                             <label className="remember-me">
-                                <input type="checkbox" />
+                                <input
+                                    name="remember_me"
+                                    type="checkbox" />
                                 <span>Remember me</span>
                             </label>
 
-                            <a href="#">
+                            <Link to="#">
                                 Forgot password?
-                            </a>
-                        </div>
+                            </Link>
+                        </div> */}
+
+                        {errorText('login')}
 
                         <button
                             type="submit"
@@ -66,9 +126,9 @@ export default function LogIn() {
                     <div className="auth-switch">
                         <span>Don't have an account?</span>
 
-                        <a href="#">
+                        <Link to="/signup">
                             Sign Up
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

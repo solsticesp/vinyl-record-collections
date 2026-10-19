@@ -22,9 +22,6 @@ export default function AdminRecordListItem({
             <span>{record.categories?.name}</span>
 
             <div className="admin-actions">
-                {/* <Link to={`/records/${record.id}`}>
-                    INFO
-                </Link> */}
                 <button onClick={() => onInfo(record)}>INFO</button>
                 <button onClick={() => onEdit(record)}>EDIT</button>
                 <button onClick={() => onDelete(record.id)}>DELETE</button>

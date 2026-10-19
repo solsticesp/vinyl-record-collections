@@ -1,7 +1,9 @@
 import { UserPlus, LogIn, Heart, LogOut, ShieldUser } from "lucide-react";
 import { NavLink, Link } from "react-router";
 
-export default function Header() {
+export default function Header({
+    user,
+}) {
 
     return (
         <header className="header">
@@ -41,26 +43,35 @@ export default function Header() {
                     <ShieldUser size={13} />
                 </Link>
 
+                {user
+                    ? (
+                        <>
+                            <p>Welcome, {user.email}</p>
+                            {/* User and Admin */}
+                            <Link to="/list" className="favs-btn">
+                                Favs
+                                <Heart size={13} />
+                            </Link>
 
-                {/* User and Admin */}
-                <Link to="/list" className="favs-btn">
-                    Favs
-                    <Heart size={13} />
-                </Link>
+                            <Link to="/logout" className="logout-btn">
+                                <LogOut size={13} />
+                            </Link>
+                        </>
+                    )
+                    : (
+                        <>
+                            {/* Guest only */}
+                            <Link to="/signup" className="signup-btn">
+                                <UserPlus size={13} />
+                            </Link>
 
-                <button className="logout-btn">
-                    <LogOut size={13} />
-                </button>
+                            <Link to="/login" className="login-btn">
+                                <LogIn size={13} />
+                            </Link>
+                        </>
+                    )
+                }
 
-
-                {/* Guest only */}
-                <Link to="signup" className="signup-btn">
-                    <UserPlus size={13} />
-                </Link>
-
-                <Link to="login" className="login-btn">
-                    <LogIn size={13} />
-                </Link>
             </div>
 
         </header>
