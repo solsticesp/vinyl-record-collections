@@ -16,13 +16,14 @@ import CollectionRecords from './components/collection-records/CollectionRecords
 import { useState } from 'react';
 import Logout from './components/logout/Logout';
 import { authApi } from './api';
+import AuthContext from './contexts/auth-context';
 
 
 function App() {
     const navigate = useNavigate();
     const [auth, setAuth] = useState(null);
 
-    const registerHandler = async (userData) => {
+    const register = async (userData) => {
         try {
             const result = await authApi.register(userData);
 
@@ -34,7 +35,7 @@ function App() {
         }
     };
 
-    const loginHandler = async (userData) => {
+    const login = async (userData) => {
         try {
             const result = await authApi.login(userData);
 
@@ -50,8 +51,16 @@ function App() {
         setAuth(null);
     };
 
+    const contextValue = {
+        accessToken: auth?.access_token,
+        user: auth?.user,
+        isAuthenticated: !!auth,
+        register,
+        login,
+    }
+
     return (
-        <>
+        <AuthContext.Provider value={contextValue}>
             <ScrollToTop />
 
             <Header isAuthenticated={!!auth} />
@@ -74,8 +83,8 @@ function App() {
 
                     {/* Guest only */}
                     <Route>
-                        <Route path='signup' element={<SignUp onSignup={registerHandler} />} />
-                        <Route path='login' element={<LogIn onLogin={loginHandler} />} />
+                        <Route path='signup' element={<SignUp onSignup={register} />} />
+                        <Route path='login' element={<LogIn onLogin={login} />} />
                         <Route path='logout' element={<Logout onLogout={logoutAction} />} />
                     </Route>
 
@@ -87,7 +96,7 @@ function App() {
             </section >
 
             <Footer />
-        </>
+        </AuthContext.Provider>
     )
 }
 

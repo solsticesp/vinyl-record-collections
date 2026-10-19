@@ -1,11 +1,12 @@
 import RecordCard from "../record-card/RecordCard";
 import Spinner from "../shared/Spinner";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 // import request from "../../utils/request";
 import { recordApi } from "../../api";
+import AuthContext from "../../contexts/auth-context";
 
 export default function Records() {
-
+    const { accessToken } = useContext(AuthContext);
     const [records, setRecords] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -17,11 +18,11 @@ export default function Records() {
     // }, []);
 
     useEffect(() => {
-        recordApi.getAll()
+        recordApi.getAll(accessToken)
             .then(setRecords)
             .catch(err => console.error(err))
             .finally(() => setLoading(false))
-    }, []);
+    }, [accessToken]);
 
 
     return (
