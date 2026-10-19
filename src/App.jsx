@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useNavigate } from 'react-router'
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import About from './components/about/About';
@@ -15,36 +15,46 @@ import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
 import { useState } from 'react';
 import Logout from './components/logout/Logout';
-import { register } from './api/auth-api';
+import { authApi } from './api';
 
 
 function App() {
-    // const navigate = useNavigate();
-    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+    const [auth, setAuth] = useState(null);
 
-    const userAuthHandler = async (userData) => {
-        //Authentication with supabase auth
+    const registerHandler = async (userData) => {
         try {
-            const result = await register(userData);
-            console.log(result);
+            const result = await authApi.register(userData);
+
+            setAuth(result);
+
+            navigate('/');
         } catch (error) {
             alert(error.message);
         }
     };
 
-    const userLoginHandler = (data) => {
-        setUser(data.login)
+    const loginHandler = async (userData) => {
+        try {
+            const result = await authApi.login(userData);
+
+            setAuth(result);
+
+            navigate('/');
+        } catch (error) {
+            alert(error.message);
+        }
     };
 
     const logoutAction = () => {
-        setUser(null);
+        setAuth(null);
     };
 
     return (
         <>
             <ScrollToTop />
 
-            <Header user={user} />
+            <Header isAuthenticated={!!auth} />
 
             <section id="main">
                 <Routes>
@@ -64,8 +74,8 @@ function App() {
 
                     {/* Guest only */}
                     <Route>
-                        <Route path='signup' element={<SignUp onSignup={userAuthHandler} user={user} />} />
-                        <Route path='login' element={<LogIn onLogin={userLoginHandler} user={user} />} />
+                        <Route path='signup' element={<SignUp onSignup={registerHandler} />} />
+                        <Route path='login' element={<LogIn onLogin={loginHandler} />} />
                         <Route path='logout' element={<Logout onLogout={logoutAction} />} />
                     </Route>
 
