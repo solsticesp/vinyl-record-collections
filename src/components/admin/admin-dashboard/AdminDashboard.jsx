@@ -1,13 +1,11 @@
 // import { Link } from "react-router";
 import { useEffect, useState } from "react";
-import { supabaseUrl, supabaseKey } from "../../../supabase";
 import SaveRecordsModal from "../admin-modals/SaveRecordsModal";
 import DeleteRecordModal from "../admin-modals/DeleteRecordModal";
 import AdminRecordListItem from "../admin-record-list-item/AdminRecordListItem";
 import RecordInfoModal from "../admin-modals/RecordInfoModal";
-
-import { fetchRecords } from "../../../utils/fetchRecords";
 import Spinner from "../../shared/Spinner";
+import request from "../../../utils/request";
 
 export default function AdminDashboard() {
     const [loading, setLoading] = useState(true)
@@ -41,15 +39,11 @@ export default function AdminDashboard() {
         setRecordToDelete(id);
         setShowDeleteModal(true);
     }
-    
+
     useEffect(() => {
-        fetchRecords()
-            .then(data => {
-                console.log(data);
-                setRecords(data)
-            })
-            .catch(error => console.error(error)
-            )
+        request("/records")
+            .then(setRecords)
+            .catch(error => console.error(error))
             .finally(() => {
                 setLoading(false);
             });
@@ -59,26 +53,16 @@ export default function AdminDashboard() {
         const isEdit = selectedRecord !== null;
 
         try {
-            const response = await fetch(
+            await request(
                 isEdit
-                    ? `${supabaseUrl}/records?id=eq.${selectedRecord.id}`
-                    : `${supabaseUrl}/records`,
-                {
-                    method: isEdit ? "PATCH" : "POST",
-                    headers: {
-                        apikey: supabaseKey,
-                        "Content-Type": "application/json",
-                        Prefer: "return=minimal",
-                    },
-                    body: JSON.stringify(record),
-                }
+                    ? `/records?id=eq.${selectedRecord.id}`
+                    : "/records",
+                isEdit ? "PATCH" : "POST",
+                record
             );
 
-            if (!response.ok) {
-                throw new Error(await response.text());
-            }
+            const updatedRecords = await request("/records");
 
-            const updatedRecords = await fetchRecords();
             setRecords(updatedRecords);
             setShowSaveRecordsModal(false);
             setSelectedRecord(null);
@@ -89,21 +73,13 @@ export default function AdminDashboard() {
 
     const confirmDeleteHandler = async () => {
         try {
-            const response = await fetch(
-                `${supabaseUrl}/records?id=eq.${recordToDelete}`,
-                {
-                    method: "DELETE",
-                    headers: {
-                        apikey: supabaseKey,
-                    },
-                }
+            await request(
+                `/records?id=eq.${recordToDelete}`,
+                "DELETE"
             );
 
-            if (!response.ok) {
-                throw new Error(await response.text());
-            }
+            const updatedRecords = await request("/records");
 
-            const updatedRecords = await fetchRecords();
             setRecords(updatedRecords);
             setShowDeleteModal(false);
             setRecordToDelete(null);

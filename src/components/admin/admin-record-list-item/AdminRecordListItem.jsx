@@ -11,8 +11,8 @@ export default function AdminRecordListItem({
             <Link to={`/records/${record.id}`}>
                 <div className="admin-record-image">
                     <img
-                        src={record.cover_url}
-                        alt={record.artist}
+                        src={record.cover_url || null}
+                        alt={record.artist || "Unknown artist"}
                     />
                 </div>
             </Link>

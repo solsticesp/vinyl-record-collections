@@ -21,8 +21,8 @@ function App() {
     // const navigate = useNavigate();
     const [user, setUser] = useState(null);
 
-    const userAuthHandler = (data) => {
-        setUser(data)
+    const userAuthHandler = () => {
+        //Authentication with supabase auth
     };
 
     const userLoginHandler = (data) => {

@@ -1,7 +1,7 @@
 import RecordCard from "../record-card/RecordCard";
 import Spinner from "../shared/Spinner";
 import { useEffect, useState } from "react";
-import { supabaseUrl, supabaseKey } from "../../supabase";
+import request from "../../utils/request";
 
 export default function Records() {
 
@@ -9,24 +9,11 @@ export default function Records() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${supabaseUrl}/records?select=*,categories(id,name)`, {
-            headers: {
-                apikey: supabaseKey,
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setRecords(data);
-            })
-            .catch(error => {
-                console.error(error);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        request("/records")
+            .then(setRecords)
+            .catch(err => console.error(err))
+            .finally(() => setLoading(false))
     }, []);
-
 
 
     return (

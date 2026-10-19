@@ -1,18 +1,16 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { fetchCategories } from "../../utils/fetchCategories";
 import Spinner from "../shared/Spinner";
+import request from "../../utils/request";
 
 export default function Collections() {
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetchCategories()
-            .then((data) => {
-                setCategories(data);
-            })
+        request("/categories")
+            .then(setCategories)
             .catch((error) => {
                 console.error(error);
             })
