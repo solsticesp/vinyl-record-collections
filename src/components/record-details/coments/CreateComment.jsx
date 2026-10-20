@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
-import { restUrl, supabaseKey } from "../../../supabase";
 import AuthContext from "../../../contexts/auth-context";
+import { create } from "../../../api/comment-api";
+import { Link } from "react-router";
 
 export default function CreateComment({
     recordId,
@@ -22,27 +23,16 @@ export default function CreateComment({
         setSubmitting(true);
 
         try {
-            const response = await fetch(`${restUrl}/comments`, {
-                method: "POST",
-                headers: {
-                    apikey: supabaseKey,
-                    Authorization: `Bearer ${accessToken}`,
-                    "Content-Type": "application/json",
-                    Prefer: "return=representation",
-                },
-                body: JSON.stringify({
+            const createdComments = await create(
+                {
                     record_id: recordId,
                     user_id: user.id,
                     text,
-                }),
-            });
+                },
+                accessToken
+            );
 
-            if (!response.ok) {
-                throw new Error("Failed to post comment.");
-            }
-
-            const createdComments = await response.json();
-            const createdComment = createdComments[0];
+            const createdComment = createdComments?.[0];
 
             if (createdComment) {
                 onCommentCreated({
@@ -84,7 +74,7 @@ export default function CreateComment({
                 </form>
             ) : (
                 <p className="comments-login-note">
-                    Log in to share your thoughts about this record.
+                    <Link to="/login">Log in</Link> to share your thoughts about this record.
                 </p>
             )}
 
