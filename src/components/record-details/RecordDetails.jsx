@@ -1,8 +1,9 @@
 import { useParams } from "react-router";
 import { useContext, useEffect, useState } from "react";
-import { restUrl, supabaseKey } from "../../supabase";
+// import { restUrl, supabaseKey } from "../../supabase";
 import AuthContext from "../../contexts/auth-context";
 import Comments from "./coments/Comments";
+import request from "../../utils/request";
 
 export default function RecordDetails() {
     const { id } = useParams();
@@ -10,19 +11,12 @@ export default function RecordDetails() {
     const { isAuthenticated } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`${restUrl}/records?id=eq.${id}&select=*,categories(id,name)`, {
-            headers: {
-                apikey: supabaseKey,
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setCurrentRecord(data[0])
+        request(`/records?id=eq.${id}&select=*,categories(id,name)`)
+            .then((data) => {
+                setCurrentRecord(data[0]);
             })
-            .catch(error => console.error(error))
-    }, [id])
-
+            .catch((error) => console.error(error));
+    }, [id]);
 
     return (
         <div className="page record-page">
@@ -99,7 +93,7 @@ export default function RecordDetails() {
 
             <section className="record-bottom">
 
-                <Comments recordId={id}/>
+                <Comments recordId={id} />
 
                 <div className="tracklist-section">
                     <span className="eyebrow">TRACKLIST</span>

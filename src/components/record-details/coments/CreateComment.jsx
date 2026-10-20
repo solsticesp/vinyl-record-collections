@@ -15,9 +15,9 @@ export default function CreateComment({
     const submitCommentHandler = async (event) => {
         event.preventDefault();
 
-        const content = newComment.trim();
+        const text = newComment.trim();
 
-        if (!content || !accessToken || !user?.id) return;
+        if (!text || !accessToken || !user?.id) return;
 
         setSubmitting(true);
 
@@ -33,7 +33,7 @@ export default function CreateComment({
                 body: JSON.stringify({
                     record_id: recordId,
                     user_id: user.id,
-                    content,
+                    text,
                 }),
             });
 

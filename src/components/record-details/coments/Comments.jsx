@@ -1,34 +1,44 @@
 import { useEffect, useState } from "react";
-import { restUrl, supabaseKey } from "../../../supabase";
+// import { restUrl, supabaseKey } from "../../../supabase";
 import CreateComment from "./CreateComment";
+import request from "../../../utils/request";
 
 export default function Comments({ recordId }) {
     const [comments, setComments] = useState([]);
     const [commentsLoading, setCommentsLoading] = useState(true);
 
     useEffect(() => {
-
-        fetch(
-            `${restUrl}/comments?record_id=eq.${recordId}&select=id,content,created_at,user_id&order=created_at.desc`,
-            {
-                headers: {
-                    apikey: supabaseKey,
-                },
-            }
+        request(
+            `/comments?record_id=eq.${recordId}&select=id,text,created_at,author&order=created_at.desc`
         )
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error("Failed to load comments.");
-                }
-
-                return res.json();
-            })
             .then(setComments)
-            .catch((error) => {
-                console.error(error);
-            })
+            .catch((error) => console.error(error))
             .finally(() => setCommentsLoading(false));
     }, [recordId]);
+
+    // useEffect(() => {
+
+    //     fetch(
+    //         `${restUrl}/comments?record_id=eq.${recordId}&select=id,content,created_at,user_id&order=created_at.desc`,
+    //         {
+    //             headers: {
+    //                 apikey: supabaseKey,
+    //             },
+    //         }
+    //     )
+    //         .then((res) => {
+    //             if (!res.ok) {
+    //                 throw new Error("Failed to load comments.");
+    //             }
+
+    //             return res.json();
+    //         })
+    //         .then(setComments)
+    //         .catch((error) => {
+    //             console.error(error);
+    //         })
+    //         .finally(() => setCommentsLoading(false));
+    // }, [recordId]);
 
     const handleCommentCreated = (newComment) => {
         setComments((previous) => [newComment, ...previous]);
