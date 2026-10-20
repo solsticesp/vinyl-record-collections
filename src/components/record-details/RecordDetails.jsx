@@ -1,30 +1,21 @@
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
-import { restUrl, supabaseKey } from "../../supabase";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "../../contexts/auth-context";
+import Comments from "./coments/Comments";
+import request from "../../utils/request";
 
 export default function RecordDetails() {
     const { id } = useParams();
     const [currentRecord, setCurrentRecord] = useState({});
+    const { isAuthenticated } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`${restUrl}/records?id=eq.${id}&select=*,categories(id,name)`, {
-            headers: {
-                apikey: supabaseKey,
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setCurrentRecord(data[0])
+        request(`/records?id=eq.${id}&select=*,categories(id,name)`)
+            .then((data) => {
+                setCurrentRecord(data[0]);
             })
-            .catch(error => console.error(error))
-    }, [id])
-
-    console.log(currentRecord);
-
-    if (!currentRecord) {
-        return <p>Loading...</p>;
-    }
+            .catch((error) => console.error(error));
+    }, [id]);
 
     return (
         <div className="page record-page">
@@ -84,31 +75,37 @@ export default function RecordDetails() {
                         </div>
                     </div>
 
-                    <div className="record-actions">
-                        <button className="add-to-favorites">
-                            Add to Favorites
-                        </button>
+                    {isAuthenticated && (
+                        <div className="record-actions">
+                            <button className="add-to-favorites">
+                                Add to Favorites
+                            </button>
 
-                        {/* <button className="add-to-cart">
-                            Add to Collection
-                        </button> */}
-                    </div>
+                            {/* <button className="add-to-cart">
+                                Add to Collection
+                            </button> */}
+                        </div>
+                    )}
+
                 </div>
             </section>
 
-            <section className="tracklist-section">
-                <span className="eyebrow">
-                    TRACKLIST
-                </span>
+            <section className="record-bottom">
 
-                <div className="tracklist">
-                    {currentRecord.tracklist?.map((track, index) => (
-                        <div className="track" key={index}>
-                            <span>{String(index + 1).padStart(2, "0")}</span>
-                            <span>{track.title}</span>
-                            <span>{track.duration}</span>
-                        </div>
-                    ))}
+                <Comments recordId={id} />
+
+                <div className="tracklist-section">
+                    <span className="eyebrow">TRACKLIST</span>
+
+                    <div className="tracklist">
+                        {currentRecord.tracklist?.map((track, index) => (
+                            <div className="track" key={index}>
+                                <span>{String(index + 1).padStart(2, "0")}</span>
+                                <span>{track.title}</span>
+                                <span>{track.duration}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
         </div>

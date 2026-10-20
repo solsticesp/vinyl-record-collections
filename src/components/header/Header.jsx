@@ -37,18 +37,17 @@ export default function Header({
 
             <div className="header-right">
 
-                {/* Admin only */}
-                <Link to="/dashboard" className="dashboard-btn">
-                    Dashboard
-                    <ShieldUser size={13} />
-                </Link>
-
                 {isAuthenticated
                     ? (
                         <>
-                            {/* User and Admin */}
+                            {/* User only */}
+                            <Link to="/collection" className="dashboard-btn">
+                                My Collection
+                                <ShieldUser size={13} />
+                            </Link>
+
                             <Link to="/list" className="favs-btn">
-                                Favs
+                                Favourites
                                 <Heart size={13} />
                             </Link>
 

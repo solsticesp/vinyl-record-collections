@@ -1,4 +1,3 @@
-// import { data } from "react-router";
 import { restUrl, authUrl, supabaseKey } from "../supabase";
 
 async function baseRequest(url, path = "/", method = "GET", data = null, opts = {}) {
@@ -25,6 +24,10 @@ async function baseRequest(url, path = "/", method = "GET", data = null, opts = 
 
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    if (response.status === 204) {
+        return null;
     }
 
     return response.json();

@@ -60,7 +60,7 @@ export default function SaveRecordsModal({
 
                 <div className="modal-header">
                     <div>
-                        <span className="eyebrow">ADMIN</span>
+                        <span className="eyebrow">USER</span>
                         <h2>{isEdit ? "EDIT RECORD" : "ADD NEW RECORD"}</h2>
                     </div>
 
