@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-// import { restUrl, supabaseKey } from "../../../supabase";
 import CreateComment from "./CreateComment";
 import request from "../../../utils/request";
 import AuthContext from "../../../contexts/auth-context";

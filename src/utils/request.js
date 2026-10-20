@@ -1,4 +1,3 @@
-// import { data } from "react-router";
 import { restUrl, authUrl, supabaseKey } from "../supabase";
 
 async function baseRequest(url, path = "/", method = "GET", data = null, opts = {}) {

@@ -1,9 +1,11 @@
-const restUrl = "https://eheypdtrchjkjjutvmwf.supabase.co/rest/v1";
-const authUrl = "https://eheypdtrchjkjjutvmwf.supabase.co/auth/v1";
-const supabaseKey = "sb_publishable_NVjgeQpg_jDSrxJ9Nd9I3g_gvlxy2YJ";
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+
+const restUrl = `${supabaseUrl}/rest/v1`;
+const authUrl = `${supabaseUrl}/auth/v1`;
 
 export {
     restUrl,
     authUrl,
-    supabaseKey
+    supabaseKey,
 };

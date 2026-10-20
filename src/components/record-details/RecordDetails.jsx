@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import { useContext, useEffect, useState } from "react";
-// import { restUrl, supabaseKey } from "../../supabase";
 import AuthContext from "../../contexts/auth-context";
 import Comments from "./coments/Comments";
 import request from "../../utils/request";
