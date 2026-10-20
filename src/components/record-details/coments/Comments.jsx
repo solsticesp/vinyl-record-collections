@@ -9,36 +9,13 @@ export default function Comments({ recordId }) {
 
     useEffect(() => {
         request(
-            `/comments?record_id=eq.${recordId}&select=id,text,created_at,author&order=created_at.desc`
+            `/comments?record_id=eq.${recordId}&select=id,text,created_at,user_id&order=created_at.desc`
         )
             .then(setComments)
             .catch((error) => console.error(error))
             .finally(() => setCommentsLoading(false));
     }, [recordId]);
 
-    // useEffect(() => {
-
-    //     fetch(
-    //         `${restUrl}/comments?record_id=eq.${recordId}&select=id,content,created_at,user_id&order=created_at.desc`,
-    //         {
-    //             headers: {
-    //                 apikey: supabaseKey,
-    //             },
-    //         }
-    //     )
-    //         .then((res) => {
-    //             if (!res.ok) {
-    //                 throw new Error("Failed to load comments.");
-    //             }
-
-    //             return res.json();
-    //         })
-    //         .then(setComments)
-    //         .catch((error) => {
-    //             console.error(error);
-    //         })
-    //         .finally(() => setCommentsLoading(false));
-    // }, [recordId]);
 
     const handleCommentCreated = (newComment) => {
         setComments((previous) => [newComment, ...previous]);
@@ -64,13 +41,15 @@ export default function Comments({ recordId }) {
                     comments.map((comment) => (
                         <article className="comment" key={comment.id}>
                             <div className="comment-meta">
-                                <span>LISTENER</span>
+                                <span>
+                                    {comment.email || "Listener"}
+                                </span>
                                 <time>
                                     {new Date(comment.created_at).toLocaleDateString()}
                                 </time>
                             </div>
 
-                            <p>{comment.content}</p>
+                            <p>{comment.text}</p>
                         </article>
                     ))
                 )}

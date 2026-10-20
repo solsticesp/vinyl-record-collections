@@ -45,7 +45,10 @@ export default function CreateComment({
             const createdComment = createdComments[0];
 
             if (createdComment) {
-                onCommentCreated(createdComment);
+                onCommentCreated({
+                    ...createdComment,
+                    email: user.email,
+                });
             }
 
             setNewComment("");
