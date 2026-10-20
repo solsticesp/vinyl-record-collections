@@ -9,7 +9,7 @@ import SignUp from './components/signup/SignUp';
 import LogIn from './components/login/LogIn';
 import RecordDetails from './components/record-details/RecordDetails';
 import ScrollToTop from './components/shared/ScrollToTop';
-import AdminDashboard from './components/admin/admin-dashboard/AdminDashboard';
+import UserDashboard from './components/user/user-dashboard/UserDashboard';
 import SaveList from './components/save-list/SaveList';
 import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
@@ -77,7 +77,6 @@ function App() {
                             path="/collections/:categoryId"
                             element={<CollectionRecords />}
                         />
-                        <Route path='list' element={<SaveList />} />
                         <Route path='contacts' element={<Contacts />} />
                     </Route>
 
@@ -85,12 +84,13 @@ function App() {
                     <Route>
                         <Route path='signup' element={<SignUp onSignup={register} />} />
                         <Route path='login' element={<LogIn onLogin={login} />} />
-                        <Route path='logout' element={<Logout onLogout={logoutAction} />} />
                     </Route>
 
-                    {/* Admin only */}
+                    {/* User only */}
                     <Route>
-                        <Route path='dashboard' element={<AdminDashboard />} />
+                        <Route path='collection' element={<UserDashboard />} />
+                        <Route path='list' element={<SaveList />} />
+                        <Route path='logout' element={<Logout onLogout={logoutAction} />} />
                     </Route>
                 </Routes>
             </section >

@@ -11,7 +11,7 @@ export default function DeleteRecordModal({
                 onClick={(event) => event.stopPropagation()}
             >
                 <div className="delete-modal-header">
-                    <span className="eyebrow">ADMIN</span>
+                    <span className="eyebrow">USER</span>
                     <h2>DELETE RECORD</h2>
                 </div>
 

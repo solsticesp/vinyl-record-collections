@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function AdminRecordListItem({
+export default function UserRecordListItem({
     record,
     onEdit,
     onDelete,

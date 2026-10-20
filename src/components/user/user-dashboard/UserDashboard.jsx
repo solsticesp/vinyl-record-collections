@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import SaveRecordsModal from "../admin-modals/SaveRecordsModal";
-import DeleteRecordModal from "../admin-modals/DeleteRecordModal";
-import AdminRecordListItem from "../admin-record-list-item/AdminRecordListItem";
-import RecordInfoModal from "../admin-modals/RecordInfoModal";
+import SaveRecordsModal from "../user-modals/SaveRecordsModal";
+import DeleteRecordModal from "../user-modals/DeleteRecordModal";
+import UserRecordListItem from "../user-record-list-item/UserRecordListItem";
+import RecordInfoModal from "../user-modals/RecordInfoModal";
 import Spinner from "../../shared/Spinner";
 // import request from "../../../utils/request";
 import { recordApi } from "../../../api";
 import AuthContext from "../../../contexts/auth-context";
 
-export default function AdminDashboard() {
+export default function UserDashboard() {
     const { accessToken, user } = useContext(AuthContext)
 
     const [loading, setLoading] = useState(true)
@@ -98,7 +98,7 @@ export default function AdminDashboard() {
         <div className="page admin-page">
             <section className="catalog-header">
                 <div>
-                    <span className="eyebrow">ADMIN</span>
+                    <span className="eyebrow">USER</span>
                     <h1>
                         RECORD<br />
                         MANAGEMENT
@@ -131,7 +131,7 @@ export default function AdminDashboard() {
                     <Spinner />
                 ) : (
                     records.map(record => (
-                        <AdminRecordListItem
+                        <UserRecordListItem
                             key={record.id}
                             record={record}
                             onInfo={infoRecordHandler}

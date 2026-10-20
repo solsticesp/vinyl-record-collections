@@ -1,5 +1,5 @@
 
-export default function AdminRecordInfoModal({
+export default function UserRecordInfoModal({
     record,
     onClose }) {
     if (!record) return null;
@@ -17,7 +17,7 @@ export default function AdminRecordInfoModal({
                     ✕
                 </button>
 
-                <span className="eyebrow">ADMIN / RECORD DETAILS</span>
+                <span className="eyebrow">USER / RECORD DETAILS</span>
                 <h2>{record.title}</h2>
                 <p className="record-info-artist">{record.artist}</p>
 

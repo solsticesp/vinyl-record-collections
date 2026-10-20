@@ -41,14 +41,14 @@ export default function Header({
                     ? (
                         <>
                             {/* Admin only */}
-                            <Link to="/dashboard" className="dashboard-btn">
-                                Dashboard
+                            <Link to="/collection" className="dashboard-btn">
+                                My Collection
                                 <ShieldUser size={13} />
                             </Link>
-                            
+
                             {/* User and Admin */}
                             <Link to="/list" className="favs-btn">
-                                Favs
+                                Favourites
                                 <Heart size={13} />
                             </Link>
 
