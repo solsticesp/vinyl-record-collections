@@ -78,10 +78,11 @@ export default function AdminDashboard() {
 
     const confirmDeleteHandler = async () => {
         try {
-            await request(
-                `/records?id=eq.${recordToDelete}`,
-                "DELETE",
-            );
+            // await request(
+            //     `/records?id=eq.${recordToDelete}`,
+            //     "DELETE",
+            // );
+            await recordApi.remove(recordToDelete, accessToken)
 
             const updatedRecords = await request("/records");
 

@@ -25,6 +25,14 @@ export const update = (id, data, accessToken) => {
     });
 };
 
+export const remove = (id, accessToken) => {
+    return request(`/records?id=eq.${id}`, "DELETE", null, {
+        headers: {
+            ...getAuthHeader(accessToken),
+        },
+    })
+}
+
 function getAuthHeader(accessToken) {
     return {
         ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {})
