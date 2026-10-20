@@ -1,16 +1,19 @@
 import request from "../utils/request";
 
-export const getAll = (accessToken) => {
 
-    return request("/records", "GET", null, {
+export const getAll = (accessToken, userId) => {
+    return request(`/records?user_id=eq.${userId}`, "GET", null, {
         headers: {
-            ...getAuthHeader(accessToken)
-        }
+            ...getAuthHeader(accessToken),
+        },
     });
-}
+};
 
-export const create = (data, accessToken) => {
-    return request("/records", "POST", data, {
+export const create = (data, accessToken, userId) => {
+    return request("/records", "POST", {
+        ...data,
+        user_id: userId,
+    }, {
         headers: {
             ...getAuthHeader(accessToken)
         }

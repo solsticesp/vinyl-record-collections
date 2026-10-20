@@ -4,12 +4,12 @@ import DeleteRecordModal from "../admin-modals/DeleteRecordModal";
 import AdminRecordListItem from "../admin-record-list-item/AdminRecordListItem";
 import RecordInfoModal from "../admin-modals/RecordInfoModal";
 import Spinner from "../../shared/Spinner";
-import request from "../../../utils/request";
+// import request from "../../../utils/request";
 import { recordApi } from "../../../api";
 import AuthContext from "../../../contexts/auth-context";
 
 export default function AdminDashboard() {
-    const { accessToken } = useContext(AuthContext)
+    const { accessToken, user } = useContext(AuthContext)
 
     const [loading, setLoading] = useState(true)
     const [records, setRecords] = useState([]);
@@ -43,12 +43,16 @@ export default function AdminDashboard() {
         setShowDeleteModal(true);
     }
 
+
     useEffect(() => {
-        recordApi.getAll(accessToken)
+        if (!accessToken || !user?.id) return;
+
+        recordApi.getAll(accessToken, user.id)
             .then(setRecords)
             .catch(error => console.error("Error loading records:", error))
             .finally(() => setLoading(false));
-    }, [accessToken]);
+    }, [accessToken, user?.id]);
+
 
     const saveRecordHandler = async (record) => {
         const isEdit = selectedRecord !== null;
@@ -61,10 +65,10 @@ export default function AdminDashboard() {
                     accessToken
                 );
             } else {
-                await recordApi.create(record, accessToken);
+                await recordApi.create(record, accessToken, user.id);
             }
 
-            const updatedRecords = await recordApi.getAll(accessToken);
+            const updatedRecords = await recordApi.getAll(accessToken, user.id);
 
             setRecords(updatedRecords);
             setShowSaveRecordsModal(false);
@@ -78,13 +82,9 @@ export default function AdminDashboard() {
 
     const confirmDeleteHandler = async () => {
         try {
-            // await request(
-            //     `/records?id=eq.${recordToDelete}`,
-            //     "DELETE",
-            // );
             await recordApi.remove(recordToDelete, accessToken)
 
-            const updatedRecords = await request("/records");
+            const updatedRecords = await recordApi.getAll(accessToken, user.id);
 
             setRecords(updatedRecords);
             setShowDeleteModal(false);
