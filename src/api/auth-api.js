@@ -13,3 +13,11 @@ export const login = async ({ email, password }) => {
         password,
     })
 };
+
+export const logout = async (accessToken) => {
+    return authRequest("/logout", "POST", null, {
+        headers : {
+            Authorization:  `Bearer ${accessToken}`
+        }
+    });
+}

@@ -40,13 +40,12 @@ export default function Header({
                 {isAuthenticated
                     ? (
                         <>
-                            {/* Admin only */}
+                            {/* User only */}
                             <Link to="/collection" className="dashboard-btn">
                                 My Collection
                                 <ShieldUser size={13} />
                             </Link>
 
-                            {/* User and Admin */}
                             <Link to="/list" className="favs-btn">
                                 Favourites
                                 <Heart size={13} />
