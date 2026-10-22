@@ -29,11 +29,11 @@ export default function TopToolsSection({
                 ))}
             </div>
 
-            <div className="search">
+            {/* <div className="search">
                 <span>⌕</span>
                 <input type="text" placeholder="" />
                 <button>Search</button>
-            </div>
+            </div> */}
         </section>
     );
 }
