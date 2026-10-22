@@ -50,7 +50,6 @@ export default function Records() {
 
     return (
         <div className="page records-page">
-
             <section className="catalog-header">
                 <div>
                     <span className="eyebrow">THE COLLECTION</span>
@@ -61,7 +60,6 @@ export default function Records() {
                             RECORDS<sup>(120)</sup>
                         </h1>
                     </div>
-
                 </div>
 
                 <p className="catalog-intro">
@@ -70,15 +68,12 @@ export default function Records() {
                 </p>
             </section>
 
-
             <div className="catalog-toolbar">
-
                 <div className="catalog-count">
                     {records.length} RECORDS
                 </div>
 
                 <div className="catalog-actions">
-
                     <select
                         value={sortBy}
                         onChange={(event) => setSortBy(event.target.value)}
@@ -90,9 +85,7 @@ export default function Records() {
                         <option value="price-desc">PRICE: HIGH TO LOW</option>
                         <option value="artist-asc">ARTIST A–Z</option>
                     </select>
-
                 </div>
-
             </div>
 
             {loading ? (
@@ -114,11 +107,9 @@ export default function Records() {
                 </section>
             )}
 
-
-            <div className="load-more">
+            {/* <div className="load-more">
                 LOAD MORE
-            </div>
-
+            </div> */}
         </div >
     );
 }
