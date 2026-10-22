@@ -59,11 +59,11 @@ export default function Header({
                     : (
                         <>
                             {/* Guest only */}
-                            <Link to="/signup" className="signup-btn">
+                            <Link to="/signup" className="signup-btn" aria-label="Signup">
                                 <UserPlus size={13} />
                             </Link>
 
-                            <Link to="/login" className="login-btn">
+                            <Link to="/login" className="login-btn" aria-label="Login">
                                 <LogIn size={13} />
                             </Link>
                         </>

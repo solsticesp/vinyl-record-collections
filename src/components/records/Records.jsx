@@ -1,12 +1,14 @@
 import RecordCard from "../record-card/RecordCard";
 import Spinner from "../shared/Spinner";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import request from "../../utils/request";
 
 
 export default function Records() {
     const [records, setRecords] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [sortBy, setSortBy] = useState("featured");
+
 
     useEffect(() => {
         request("/records")
@@ -15,10 +17,39 @@ export default function Records() {
             .finally(() => setLoading(false))
     }, []);
 
+    const sortedRecords = useMemo(() => {
+        const sorted = [...records];
+
+        switch (sortBy) {
+            case "newest":
+                return sorted.sort(
+                    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+                );
+
+            case "price-asc":
+                return sorted.sort(
+                    (a, b) => Number(a.price) - Number(b.price)
+                );
+
+            case "price-desc":
+                return sorted.sort(
+                    (a, b) => Number(b.price) - Number(a.price)
+                );
+
+            case "artist-asc":
+                return sorted.sort((a, b) =>
+                    (a.artist ?? "").localeCompare(b.artist ?? "")
+                );
+
+            case "featured":
+            default:
+                return sorted;
+        }
+    }, [records, sortBy]);
+
 
     return (
         <div className="page records-page">
-
             <section className="catalog-header">
                 <div>
                     <span className="eyebrow">THE COLLECTION</span>
@@ -29,7 +60,6 @@ export default function Records() {
                             RECORDS<sup>(120)</sup>
                         </h1>
                     </div>
-
                 </div>
 
                 <p className="catalog-intro">
@@ -38,41 +68,31 @@ export default function Records() {
                 </p>
             </section>
 
-
             <div className="catalog-toolbar">
-
                 <div className="catalog-count">
                     {records.length} RECORDS
                 </div>
 
                 <div className="catalog-actions">
-                    <select>
-                        <option>ALL GENRES</option>
-                        <option>ROCK</option>
-                        <option>JAZZ</option>
-                        <option>POP</option>
-                        <option>SOUL</option>
-                        <option>ELECTRONIC</option>
+                    <select
+                        value={sortBy}
+                        onChange={(event) => setSortBy(event.target.value)}
+                        aria-label="Sort records"
+                    >
+                        <option value="featured">FEATURED</option>
+                        <option value="newest">NEWEST</option>
+                        <option value="price-asc">PRICE: LOW TO HIGH</option>
+                        <option value="price-desc">PRICE: HIGH TO LOW</option>
+                        <option value="artist-asc">ARTIST A–Z</option>
                     </select>
-
-                    <select>
-                        <option>FEATURED</option>
-                        <option>NEWEST</option>
-                        <option>PRICE: LOW TO HIGH</option>
-                        <option>PRICE: HIGH TO LOW</option>
-                        <option>ARTIST A–Z</option>
-                    </select>
-
                 </div>
-
             </div>
 
             {loading ? (
                 <Spinner />
             ) : (
-                < section className="record-grid">
-
-                    {records.map(record => (
+                <section className="record-grid">
+                    {sortedRecords.map((record) => (
                         <RecordCard
                             key={record.id}
                             id={record.id}
@@ -83,16 +103,13 @@ export default function Records() {
                             year={record.release_year}
                             imageUrl={record.cover_url}
                         />
-                    ))
-                    }
+                    ))}
                 </section>
             )}
 
-
-            <div className="load-more">
+            {/* <div className="load-more">
                 LOAD MORE
-            </div>
-
+            </div> */}
         </div >
     );
 }

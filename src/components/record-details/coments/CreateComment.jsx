@@ -7,9 +7,7 @@ export default function CreateComment({
     recordId,
     onCommentCreated,
 }) {
-    const { isAuthenticated, accessToken, user } =
-        useContext(AuthContext);
-
+    const { isAuthenticated, accessToken, user } = useContext(AuthContext);
     const [newComment, setNewComment] = useState("");
     const [submitting, setSubmitting] = useState(false);
 
