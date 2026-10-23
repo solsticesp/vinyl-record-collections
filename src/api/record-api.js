@@ -9,6 +9,10 @@ export const getAll = (accessToken, userId) => {
     });
 };
 
+export const getRecord = (recordId) => {
+    return request(`/records?id=eq.${recordId}&select=*,categories(id,name)`, "GET", null);
+}
+
 export const create = (data, accessToken, userId) => {
     return request("/records", "POST", {
         ...data,

@@ -1,19 +1,23 @@
+import { Link } from "react-router";
+
 export default function SaveListItem({
+    id,
     imageUrl,
     artist,
     title,
+    onRemove
 }) {
     return (
         <article className="saved-record">
 
             <div className="saved-record-info">
 
-                <div className="saved-record-image">
+                <Link to={`/records/${id}`} className="saved-record-image">
                     <img
                         src={imageUrl}
                         alt={artist}
                     />
-                </div>
+                </Link>
 
                 <div className="saved-record-details">
                     <span className="saved-record-artist">
@@ -27,7 +31,7 @@ export default function SaveListItem({
 
             </div>
 
-            <button className="delete-btn">
+            <button className="delete-btn" onClick={() => onRemove(id)}>
                 ×
             </button>
 

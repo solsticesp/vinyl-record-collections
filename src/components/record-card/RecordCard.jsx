@@ -18,12 +18,12 @@ export default function RecordCard({
                     alt={artist}
                 />
 
-                <button className="add-btn">
+                {/* <button className="add-btn">
                     +
-                </button>
-                <button className="record-favorite">
+                </button> */}
+                {/* <button className="record-favorite">
                     ♡
-                </button>
+                </button> */}
             </div>
 
             <div className="record-card-info">

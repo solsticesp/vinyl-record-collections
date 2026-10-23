@@ -13,21 +13,22 @@ import UserDashboard from './components/user/user-dashboard/UserDashboard';
 import SaveList from './components/save-list/SaveList';
 import Collections from './components/collections/Collections';
 import CollectionRecords from './components/collection-records/CollectionRecords';
-import { useState } from 'react';
 import Logout from './components/logout/Logout';
 import { authApi } from './api';
 import AuthContext from './contexts/auth-context';
+import { useState } from 'react';
 
 
 function App() {
     const navigate = useNavigate();
-    const [auth, setAuth] = useState(null);
+    const [auth, setAuth] = useState(localStorage.getItem('auth'));
 
     const register = async (userData) => {
         try {
             const result = await authApi.register(userData);
 
-            setAuth(result);
+            localStorage.setItem('auth', JSON.stringify(result));
+            setAuth(JSON.stringify(result));
 
             navigate('/');
         } catch (error) {
@@ -39,7 +40,8 @@ function App() {
         try {
             const result = await authApi.login(userData);
 
-            setAuth(result);
+            localStorage.setItem('auth', JSON.stringify(result));
+            setAuth(JSON.stringify(result));
 
             navigate('/');
         } catch (error) {
@@ -49,17 +51,18 @@ function App() {
 
     const logoutAction = async () => {
         try {
-            await authApi.logout(auth?.access_token);
-            
-            setAuth(null)
+            await authApi.logout(JSON.parse(auth)?.access_token);
+
+            localStorage.removeItem('auth');
+            setAuth(null);
         } catch (error) {
             alert(error.message)
         }
     };
 
     const contextValue = {
-        accessToken: auth?.access_token,
-        user: auth?.user,
+        accessToken: JSON.parse(auth)?.access_token,
+        user: JSON.parse(auth)?.user,
         isAuthenticated: !!auth,
         register,
         login,

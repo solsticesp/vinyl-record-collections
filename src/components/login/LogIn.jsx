@@ -36,15 +36,13 @@ export default function LogIn({
             return;
         }
 
-        onLogin(data.login)
-
+        onLogin(data.login);
     }
 
     const inputClass = (field) => `${errors[field] ? 'error-field' : ''}`;
     const errorText = (field) => errors[field] && (
         <p className="error-msg">{errors[field]}</p>
     )
-
 
     return (
         <div className="page auth-page">
