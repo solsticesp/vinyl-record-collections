@@ -1,8 +1,27 @@
 import { Link } from "react-router";
 import HeroSectionItem from "./HeroSectionItem";
+import { useEffect, useState } from "react";
+import request from "../../../utils/request";
 
 
 export default function HeroSection() {
+    const [records, setRecords] = useState([]);
+
+    useEffect(() => {
+        const fetchLatestRecords = async () => {
+            try {
+                const latestRecords = await request(
+                    "/records?select=*&order=created_at.desc&limit=3"
+                );
+
+                setRecords(latestRecords);
+            } catch (error) {
+                console.error("Failed to load latest records:", error);
+            }
+        };
+
+        fetchLatestRecords();
+    }, []);
 
     return (
         <section className="hero">
@@ -25,13 +44,13 @@ export default function HeroSection() {
             </div>
 
             <div className="hero-images">
-
-                <HeroSectionItem imageUrl="https://muzikercdn.com/uploads/products/29720/2972035/thumb_large_d_gallery_base_616cd03f.jpg" artist="The Rolling Stones" />
-
-                <HeroSectionItem imageUrl="https://muzikercdn.com/uploads/products/26678/2667806/thumb_large_d_gallery_base_ab316e41.jpg" artist="Charli XCX" />
-
-                <HeroSectionItem imageUrl="https://muzikercdn.com/uploads/products/25232/2523238/thumb_large_d_gallery_base_0405d4bb.jpg" artist="Judas Priest" />
-
+                {records.map(record => (
+                    <HeroSectionItem
+                        key={record.id}
+                        imageUrl={record.cover_url}
+                        artist={record.artist}
+                    />
+                ))}
             </div>
 
             <div className="hero-controls">

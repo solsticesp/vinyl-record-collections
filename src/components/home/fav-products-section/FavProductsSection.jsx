@@ -1,7 +1,50 @@
-import records from "../../../data/records";
+// import records from "../../../data/records";
+import { useEffect, useState } from "react";
 import RecordCard from "../../record-card/RecordCard";
+import request from "../../../utils/request";
+import { favoritesApi } from "../../../api";
 
 export default function FavProductsSection() {
+    const [records, setRecords] = useState([]);
+
+    useEffect(() => {
+        const fetchFavorites = async () => {
+            try {
+                const favourites = await favoritesApi.getCommunityFavorites();
+                console.log(favourites);
+
+
+                const counts = favourites.reduce((acc, favourite) => {
+                    const recordId = favourite.record_id;
+
+                    if (acc[recordId]) {
+                        acc[recordId] += 1;
+                    } else {
+                        acc[recordId] = 1;
+                    }
+
+                    return acc;
+                }, {});
+
+                const allRecords = await request("/records");
+
+                const topRecords = allRecords
+                    .filter(record => counts[record.id])
+                    .map(record => ({
+                        ...record,
+                        favorites_count: counts[record.id],
+                    }))
+                    .sort((a, b) => b.favorites_count - a.favorites_count)
+                    .slice(0, 4);
+
+                setRecords(topRecords);
+            } catch (error) {
+                console.error("Failed to load community favorites:", error);
+            }
+        };
+
+        fetchFavorites();
+    }, []);
 
     return (
         <section className="products-section">
@@ -10,7 +53,7 @@ export default function FavProductsSection() {
                 <h2>
                     COMMUNITY<br />
                     FAVORITES
-                    <sup>(50)</sup>
+                    <sup>(4)</sup>
                 </h2>
 
                 <a href="#">See All</a>
@@ -21,6 +64,7 @@ export default function FavProductsSection() {
                     <RecordCard
                         key={record.id}
                         {...record}
+                        imageUrl={record.cover_url}
                     />
                 ))}
             </div>

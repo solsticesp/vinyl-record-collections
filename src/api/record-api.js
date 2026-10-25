@@ -1,6 +1,5 @@
 import request from "../utils/request";
 
-
 export const getAll = (accessToken, userId) => {
     return request(`/records?user_id=eq.${userId}`, "GET", null, {
         headers: {
