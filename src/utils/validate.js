@@ -49,7 +49,13 @@ export function validate(values) {
                     errors['login'] = 'Email and password are required.';
                 }
                 break;
-                
+
+            case 'category_id':
+                if (!values.category_id) {
+                    errors['category_id'] = 'Please select a genre!';
+                }
+                break;
+
             default:
                 break;
         }
