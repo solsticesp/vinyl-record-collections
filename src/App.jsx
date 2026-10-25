@@ -20,10 +20,13 @@ import { useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import ProtectedGuard from './components/routeGuards/ProtectedGuard';
 import PublicGuard from './components/routeGuards/PublicGuard';
+import ErrorModal from './components/error/ErrorModal';
 
 
 function App() {
     const navigate = useNavigate();
+
+    const [error, setError] = useState(null);
     const [auth, setAuth] = useState(localStorage.getItem('auth'));
 
     const register = async (userData) => {
@@ -35,7 +38,7 @@ function App() {
 
             navigate('/');
         } catch (error) {
-            alert(error.message);
+            setError(error.apiResponse.msg);
         }
     };
 
@@ -48,7 +51,7 @@ function App() {
 
             navigate('/');
         } catch (error) {
-            alert(error.message);
+            setError(error.apiResponse.msg);
         }
     };
 
@@ -67,9 +70,13 @@ function App() {
             localStorage.removeItem('auth');
             setAuth(null);
         } catch (error) {
-            alert(error.message)
+            setError(error.apiResponse.msg);
         }
     };
+
+    const closeErrorModalHadler = () => {
+        setError(null);
+    }
 
     const contextValue = {
         accessToken: JSON.parse(auth)?.access_token,
@@ -120,6 +127,8 @@ function App() {
             </section >
 
             <Footer />
+
+            {error && <ErrorModal errorText={error} onClose={closeErrorModalHadler} />}
         </AuthContext.Provider>
     )
 }

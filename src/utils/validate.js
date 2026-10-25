@@ -46,7 +46,7 @@ export function validate(values) {
 
             case 'login':
                 if (!values.login.email || !values.login.password) {
-                    errors['login'] = 'Email and/or password is incorrect.';
+                    errors['login'] = 'Email and password are required.';
                 }
                 break;
                 

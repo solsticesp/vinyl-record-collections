@@ -2726,6 +2726,7 @@ footer {
   color: #b00000;
 }
 
+.error-modal,
 .delete-modal {
   z-index: 1;
   width: 420px;
@@ -2733,11 +2734,13 @@ footer {
   background: #f8f8f8;
 }
 
+.error-modal-header,
 .delete-modal-header {
   padding: 25px 25px 20px;
   border-bottom: 1px solid #ddd;
 }
 
+.error-modal-header .eyebrow,
 .delete-modal-header .eyebrow {
   display: block;
   margin-bottom: 10px;
@@ -2746,6 +2749,7 @@ footer {
   letter-spacing: .14em;
 }
 
+.error-modal-header h2,
 .delete-modal-header h2 {
   margin: 0;
   font-size: 22px;
@@ -2753,10 +2757,12 @@ footer {
   letter-spacing: -1px;
 }
 
+.error-modal-content,
 .delete-modal-content {
   padding: 25px;
 }
 
+.error-modal-content p,
 .delete-modal-content p {
   margin: 0 0 12px;
   color: #555;
@@ -2776,6 +2782,7 @@ footer {
   font-size: 8px;
 }
 
+.error-modal-footer,
 .delete-modal-footer {
   padding: 15px 25px;
   display: flex;
@@ -2784,6 +2791,7 @@ footer {
   border-top: 1px solid #ddd;
 }
 
+.error-modal-footer button,
 .delete-modal-footer button {
   padding: 9px 14px;
   font-family: inherit;

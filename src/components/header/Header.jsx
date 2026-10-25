@@ -1,9 +1,12 @@
 import { UserPlus, LogIn, Heart, LogOut, ShieldUser } from "lucide-react";
+import { useContext } from "react";
 import { NavLink, Link } from "react-router";
+import AuthContext from "../../contexts/auth-context";
 
 export default function Header({
     isAuthenticated,
 }) {
+    const { user } = useContext(AuthContext)
 
     return (
         <header className="header">
@@ -40,6 +43,7 @@ export default function Header({
                 {isAuthenticated
                     ? (
                         <>
+                            <span>Hello, {user.user_metadata?.first_name}</span>
                             {/* User only */}
                             <Link to="/collection" className="dashboard-btn">
                                 My Collection

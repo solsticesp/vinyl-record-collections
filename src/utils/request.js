@@ -8,7 +8,7 @@ async function baseRequest(url, path = "/", method = "GET", data = null, opts = 
             apikey: supabaseKey,
             Prefer: "return=representation",
         },
-        
+
     };
 
     if (method !== "GET") {
@@ -23,7 +23,12 @@ async function baseRequest(url, path = "/", method = "GET", data = null, opts = 
     const response = await fetch(`${url}${path}`, options);
 
     if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const result = await response.json();
+
+        throw {
+            error: new Error(`HTTP error! status: ${response.status}`),
+            apiResponse: result
+        };
     }
 
     if (response.status === 204) {
