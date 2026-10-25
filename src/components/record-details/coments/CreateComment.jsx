@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import AuthContext from "../../../contexts/auth-context";
 import { create } from "../../../api/comment-api";
 import { Link } from "react-router";
+import ErrorModal from "../../error/ErrorModal";
 
 export default function CreateComment({
     recordId,
@@ -10,6 +11,7 @@ export default function CreateComment({
     const { isAuthenticated, accessToken, user } = useContext(AuthContext);
     const [newComment, setNewComment] = useState("");
     const [submitting, setSubmitting] = useState(false);
+    const [error, setError] = useState(null);
 
     const submitCommentHandler = async (event) => {
         event.preventDefault();
@@ -41,11 +43,15 @@ export default function CreateComment({
 
             setNewComment("");
         } catch (error) {
-            console.error(error);
+            setError(error.apiResponse.msg);
         } finally {
             setSubmitting(false);
         }
     };
+
+    const closeErrorModalHadler = () => {
+        setError(null);
+    }
 
     return (
         <>
@@ -75,7 +81,7 @@ export default function CreateComment({
                     <Link to="/login">Log in</Link> to share your thoughts about this record.
                 </p>
             )}
-
+            {error && <ErrorModal errorText={error} onClose={closeErrorModalHadler} />}
         </>
     );
 }

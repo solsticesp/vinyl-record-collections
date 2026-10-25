@@ -4,6 +4,8 @@ import AuthContext from "../../contexts/auth-context";
 import Comments from "./coments/Comments";
 import { favoritesApi, recordApi } from "../../api";
 import Spinner from "../shared/Spinner";
+import ErrorDisclaimer from "../error/ErrorDisclaimer";
+import ErrorModal from "../error/ErrorModal";
 
 export default function RecordDetails() {
     const { id } = useParams();
@@ -11,6 +13,8 @@ export default function RecordDetails() {
     const { isAuthenticated, user, accessToken } = useContext(AuthContext);
     const [isFavourite, setIsFavourite] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [inlineError, setInlineError] = useState(null);
+    const [modalError, setModalError] = useState(null);
 
 
     useEffect(() => {
@@ -18,7 +22,7 @@ export default function RecordDetails() {
             .then((data) => {
                 setCurrentRecord(data[0]);
             })
-            .catch((error) => console.error(error))
+            .catch((error) => setInlineError(error.apiResponse.msg))
     }, [id]);
 
     useEffect(() => {
@@ -38,122 +42,130 @@ export default function RecordDetails() {
     }, [user, accessToken, id]);
 
     const addToFavoriteHandler = (recordId, userId) => {
-        favoritesApi.create(recordId, userId, accessToken) 
+        favoritesApi.create(recordId, userId, accessToken)
             .then((setIsFavourite(true)))
-            .catch((error) => console.error(error));
+            .catch((error) => setModalError(error.apiResponse.msg));
     }
 
     const removeFromFavouriteHandler = (recordId, userId) => {
         favoritesApi.remove(recordId, userId, accessToken)
             .then(() => setIsFavourite(false))
-            .catch((error) => console.error(error));
+            .catch((error) => setModalError(error.apiResponse.msg));
+    }
+
+    const closeErrorModalHadler = () => {
+        setModalError(null);
     }
 
     return (
         <>
             {loading
                 ? (<Spinner />)
-                : (
-                    <div className="page record-page">
-                        <section className="record-detail">
-                            <div className="record-cover">
-                                <img
-                                    src={currentRecord.cover_url}
-                                    alt={currentRecord.artist}
-                                />
-                            </div>
-
-                            <div className="record-info">
-                                <span className="eyebrow">
-                                    {currentRecord.categories?.name}
-                                </span>
-
-                                <h1>
-                                    {currentRecord.title}
-                                </h1>
-
-                                <p className="record-artist">
-                                    {currentRecord.artist}
-                                </p>
-
-                                <div className="record-price">
-                                    {currentRecord.price}€
+                : inlineError
+                    ? <ErrorDisclaimer errorText={inlineError} />
+                    : (
+                        <div className="page record-page">
+                            <section className="record-detail">
+                                <div className="record-cover">
+                                    <img
+                                        src={currentRecord.cover_url}
+                                        alt={currentRecord.artist}
+                                    />
                                 </div>
 
+                                <div className="record-info">
+                                    <span className="eyebrow">
+                                        {currentRecord.categories?.name}
+                                    </span>
 
-                                <div className="record-description">
-                                    <p>
-                                        {currentRecord.description}
+                                    <h1>
+                                        {currentRecord.title}
+                                    </h1>
+
+                                    <p className="record-artist">
+                                        {currentRecord.artist}
                                     </p>
-                                </div>
 
-                                <div className="record-details">
-                                    <div className="record-detail-row">
-                                        <span>Release</span>
-                                        <span>{currentRecord.release_year}</span>
+                                    <div className="record-price">
+                                        {currentRecord.price}€
                                     </div>
 
-                                    <div className="record-detail-row">
-                                        <span>Genre</span>
-                                        <span>
-                                            {currentRecord.categories?.name}
-                                        </span>
+
+                                    <div className="record-description">
+                                        <p>
+                                            {currentRecord.description}
+                                        </p>
                                     </div>
 
-                                    <div className="record-detail-row">
-                                        <span>Format</span>
-                                        <span>{currentRecord.format}</span>
+                                    <div className="record-details">
+                                        <div className="record-detail-row">
+                                            <span>Release</span>
+                                            <span>{currentRecord.release_year}</span>
+                                        </div>
+
+                                        <div className="record-detail-row">
+                                            <span>Genre</span>
+                                            <span>
+                                                {currentRecord.categories?.name}
+                                            </span>
+                                        </div>
+
+                                        <div className="record-detail-row">
+                                            <span>Format</span>
+                                            <span>{currentRecord.format}</span>
+                                        </div>
+
+                                        <div className="record-detail-row">
+                                            <span>Condition</span>
+                                            <span>New</span>
+                                        </div>
                                     </div>
 
-                                    <div className="record-detail-row">
-                                        <span>Condition</span>
-                                        <span>New</span>
-                                    </div>
-                                </div>
+                                    {isAuthenticated && (
+                                        <div className="record-actions">
+                                            <button className="add-to-favorites" onClick={() => {
+                                                isFavourite
+                                                    ? removeFromFavouriteHandler(id, user.id)
+                                                    : addToFavoriteHandler(id, user.id)
+                                            }}>
+                                                {isFavourite
+                                                    ? 'Remove from Favorites'
+                                                    : 'Add to Favorites'
+                                                }
+                                            </button>
 
-                                {isAuthenticated && (
-                                    <div className="record-actions">
-                                        <button className="add-to-favorites" onClick={() => {
-                                            isFavourite
-                                                ? removeFromFavouriteHandler(id, user.id)
-                                                : addToFavoriteHandler(id, user.id)
-                                        }}>
-                                            {isFavourite
-                                                ? 'Remove from Favorites'
-                                                : 'Add to Favorites'
-                                            }
-                                        </button>
-
-                                        {/* <button className="add-to-cart">
+                                            {/* <button className="add-to-cart">
                                 Add to Collection
                             </button> */}
-                                    </div>
-                                )}
-
-                            </div>
-                        </section>
-
-                        <section className="record-bottom">
-
-                            <Comments recordId={id} />
-
-                            <div className="tracklist-section">
-                                <span className="eyebrow">TRACKLIST</span>
-
-                                <div className="tracklist">
-                                    {currentRecord.tracklist?.map((track, index) => (
-                                        <div className="track" key={index}>
-                                            <span>{String(index + 1).padStart(2, "0")}</span>
-                                            <span>{track.title}</span>
-                                            <span>{track.duration}</span>
                                         </div>
-                                    ))}
+                                    )}
+
                                 </div>
-                            </div>
-                        </section>
-                    </div>
-                )
+                            </section>
+
+                            <section className="record-bottom">
+
+                                <Comments recordId={id} />
+
+                                <div className="tracklist-section">
+                                    <span className="eyebrow">TRACKLIST</span>
+
+                                    <div className="tracklist">
+                                        {currentRecord.tracklist?.map((track, index) => (
+                                            <div className="track" key={index}>
+                                                <span>{String(index + 1).padStart(2, "0")}</span>
+                                                <span>{track.title}</span>
+                                                <span>{track.duration}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    )
             }
+
+            {modalError && <ErrorModal errorText={modalError} onClose={closeErrorModalHadler} />}
         </>
     );
 }

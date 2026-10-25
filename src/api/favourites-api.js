@@ -1,5 +1,9 @@
 import request from "../utils/request";
 
+export const getCommunityFavorites = () => {
+    return request("/favourites?select=record_id", "GET");
+};
+
 export const getAll = (userId, accessToken) => {
     return request(`/favourites?user_id=eq.${userId}`, "GET", null,
         {

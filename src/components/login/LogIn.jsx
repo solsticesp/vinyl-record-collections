@@ -37,6 +37,12 @@ export default function LogIn({
         }
 
         onLogin(data.login);
+        setData({
+            login: {
+                email: '',
+                password: '',
+            }
+        });
     }
 
     const inputClass = (field) => `${errors[field] ? 'error-field' : ''}`;

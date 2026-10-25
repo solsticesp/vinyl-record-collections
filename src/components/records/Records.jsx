@@ -2,18 +2,20 @@ import RecordCard from "../record-card/RecordCard";
 import Spinner from "../shared/Spinner";
 import { useEffect, useState, useMemo } from "react";
 import request from "../../utils/request";
+import ErrorDisclaimer from "../error/ErrorDisclaimer";
 
 
 export default function Records() {
     const [records, setRecords] = useState([]);
     const [loading, setLoading] = useState(true);
     const [sortBy, setSortBy] = useState("featured");
+    const [error, setError] = useState(null);
 
 
     useEffect(() => {
         request("/records")
             .then(setRecords)
-            .catch(err => console.error(err))
+            .catch(error => setError(error.apiResponse.msg))
             .finally(() => setLoading(false))
     }, []);
 
@@ -110,6 +112,7 @@ export default function Records() {
             {/* <div className="load-more">
                 LOAD MORE
             </div> */}
+            {error && <ErrorDisclaimer errorText={error} />}
         </div >
     );
 }

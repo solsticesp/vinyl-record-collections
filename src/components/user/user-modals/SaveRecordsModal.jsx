@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { validate } from "../../../utils/validate";
 
 const initialValues = {
     title: '',
@@ -18,6 +19,7 @@ export default function SaveRecordsModal({
     onSave,
 }) {
     const isEdit = !!record;
+    const [errors, setErrors] = useState({});
     const [values, setValues] = useState(
         record ? {
             ...initialValues,
@@ -42,6 +44,14 @@ export default function SaveRecordsModal({
     }
 
     const submitAction = () => {
+        const validationErrors = validate(values);
+
+        setErrors(validationErrors);
+
+        if (Object.keys(validationErrors).length > 0) {
+            return;
+        }
+
         const newRecord = {
             ...values,
             category_id: Number(values.category_id),
@@ -105,7 +115,15 @@ export default function SaveRecordsModal({
                                 <select
                                     name="category_id"
                                     value={values.category_id}
-                                    onChange={changeHandler}
+                                    onChange={(e) => {
+                                        changeHandler(e);
+
+                                        setErrors(prev => ({
+                                            ...prev,
+                                            category_id: ''
+                                        }));
+                                    }}
+                                    className={errors.category_id ? 'input-error' : ''}
                                 >
                                     <option value="">Select genre</option>
                                     <option value="1">Rock & Metal</option>
@@ -115,6 +133,11 @@ export default function SaveRecordsModal({
                                     <option value="5">R&B & Hip-Hop</option>
                                     <option value="6">Electronic</option>
                                 </select>
+                                {errors.category_id && (
+                                    <small className="error-message">
+                                        {errors.category_id}
+                                    </small>
+                                )}
                             </div>
 
                             <div className="form-group">

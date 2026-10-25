@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router'
+import { Routes, Route, useNavigate, Navigate } from 'react-router'
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import About from './components/about/About';
@@ -17,10 +17,16 @@ import Logout from './components/logout/Logout';
 import { authApi } from './api';
 import AuthContext from './contexts/auth-context';
 import { useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
+import ProtectedGuard from './components/routeGuards/ProtectedGuard';
+import PublicGuard from './components/routeGuards/PublicGuard';
+import ErrorModal from './components/error/ErrorModal';
 
 
 function App() {
     const navigate = useNavigate();
+
+    const [error, setError] = useState(null);
     const [auth, setAuth] = useState(localStorage.getItem('auth'));
 
     const register = async (userData) => {
@@ -32,7 +38,7 @@ function App() {
 
             navigate('/');
         } catch (error) {
-            alert(error.message);
+            setError(error.apiResponse.msg);
         }
     };
 
@@ -45,20 +51,32 @@ function App() {
 
             navigate('/');
         } catch (error) {
-            alert(error.message);
+            setError(error.apiResponse.msg);
         }
     };
 
     const logoutAction = async () => {
         try {
-            await authApi.logout(JSON.parse(auth)?.access_token);
+            const token = JSON.parse(auth).access_token;
+            const decodedToken = jwtDecode(token);
+
+            const currentTime = Date.now() / 1000;
+            const tokenExpired = decodedToken.exp < currentTime + 60;
+
+            if (!tokenExpired) {
+                await authApi.logout(JSON.parse(auth)?.access_token);
+            }
 
             localStorage.removeItem('auth');
             setAuth(null);
         } catch (error) {
-            alert(error.message)
+            setError(error.apiResponse.msg);
         }
     };
+
+    const closeErrorModalHadler = () => {
+        setError(null);
+    }
 
     const contextValue = {
         accessToken: JSON.parse(auth)?.access_token,
@@ -88,16 +106,19 @@ function App() {
                             element={<CollectionRecords />}
                         />
                         <Route path='contacts' element={<Contacts />} />
+
+                        {/* Redirect unknown URLs to Home */}
+                        <Route path="*" element={<Navigate to="/" replace />} />
                     </Route>
 
                     {/* Guest only */}
-                    <Route>
+                    <Route element={<PublicGuard />}>
                         <Route path='signup' element={<SignUp onSignup={register} />} />
                         <Route path='login' element={<LogIn onLogin={login} />} />
                     </Route>
 
                     {/* User only */}
-                    <Route>
+                    <Route element={<ProtectedGuard />}>
                         <Route path='collection' element={<UserDashboard />} />
                         <Route path='list' element={<SaveList />} />
                         <Route path='logout' element={<Logout />} />
@@ -106,6 +127,8 @@ function App() {
             </section >
 
             <Footer />
+
+            {error && <ErrorModal errorText={error} onClose={closeErrorModalHadler} />}
         </AuthContext.Provider>
     )
 }

@@ -43,7 +43,7 @@ export default function SignUp({
         }
 
         //Proceed with registration logic (Api call)
-       onSignup(data);
+        onSignup(data);
     }
 
     const inputClass = (field) => `${errors[field] && touched[field] ? 'error-field' : ''}`;

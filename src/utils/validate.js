@@ -46,10 +46,16 @@ export function validate(values) {
 
             case 'login':
                 if (!values.login.email || !values.login.password) {
-                    errors['login'] = 'Email and/or password is incorrect.';
+                    errors['login'] = 'Email and password are required.';
                 }
                 break;
-                
+
+            case 'category_id':
+                if (!values.category_id) {
+                    errors['category_id'] = 'Please select a genre!';
+                }
+                break;
+
             default:
                 break;
         }
