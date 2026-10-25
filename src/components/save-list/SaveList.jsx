@@ -3,11 +3,15 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../contexts/auth-context";
 import { favoritesApi, recordApi } from "../../api";
 import Spinner from "../shared/Spinner";
+import ErrorModal from "../error/ErrorModal";
+import ErrorDisclaimer from "../error/ErrorDisclaimer";
 
 export default function SaveList() {
     const { user, accessToken } = useContext(AuthContext);
     const [favList, setFavList] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [inlineError, setInlineError] = useState(null);
+    const [modalError, setModalError] = useState(null);
 
     useEffect(() => {
         if (!user) return;
@@ -24,7 +28,7 @@ export default function SaveList() {
 
                 setFavList([].concat(...records));
             } catch (error) {
-                console.error(error);
+                setInlineError(error.apiResponse.msg);
             } finally {
                 setLoading(false);
             }
@@ -41,9 +45,13 @@ export default function SaveList() {
                 prevFavList.filter(record => record.id !== recordId)
             );
         } catch (error) {
-            console.error(error);
+            setModalError(error.apiResponse.msg);
         }
     };
+
+    const closeErrorModalHadler = () => {
+        setModalError(null);
+    }
 
     return (
         <>
@@ -79,6 +87,9 @@ export default function SaveList() {
                     </div>
                 )
             }
+            {modalError && <ErrorModal errorText={modalError} onClose={closeErrorModalHadler} />}
+            {inlineError && <ErrorDisclaimer errorText={inlineError} />}
+
         </>
 
     );

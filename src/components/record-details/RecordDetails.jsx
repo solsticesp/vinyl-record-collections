@@ -5,6 +5,7 @@ import Comments from "./coments/Comments";
 import { favoritesApi, recordApi } from "../../api";
 import Spinner from "../shared/Spinner";
 import ErrorDisclaimer from "../error/ErrorDisclaimer";
+import ErrorModal from "../error/ErrorModal";
 
 export default function RecordDetails() {
     const { id } = useParams();
@@ -12,7 +13,8 @@ export default function RecordDetails() {
     const { isAuthenticated, user, accessToken } = useContext(AuthContext);
     const [isFavourite, setIsFavourite] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [inlineError, setInlineError] = useState(null);
+    const [modalError, setModalError] = useState(null);
 
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export default function RecordDetails() {
             .then((data) => {
                 setCurrentRecord(data[0]);
             })
-            .catch((error) => setError(error.apiResponse.msg))
+            .catch((error) => setInlineError(error.apiResponse.msg))
     }, [id]);
 
     useEffect(() => {
@@ -42,21 +44,25 @@ export default function RecordDetails() {
     const addToFavoriteHandler = (recordId, userId) => {
         favoritesApi.create(recordId, userId, accessToken)
             .then((setIsFavourite(true)))
-            .catch((error) => console.error(error));
+            .catch((error) => setModalError(error.apiResponse.msg));
     }
 
     const removeFromFavouriteHandler = (recordId, userId) => {
         favoritesApi.remove(recordId, userId, accessToken)
             .then(() => setIsFavourite(false))
-            .catch((error) => console.error(error));
+            .catch((error) => setModalError(error.apiResponse.msg));
+    }
+
+    const closeErrorModalHadler = () => {
+        setModalError(null);
     }
 
     return (
         <>
             {loading
                 ? (<Spinner />)
-                : error
-                    ? <ErrorDisclaimer errorText={error} />
+                : inlineError
+                    ? <ErrorDisclaimer errorText={inlineError} />
                     : (
                         <div className="page record-page">
                             <section className="record-detail">
@@ -158,6 +164,8 @@ export default function RecordDetails() {
                         </div>
                     )
             }
+
+            {modalError && <ErrorModal errorText={modalError} onClose={closeErrorModalHadler} />}
         </>
     );
 }

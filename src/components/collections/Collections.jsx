@@ -19,7 +19,6 @@ export default function Collections() {
 
     return (
         <>
-
             <section className="collections">
                 <div className="catalog-header">
                     <h1>Collections</h1>

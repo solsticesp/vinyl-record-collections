@@ -4,24 +4,25 @@ import DeleteRecordModal from "../user-modals/DeleteRecordModal";
 import UserRecordListItem from "../user-record-list-item/UserRecordListItem";
 import RecordInfoModal from "../user-modals/RecordInfoModal";
 import Spinner from "../../shared/Spinner";
-// import request from "../../../utils/request";
 import { recordApi } from "../../../api";
 import AuthContext from "../../../contexts/auth-context";
+import ErrorModal from "../../error/ErrorModal";
+import ErrorDisclaimer from "../../error/ErrorDisclaimer";
 
 export default function UserDashboard() {
     const { accessToken, user } = useContext(AuthContext)
 
     const [loading, setLoading] = useState(true)
     const [records, setRecords] = useState([]);
-
     const [showSaveRecordsModal, setShowSaveRecordsModal] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
-
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [recordToDelete, setRecordToDelete] = useState(null);
-
     const [showRecordInfoModal, setShowRecordInfoModal] = useState(false);
     const [recordToView, setRecordToView] = useState(null);
+
+    const [inlineError, setInlineError] = useState(null);
+    const [modalError, setModalError] = useState(null);
 
     const infoRecordHandler = (record) => {
         setRecordToView(record);
@@ -43,13 +44,12 @@ export default function UserDashboard() {
         setShowDeleteModal(true);
     }
 
-
     useEffect(() => {
         if (!accessToken || !user?.id) return;
 
         recordApi.getAll(accessToken, user.id)
             .then(setRecords)
-            .catch(error => console.error("Error loading records:", error))
+            .catch(error => setInlineError(error.apiResponse.msg))
             .finally(() => setLoading(false));
     }, [accessToken, user?.id]);
 
@@ -74,9 +74,7 @@ export default function UserDashboard() {
             setShowSaveRecordsModal(false);
             setSelectedRecord(null);
         } catch (error) {
-            alert(
-                `Error ${isEdit ? "updating" : "adding"} record: ${error.message}`
-            );
+            setModalError(error.apiResponse.msg);
         }
     };
 
@@ -90,84 +88,99 @@ export default function UserDashboard() {
             setShowDeleteModal(false);
             setRecordToDelete(null);
         } catch (error) {
-            alert("Error deleting record: " + error.message);
+            setModalError(error.apiResponse.msg)
         }
     };
 
+    const closeErrorModalHadler = () => {
+        setModalError(null);
+    }
+
     return (
-        <div className="page admin-page">
-            <section className="catalog-header">
-                <div>
-                    <span className="eyebrow">USER</span>
-                    <h1>
-                        RECORD<br />
-                        MANAGEMENT
-                    </h1>
-                </div>
-                <p className="catalog-intro">
-                    Manage your vinyl collection,
-                    add new records, edit existing ones,
-                    or remove records.
-                </p>
-            </section>
+        <>
+            {inlineError
+                ? <ErrorDisclaimer errorText={inlineError} />
+                : (
 
-            <div className="admin-toolbar">
-                <span>{records.length} RECORDS</span>
-                <button className="add-record-btn" onClick={() => { addRecordBtnHandler() }}>
-                    + ADD NEW RECORD
-                </button>
-            </div>
+                    <div className="page admin-page">
+                        <section className="catalog-header">
+                            <div>
+                                <span className="eyebrow">USER</span>
+                                <h1>
+                                    RECORD<br />
+                                    MANAGEMENT
+                                </h1>
+                            </div>
+                            <p className="catalog-intro">
+                                Manage your vinyl collection,
+                                add new records, edit existing ones,
+                                or remove records.
+                            </p>
+                        </section>
 
-            <section className="admin-table">
-                <div className="admin-table-header">
-                    <span>IMAGE</span>
-                    <span>ARTIST</span>
-                    <span>TITLE</span>
-                    <span>CATEGORY</span>
-                    <span>ACTIONS</span>
-                </div>
+                        <div className="admin-toolbar">
+                            <span>{records.length} RECORDS</span>
+                            <button className="add-record-btn" onClick={() => { addRecordBtnHandler() }}>
+                                + ADD NEW RECORD
+                            </button>
+                        </div>
 
-                {loading ? (
-                    <Spinner />
-                ) : (
-                    records.map(record => (
-                        <UserRecordListItem
-                            key={record.id}
-                            record={record}
-                            onInfo={infoRecordHandler}
-                            onEdit={editRecordHandler}
-                            onDelete={deleteRecordHandler}
-                        />
-                    ))
-                )}
-            </section>
+                        <section className="admin-table">
+                            <div className="admin-table-header">
+                                <span>IMAGE</span>
+                                <span>ARTIST</span>
+                                <span>TITLE</span>
+                                <span>CATEGORY</span>
+                                <span>ACTIONS</span>
+                            </div>
 
-            {showRecordInfoModal && (
-                <RecordInfoModal
-                    record={recordToView}
-                    onClose={() => setShowRecordInfoModal(false)}
-                />
-            )}
+                            {loading ? (
+                                <Spinner />
+                            ) : (
+                                records.map(record => (
+                                    <UserRecordListItem
+                                        key={record.id}
+                                        record={record}
+                                        onInfo={infoRecordHandler}
+                                        onEdit={editRecordHandler}
+                                        onDelete={deleteRecordHandler}
+                                    />
+                                ))
+                            )}
+                        </section>
 
-            {showSaveRecordsModal && (
-                <SaveRecordsModal
-                    onClose={() => setShowSaveRecordsModal(false)}
-                    record={selectedRecord}
-                    onSave={saveRecordHandler}
-                />
-            )}
+                        {showRecordInfoModal && (
+                            <RecordInfoModal
+                                record={recordToView}
+                                onClose={() => setShowRecordInfoModal(false)}
+                            />
+                        )}
 
-            {showDeleteModal && (
-                <DeleteRecordModal
-                    record={records.find(record => record.id === recordToDelete)}
-                    onClose={() => {
-                        setShowDeleteModal(false);
-                        setRecordToDelete(null);
-                    }}
-                    onConfirm={confirmDeleteHandler}
-                />
-            )}
-        </div>
+                        {showSaveRecordsModal && (
+                            <SaveRecordsModal
+                                onClose={() => setShowSaveRecordsModal(false)}
+                                record={selectedRecord}
+                                onSave={saveRecordHandler}
+                            />
+                        )}
+
+                        {showDeleteModal && (
+                            <DeleteRecordModal
+                                record={records.find(record => record.id === recordToDelete)}
+                                onClose={() => {
+                                    setShowDeleteModal(false);
+                                    setRecordToDelete(null);
+                                }}
+                                onConfirm={confirmDeleteHandler}
+                            />
+                        )}
+
+                        {modalError && <ErrorModal errorText={modalError} onClose={closeErrorModalHadler} />}
+                    </div>
+                )
+            }
+        </>
+
     );
 }
 
