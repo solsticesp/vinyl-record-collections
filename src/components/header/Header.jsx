@@ -35,7 +35,7 @@ export default function Header({
             </div>
 
             <div className="logo-mark">
-                <img src="../public/vintage-background-with-vinyl-record.png" alt="Logo" />
+                <img src="/vintage-background-with-vinyl-record.png" alt="Logo" />
             </div>
 
             <div className="header-right">
