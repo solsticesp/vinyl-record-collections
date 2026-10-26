@@ -36,7 +36,7 @@ export default function Footer() {
                     <span></span>
                     {/* <strong>XIV<br />QR</strong> */}
                     <div className="logo-mark">
-                        <img src="./public/vintage-background-with-vinyl-record.png" alt="Logo" />
+                        <img src="/vintage-background-with-vinyl-record.png" alt="Logo" />
                     </div>
                 </div>
 
