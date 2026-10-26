@@ -37,7 +37,7 @@ export default function CreateComment({
             if (createdComment) {
                 onCommentCreated({
                     ...createdComment,
-                    email: user.email,
+                    first_name: user.user_metadata?.first_name || "Listener",
                 });
             }
 

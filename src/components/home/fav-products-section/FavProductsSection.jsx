@@ -1,4 +1,3 @@
-// import records from "../../../data/records";
 import { useEffect, useState } from "react";
 import RecordCard from "../../record-card/RecordCard";
 import request from "../../../utils/request";

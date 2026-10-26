@@ -75,7 +75,7 @@ export default function Comments({ recordId }) {
                                     <article className="comment" key={comment.id}>
                                         <div className="comment-meta">
                                             <span>
-                                                {comment.email || "Listener"}
+                                                {comment.first_name || "Listener"}
                                             </span>
                                             <time>
                                                 {new Date(comment.created_at).toLocaleDateString()}
