@@ -18,6 +18,8 @@ export default function RecordCard({
                     alt={artist}
                 />
 
+                {/* TODO: like button on record card */}
+
                 {/* <button className="add-btn">
                     +
                 </button> */}

@@ -109,9 +109,12 @@ export default function Records() {
                 </section>
             )}
 
+            {/* TODO: load more/pagination */}
+
             {/* <div className="load-more">
                 LOAD MORE
             </div> */}
+            
             {error && <ErrorDisclaimer errorText={error} />}
         </div >
     );

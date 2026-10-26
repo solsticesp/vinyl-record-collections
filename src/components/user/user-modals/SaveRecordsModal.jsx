@@ -300,9 +300,6 @@ export default function SaveRecordsModal({
                         </div>
                     </section>
 
-
-                    {/* FOOTER */}
-
                     <div className="modal-footer">
 
                         <button

@@ -62,9 +62,7 @@ body::before {
   inset: 0;
   z-index: 100;
   pointer-events: none;
-
   opacity: .08;
-
   background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
 }
@@ -126,21 +124,18 @@ body::before {
 .logo-mark {
   position: relative;
   justify-self: center;
-
   width: 120px;
   height: 60px;
 }
 
 .logo-mark img {
   position: absolute;
-
   width: 120px;
   height: 120px;
 }
 
 .header-right {
   justify-self: end;
-
   display: flex;
   align-items: center;
   gap: 20px;
@@ -177,12 +172,9 @@ a.dashboard-btn {
 .cart-btn span {
   width: 19px;
   height: 19px;
-
   display: grid;
   place-items: center;
-
   border-radius: 50%;
-
   background: #eee;
   color: #222;
 }
@@ -199,7 +191,6 @@ a.dashboard-btn {
 .categories {
   width: 80px;
   margin-bottom: 10px;
-
   display: flex;
   flex-direction: column;
   gap: .25rem;
@@ -209,7 +200,6 @@ a.dashboard-btn {
   color: #222;
   text-decoration: none;
   text-transform: uppercase;
-
   font-size: 9px;
   line-height: 13px;
 }
@@ -218,10 +208,8 @@ a.dashboard-btn {
   width: 220px;
   height: 27px;
   padding: 0 7px;
-
   display: flex;
   align-items: center;
-
   background: #ddd;
 }
 
@@ -231,17 +219,14 @@ a.dashboard-btn {
 
 .search input {
   flex: 1;
-
   border: 0;
   outline: 0;
-
   background: transparent;
 }
 
 .search button {
   border: 0;
   background: none;
-
   color: #555;
   font-size: 7px;
 }
@@ -253,10 +238,8 @@ a.dashboard-btn {
 
 .hero {
   position: relative;
-
   height: 360px;
   margin: 0 26px;
-
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 20px;
@@ -275,14 +258,12 @@ a.dashboard-btn {
 
 .hero-copy p {
   margin-top: 10px;
-
   font-size: 9px;
   line-height: 13px;
 }
 
 .hero-images {
   height: 292px;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
@@ -291,18 +272,14 @@ a.dashboard-btn {
 .hero-image {
   width: 100%;
   height: 100%;
-
   overflow: hidden;
-
   background: #eee;
 }
 
 .hero-image img {
   width: 100%;
   height: 100%;
-
   display: block;
-
   object-fit: cover;
 }
 
@@ -310,20 +287,15 @@ a.dashboard-btn {
   position: absolute;
   left: 0;
   bottom: 68px;
-
   width: 136px;
   height: 20px;
   padding: 0 10px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background: #ddd;
   color: #111;
-
   text-decoration: none;
-
   font-size: 8px;
 }
 
@@ -335,7 +307,6 @@ a.dashboard-btn {
   position: absolute;
   left: 157px;
   bottom: 68px;
-
   display: flex;
   gap: 5px;
 }
@@ -344,7 +315,6 @@ a.dashboard-btn {
 .slider-controls button {
   width: 21px;
   height: 21px;
-
   border: 1px solid #ddd;
   background: transparent;
   color: #555;
@@ -398,11 +368,8 @@ a.dashboard-btn {
 
 .product-image {
   position: relative;
-
   height: 100%;
-
   overflow: hidden;
-
   border: 1px solid #ddd;
   background: #f1f2f5;
 }
@@ -410,7 +377,6 @@ a.dashboard-btn {
 .product-image img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
 
@@ -418,26 +384,19 @@ a.dashboard-btn {
   position: absolute;
   left: 50%;
   bottom: 4px;
-
   width: 17px;
   height: 17px;
-
   transform: translateX(-50%);
-
   border: 0;
-
   background: rgba(255, 255, 255, .6);
   color: #777;
-
   font-size: 14px;
 }
 
 .product-meta {
   margin-top: 5px;
-
   display: flex;
   justify-content: space-between;
-
   font-size: 7px;
 }
 
@@ -449,14 +408,12 @@ a.dashboard-btn {
 .product-card h3,
 .collection-product h3 {
   margin-top: 2px;
-
   font-size: 8px;
   font-weight: 500;
 }
 
 .slider-controls {
   margin-top: 50px;
-
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -484,9 +441,7 @@ a.dashboard-btn {
 
 .approach-heading p {
   margin-top: 10px;
-
   color: #555;
-
   font-size: 8px;
   line-height: 11px;
   letter-spacing: .5px;
@@ -496,26 +451,21 @@ a.dashboard-btn {
   height: 330px;
   margin-top: 50px;
   padding-left: 26px;
-
   display: grid;
   grid-template-columns: 1.1fr 1fr 1fr 1fr;
   gap: 18px;
-
   overflow: hidden;
 }
 
 .editorial-image {
   height: fit-content;
-
   overflow: hidden;
-
   border: 1px solid #ddd;
 }
 
 .editorial-image img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
 
@@ -541,7 +491,6 @@ a.dashboard-btn {
 
 .catalog-header {
   padding: 70px 0 55px;
-
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -550,9 +499,7 @@ a.dashboard-btn {
 .catalog-header .eyebrow {
   display: block;
   margin-bottom: 18px;
-
   color: #999;
-
   font-size: 7px;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -568,9 +515,7 @@ a.dashboard-btn {
 .catalog-intro {
   max-width: 260px;
   margin-bottom: 2px;
-
   color: #777;
-
   font-size: 9px;
   line-height: 14px;
 }
@@ -589,7 +534,6 @@ a.dashboard-btn {
 
 .catalog-count {
   color: #999;
-
   font-size: 7px;
   letter-spacing: .08em;
 }
@@ -603,14 +547,10 @@ a.dashboard-btn {
 .catalog-actions select {
   appearance: none;
   -webkit-appearance: none;
-
   padding: 0 18px 0 0;
-
   border: 0;
   outline: 0;
-
   background-color: transparent;
-
   background-image:
     linear-gradient(45deg, transparent 50%, #555 50%),
     linear-gradient(135deg, #555 50%, transparent 50%);
@@ -624,14 +564,11 @@ a.dashboard-btn {
     4px 4px;
 
   background-repeat: no-repeat;
-
   color: #333;
-
   font-family: inherit;
   font-size: 8px;
   font-weight: 500;
   letter-spacing: .04em;
-
   cursor: pointer;
 }
 
@@ -656,23 +593,17 @@ a.dashboard-btn {
 
 .record-card-image {
   position: relative;
-
   width: 100%;
   aspect-ratio: 1;
-
   overflow: hidden;
-
   background: #eee;
 }
 
 .record-card-image img {
   width: 100%;
   height: 100%;
-
   display: block;
-
   object-fit: cover;
-
   transition: transform .5s ease;
 }
 
@@ -687,24 +618,17 @@ a.dashboard-btn {
   position: absolute;
   top: 12px;
   right: 12px;
-
   width: 28px;
   height: 28px;
-
   display: grid;
   place-items: center;
-
   border: 1px solid rgba(255, 255, 255, .7);
   background: rgba(255, 255, 255, .85);
-
   color: #222;
-
   font-family: inherit;
   font-size: 15px;
   line-height: 1;
-
   cursor: pointer;
-
   opacity: 0;
   transform: translateY(-4px);
 
@@ -728,7 +652,6 @@ a.dashboard-btn {
 
 .record-card-info {
   padding-top: 13px;
-
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -737,7 +660,6 @@ a.dashboard-btn {
 
 .record-card-info h2 {
   margin: 0;
-
   font-size: 10px;
   line-height: 12px;
   font-weight: 600;
@@ -745,14 +667,12 @@ a.dashboard-btn {
 
 .record-card-info p {
   margin-top: 4px;
-
   color: #777;
   font-size: 8px;
 }
 
 .record-card-info>span {
   color: #222;
-
   font-size: 9px;
   white-space: nowrap;
 }
@@ -763,14 +683,10 @@ a.dashboard-btn {
 .record-card-meta {
   margin-top: 10px;
   padding-top: 8px;
-
   display: flex;
   justify-content: space-between;
-
   border-top: 1px solid #e5e5e5;
-
   color: #999;
-
   font-size: 6px;
   letter-spacing: .08em;
 }
@@ -787,11 +703,9 @@ a.dashboard-btn {
 .record-detail {
   max-width: 1100px;
   margin: 120px auto 120px;
-
   display: grid;
   grid-template-columns:
     minmax(400px, 1fr) minmax(320px, 1fr);
-
   gap: 90px;
   align-items: center;
 }
@@ -802,18 +716,14 @@ a.dashboard-btn {
 .record-cover {
   width: 100%;
   aspect-ratio: 1;
-
   overflow: hidden;
-
   background: #eee;
 }
 
 .record-cover img {
   width: 100%;
   height: 100%;
-
   display: block;
-
   object-fit: cover;
 }
 
@@ -828,9 +738,7 @@ a.dashboard-btn {
 .tracklist-section>.eyebrow {
   display: block;
   margin-bottom: 18px;
-
   color: #888;
-
   font-size: 7px;
   letter-spacing: .12em;
   text-transform: uppercase;
@@ -838,7 +746,6 @@ a.dashboard-btn {
 
 .record-info h1 {
   margin: 0;
-
   font-size: 42px;
   line-height: .85;
   letter-spacing: -2px;
@@ -847,15 +754,12 @@ a.dashboard-btn {
 
 .record-artist {
   margin-top: 9px;
-
   color: #555;
-
   font-size: 11px;
 }
 
 .record-price {
   margin-top: 25px;
-
   font-size: 13px;
   font-weight: 500;
 }
@@ -867,7 +771,6 @@ a.dashboard-btn {
 
 .record-description p {
   color: #555;
-
   font-size: 9px;
   line-height: 14px;
 }
@@ -877,19 +780,15 @@ a.dashboard-btn {
 
 .record-details {
   margin-top: 35px;
-
   border-top: 1px solid #ddd;
 }
 
 .record-detail-row {
   min-height: 29px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   border-bottom: 1px solid #e5e5e5;
-
   font-size: 8px;
 }
 
@@ -909,7 +808,6 @@ a.dashboard-btn {
 
 .record-actions {
   margin-top: 25px;
-
   display: flex;
   gap: 8px;
 }
@@ -917,11 +815,9 @@ a.dashboard-btn {
 .record-actions button {
   height: 32px;
   padding: 0 18px;
-
   border: 1px solid #222;
   background: transparent;
   color: #222;
-
   font-family: inherit;
   font-size: 8px;
   letter-spacing: .04em;
@@ -953,13 +849,10 @@ a.dashboard-btn {
 
 .track {
   min-height: 42px;
-
   display: grid;
   grid-template-columns: 45px 1fr 50px;
   align-items: center;
-
   border-bottom: 1px solid #e5e5e5;
-
   font-size: 8px;
 }
 
@@ -1157,10 +1050,8 @@ a.dashboard-btn {
 
 .auth-page {
   min-height: calc(100vh - 70px);
-
   margin-top: 0;
   margin-bottom: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1169,14 +1060,11 @@ a.dashboard-btn {
 .auth-layout {
   width: min(100%, 900px);
   margin: 40px auto 100px;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 110px;
-
   align-items: center;
 }
-
 
 /* ---------- INTRO ---------- */
 
@@ -1187,9 +1075,7 @@ a.dashboard-btn {
 .auth-intro .eyebrow {
   display: block;
   margin-bottom: 20px;
-
   color: #999;
-
   font-size: 7px;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -1205,9 +1091,7 @@ a.dashboard-btn {
 .auth-intro p {
   max-width: 230px;
   margin-top: 25px;
-
   color: #777;
-
   font-size: 9px;
   line-height: 14px;
 }
@@ -1283,7 +1167,6 @@ a.dashboard-btn {
 
 .auth-options {
   margin-top: -5px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1303,11 +1186,8 @@ a.dashboard-btn {
 .terms-check {
   display: flex;
   align-items: center;
-
   color: #777;
-
   font-size: 7px;
-
   cursor: pointer;
 }
 
@@ -1325,9 +1205,7 @@ a.dashboard-btn {
   width: 10px;
   height: 10px;
   margin: 0;
-
   accent-color: #222;
-
   cursor: pointer;
 }
 
@@ -1679,7 +1557,6 @@ a.dashboard-btn {
 .save-btn {
   height: 32px;
   padding: 0 20px;
-
   font-family: inherit;
   font-size: 8px;
 }
@@ -1834,7 +1711,6 @@ footer {
 
   .hero {
     height: auto;
-
     grid-template-columns: 1fr 1fr;
   }
 
@@ -1983,7 +1859,6 @@ footer {
 
   .editorial-grid {
     padding: 0 15px;
-
     grid-template-columns: 1fr 1fr;
   }
 
@@ -2919,7 +2794,6 @@ footer {
 }
 
 
-
 .collections {
   max-width: 1440px;
   margin: 0 auto;
@@ -3023,8 +2897,6 @@ footer {
     gap: 24px 14px;
   }
 }
-
-
 
 .spinner-container {
   margin: 0 auto;

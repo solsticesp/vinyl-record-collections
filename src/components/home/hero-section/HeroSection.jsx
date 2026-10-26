@@ -2,10 +2,12 @@ import { Link } from "react-router";
 import HeroSectionItem from "./HeroSectionItem";
 import { useEffect, useState } from "react";
 import request from "../../../utils/request";
+import ErrorDisclaimer from "../../error/ErrorDisclaimer";
 
 
 export default function HeroSection() {
     const [records, setRecords] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchLatestRecords = async () => {
@@ -16,7 +18,7 @@ export default function HeroSection() {
 
                 setRecords(latestRecords);
             } catch (error) {
-                console.error("Failed to load latest records:", error);
+                setError(error.apiResponse.msg);
             }
         };
 
@@ -43,15 +45,20 @@ export default function HeroSection() {
                 </Link>
             </div>
 
-            <div className="hero-images">
-                {records.map(record => (
-                    <HeroSectionItem
-                        key={record.id}
-                        imageUrl={record.cover_url}
-                        artist={record.artist}
-                    />
-                ))}
-            </div>
+            {error
+                ? <ErrorDisclaimer errorText={error} />
+                : (
+                    <div className="hero-images">
+                        {records.map(record => (
+                            <HeroSectionItem
+                                key={record.id}
+                                imageUrl={record.cover_url}
+                                artist={record.artist}
+                            />
+                        ))}
+                    </div>
+                )
+            }
 
             <div className="hero-controls">
                 <button className="prev-btn">‹</button>
