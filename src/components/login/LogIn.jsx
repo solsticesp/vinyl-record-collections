@@ -31,8 +31,6 @@ export default function LogIn({
         setErrors(errors);
 
         if (Object.keys(errors).length > 0) {
-            console.log(errors);
-
             return;
         }
 
@@ -100,6 +98,8 @@ export default function LogIn({
                                 className={inputClass('login')}
                             />
                         </div>
+
+                        {/* TODO: remember me */}
 
                         {/* <div className="auth-options">
                             <label className="remember-me">

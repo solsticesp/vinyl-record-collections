@@ -134,9 +134,11 @@ export default function RecordDetails() {
                                                 }
                                             </button>
 
+                                            {/* TODO: where to buy link */}   
+
                                             {/* <button className="add-to-cart">
-                                Add to Collection
-                            </button> */}
+                                                Where to Buy
+                                            </button> */}
                                         </div>
                                     )}
 

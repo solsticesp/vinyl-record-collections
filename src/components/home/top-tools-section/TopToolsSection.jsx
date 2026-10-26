@@ -28,7 +28,9 @@ export default function TopToolsSection({
                     </Link>
                 ))}
             </div>
-
+            
+            {/* TODO: search bar */}
+            
             {/* <div className="search">
                 <span>⌕</span>
                 <input type="text" placeholder="" />

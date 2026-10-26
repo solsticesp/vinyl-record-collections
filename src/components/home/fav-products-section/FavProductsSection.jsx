@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import RecordCard from "../../record-card/RecordCard";
 import request from "../../../utils/request";
 import { favoritesApi } from "../../../api";
+import ErrorDisclaimer from "../../error/ErrorDisclaimer";
 
 export default function FavProductsSection() {
     const [records, setRecords] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchFavorites = async () => {
             try {
                 const favourites = await favoritesApi.getCommunityFavorites();
-                console.log(favourites);
-
 
                 const counts = favourites.reduce((acc, favourite) => {
                     const recordId = favourite.record_id;
@@ -38,7 +38,7 @@ export default function FavProductsSection() {
 
                 setRecords(topRecords);
             } catch (error) {
-                console.error("Failed to load community favorites:", error);
+                setError(error.apiResponse.msg);
             }
         };
 
@@ -58,20 +58,28 @@ export default function FavProductsSection() {
                 <a href="#">See All</a>
             </div>
 
-            <div className="product-grid">
-                {records.map(record => (
-                    <RecordCard
-                        key={record.id}
-                        {...record}
-                        imageUrl={record.cover_url}
-                    />
-                ))}
-            </div>
+            {error
+                ? <ErrorDisclaimer errorText={error} />
+                : (
+                    <>
+                        <div className="product-grid">
+                            {records.map(record => (
+                                <RecordCard
+                                    key={record.id}
+                                    {...record}
+                                    imageUrl={record.cover_url}
+                                />
+                            ))}
+                        </div>
 
-            <div className="slider-controls">
-                <button className="prev-btn">‹</button>
-                <button className="next-btn">›</button>
-            </div>
+                        <div className="slider-controls">
+                            <button className="prev-btn">‹</button>
+                            <button className="next-btn">›</button>
+                        </div>
+                    </>
+                )
+            }
+
 
         </section>
     );
