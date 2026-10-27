@@ -118,7 +118,7 @@ The contact form currently has no submit handler or backend integration; its vis
 
 1. Browse the home page, records catalog, or a genre collection.
 2. Open a record to review its details, tracklist, and comments.
-3. Register or log in to favorite records and share comments.
+3. Register or log in to favorite records, add personal records and share comments.
 4. Open Favourites to manage saved records, or My Collection to add, edit, and delete personal records.
 
 ### 11. Error and Edge Case Handling
@@ -127,6 +127,9 @@ The contact form currently has no submit handler or backend integration; its vis
 - *Network/data errors:* Catalog, category, comment, and dashboard fetch failures are displayed through an inline error disclaimer or modal. Loading indicators are used while several views fetch data.
 - *Empty/missing data:* A genre page shows a no-records message when its category has no records; the comments section has a first-comment empty state. Unknown URLs redirect home. A missing/unavailable record is surfaced through the detail request's error state. The favorites and dashboard views do not currently show a dedicated empty-state message.
 
-## Deployment
+## Deploy with cloudeflare
+1. `npm i -D wrangler`
+2. `npx wrangler login`
+3. `npx wrangler deploy`
 
 *Live application URL:* https://vinyl-record-collections.pe7kovastella.workers.dev/
